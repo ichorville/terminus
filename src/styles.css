@@ -1,7 +1,7 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .app-body {
-	padding-top: 55px;
+	padding-top: 10px;
 }
 
 md-nav-list .md-list-item:hover, md-nav-list .md-list-item.md-list-item-focus {

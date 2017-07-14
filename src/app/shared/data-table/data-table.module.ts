@@ -3,13 +3,15 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PaginationModule } from '../pagination/pagination.module';
 import { DataTableComponent } from './data-table.component';
+import { MaterialModule } from '@angular/material';
 
 
 @NgModule({
 	imports: [
 		CommonModule,
 		RouterModule,
-		PaginationModule
+		PaginationModule,
+		MaterialModule
 	],
 	declarations: [
 		DataTableComponent
