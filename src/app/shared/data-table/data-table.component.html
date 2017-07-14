@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Manage {{title}}</h1>
+	</div>
+	<a class="btn btn-default" routerLink="{{url}}/add">Add {{title}}</a>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2>{{title}}</h2>
+			<table class="table table-striped">
+				<tr>
+					<th *ngFor="let column of columns">
+						{{column.name}}
+					</th> 
+					<th></th>
+				</tr>
+				<tr *ngFor="let row of selectedRows">
+					<td *ngFor="let column of columns">
+						<span [ngSwitch]="column.type">
+							<span *ngSwitchCase="'string'">{{row[column.attr]}}</span>
+							<span *ngSwitchCase="'number'">{{row[column.attr]}}</span>
+							<span *ngSwitchCase="'array'">{{row[column.attr]}}</span>
+							<img *ngSwitchCase="'img'" [src]="row[column.attr]" width="50" height="50">
+						</span>
+					</td>          
+					<td>
+						<button type="button" class="btn btn-default" 
+								routerLink="{{url}}{{row.id}}/edit">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</button>
+						<button type="button" class="btn btn-default" (click)="delete(row.id)">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</table>
+			<app-pagination
+				[pageCount]="pageCount" 
+				[startPage]="startPage" 
+				[paginationBarSize]="paginationBarSize" 
+				(onPaginate)="paginate($event)">
+			</app-pagination>    
+		</div>
+	</div>
+</div>

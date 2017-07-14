@@ -1,0 +1,22 @@
+.search {
+	margin-bottom: 15px;
+} 
+
+.btn-group {
+	margin-bottom: 25px;
+}
+
+ul {
+	height: 200px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.list-group-item {
+	cursor: pointer;
+}
+
+.list-group-item:hover {
+	background: lightblue;
+}

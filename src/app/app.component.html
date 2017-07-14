@@ -1,0 +1,123 @@
+<md-sidenav-container>
+	<md-sidenav #sidenav mode="over" >
+		<md-card class="profile-section">
+			<div class="container container-width">
+				<div class="row">
+					<md-card-header>
+						<img class="profile-image" md-card-image src="assets/img/nestle.jpg">
+					</md-card-header>
+				</div>
+				<div class="row">
+					<span>
+						<h4 class="margin" md-line>Yusuf Iqbal</h4>
+						<p md-line>yusuf.iqbal@gmail.com</p>
+					</span>
+				</div>
+			</div>
+		</md-card>
+		<md-nav-list>
+			<span class="title">Dashboards</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>store</md-icon>
+				<a routerLink="/dashboards/surveys">Surveys</a>
+			</md-list-item>
+		</md-nav-list>
+		
+		<md-nav-list>
+			<span class="title">Master Data</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>store</md-icon>
+				<a routerLink="/master-data/outlets">Outlets</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>storage</md-icon>
+				<a routerLink="/master-data/products">Products</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">	
+				<md-icon class="icon" md-list-avatar>public</md-icon>
+				<a routerLink="/master-data/geographies">Geographies</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>person</md-icon>
+				<a routerLink="/master-data/customers">Customers</a>
+			</md-list-item>
+		</md-nav-list>
+		<md-nav-list>
+			<span class="title">Configuration</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>contacts</md-icon>
+				<a routerLink="/configuration/merchandisers">Merchandisers</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>store</md-icon>
+				<a routerLink="/configuration/outlets">Outlets</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>storage</md-icon>
+				<a routerLink="/configuration/products">Products</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>business</md-icon>
+				<a routerLink="/configuration/store">Stores</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>insert_drive_file</md-icon>
+				<a routerLink="/configuration/surveys">Surveys</a>
+			</md-list-item>
+		</md-nav-list>
+		<md-nav-list>
+			<span class="title">Transactions</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>work</md-icon>
+				<a routerLink="/transactions/activities">Activities</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>call</md-icon>
+				<a routerLink="/transactions/calls">Calls</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>insert_drive_file</md-icon>
+				<a routerLink="/transactions/surveys">Surveys</a>
+			</md-list-item>
+		</md-nav-list>
+		<md-nav-list>
+			<span class="title">Administration</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>devices</md-icon>
+				<a routerLink="/administration/devices">Devices</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>person</md-icon>
+				<a routerLink="/administration/users">Users</a>
+			</md-list-item>
+		</md-nav-list>
+		<md-nav-list>
+			<span class="title">Logs</span>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>history</md-icon>
+				<a routerLink="/log/login-history">Login History</a>
+			</md-list-item>
+			<md-divider></md-divider>
+			<md-list-item routerLinkActive="active">
+				<md-icon class="icon" md-list-avatar>phonelink_setup</md-icon>
+				<a routerLink="/log/mobile-error-log">Mobile Error Log</a>
+			</md-list-item>
+		</md-nav-list>
+	</md-sidenav>
+	<md-toolbar color="primary">
+		<md-icon class="menu" (click)="sidenav.toggle()">menu</md-icon>
+	</md-toolbar>
+	<div class="main-content">
+		<router-outlet></router-outlet>		
+	</div>
+</md-sidenav-container>

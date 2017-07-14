@@ -1,0 +1,12 @@
+<div class="container app-body">
+	<ol class="breadcrumb">
+		<li><a routerLink="/master-data/geographies/countries">Countries</a></li>
+		<li class="active">Edit</li>
+	</ol>
+</div>
+<dynamic-form 
+	[title]="title" 
+	[formElements]="formElements" 
+	[buttonValue]="buttonValue"
+	(onFormSubmit)="submit($event)">
+</dynamic-form>

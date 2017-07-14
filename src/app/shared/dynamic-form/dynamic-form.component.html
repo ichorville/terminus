@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>{{title}}</h2>
+			<form (submit)="submit($event)" [formGroup]="form" #dynamicForm="ngForm">
+				<div *ngFor="let formElement of formElements" class="form-group">
+					<label [attr.for]="formElement.name">{{formElement.label}}</label>
+					<div [ngSwitch]="formElement.controlType">
+						<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 
+							[type]="formElement.type" class="form-control"
+							[value]=formElement.value placeholder="{{formElement.placeholder}}">
+
+						<input *ngSwitchCase="'file'" [formControlName]="formElement.key" [id]="formElement.key" 
+							[type]="formElement.type" class="form-control"
+							[value]=formElement.value placeholder="{{formElement.placeholder}}" (change)="setFile($event)">
+
+						<select *ngSwitchCase="'dropdown'" class="form-control" [formControlName]="formElement.key" 
+							[id]="formElement.key">
+								<option *ngFor="let opt of formElement.options" [value]="opt.key" [selected]="opt['selected']">
+									{{opt.value}}
+								</option>
+						</select>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">{{buttonValue}}</button>
+			</form>
+		</div>
+	</div>
+</div>

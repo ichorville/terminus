@@ -1,0 +1,109 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Manage {{title}}</h1>
+	</div>
+
+	<form class="form-inline" (submit)="submit($event)">
+		<div class="row justify-content-between">
+			<div class="form-group col-md-3">
+				<label for="from">From:</label>
+				<input type="date" class="form-control" id="from" placeholder="From" [value]=previousDate>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="to">To:</label>
+				<input type="date" class="form-control" id="to" placeholder="To" [value]=currentDate>
+			</div>
+
+			<div class="form-group col-md-3">
+				<label for="status">Merchandiser:</label>
+				<select class="form-control" id="merchandiser">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of merchandiserOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-3">
+				<label for="status">Customer:</label>
+				<select class="form-control" id="customer">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of customerOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+		</div>
+		<div class="row justify-content-between">
+			<div class="form-group col-md-4">
+				<label for="status">Outlet:</label>
+				<select class="form-control" id="outlet">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of outletOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+
+
+
+			<div class="form-group col-md-4">
+				<label for="status">Brand:</label>
+				<select class="form-control" id="brand">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of brandOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-4">
+				<label for="status">Category:</label>
+				<select class="form-control" id="category">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of categoryOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+		</div>
+		<div class="row justify-content-between">
+			<div class="form-group col-md-4">
+				<label for="status">Product:</label>
+				<select class="form-control" id="product">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of productOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-4">
+				<label for="status">Store Activity:</label>
+				<select class="form-control" id="storeActivity">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of activityOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-4">
+				<label for="status">Location:</label>
+				<select class="form-control" id="location">
+				<option value="-1">All</option>
+				<option *ngFor="let opt of locationOptions" [value]="opt.key" >
+						{{opt.value}}
+				</option>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+<app-simple-table *ngIf="rows.length>0"
+	[title]="title" 
+	[columns]="columns" 
+	[rows]="rows">
+</app-simple-table>

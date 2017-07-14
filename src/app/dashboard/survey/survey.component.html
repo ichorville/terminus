@@ -1,0 +1,131 @@
+<div class="container">
+	<div class="page-header">
+		<h1>{{title}}</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-4 search">
+			<app-simple-search-box 
+				[label]="label" 
+				[terms]="customerOptions" 
+				[defaultTerm]="selectedCustomer.value" 
+				(onSearchItemClick)="selectCustomer($event)">
+			</app-simple-search-box>
+		</div>
+		<div class="col-md-4 search">
+			<app-simple-search-box 
+				[label]="label" 
+				[terms]="outletOptions" 
+				[defaultTerm]="selectedOutlet.value" 
+				(onSearchItemClick)="selectOutlet($event)">
+			</app-simple-search-box>
+		</div>
+	</div>
+</div>
+
+<md-grid-list cols="{{cols}}" rowHeight="320">
+	<md-grid-tile *ngFor="let survey of surveys; let i = index">
+		<md-card class="card">
+			<md-card-header>
+				<md-card-title>{{survey.question}}</md-card-title>
+			</md-card-header>
+			<md-card-content>
+				<div>
+					<ngx-charts-bar-horizontal *ngIf="survey.chartType == 'bar'" 
+						[view]="bar.view"
+						[scheme]="bar.colorScheme"
+						[results]="survey.results"
+						[gradient]="bar.gradient"
+						[xAxis]="bar.showXAxis"
+						[yAxis]="bar.showYAxis"
+						[legend]="bar.showLegend"
+						[showXAxisLabel]="bar.showXAxisLabel"
+						[showYAxisLabel]="bar.showYAxisLabel"
+						[xAxisLabel]="bar.xAxisLabel"
+						[yAxisLabel]="bar.yAxisLabel"
+						(select)="onSelect($event)">
+					</ngx-charts-bar-horizontal>
+
+					<ngx-charts-pie-chart *ngIf="survey.chartType == 'pie'"
+						[view]="pie.view"
+						[scheme]="pie.colorScheme"
+						[results]="survey.results"
+						[gradient]="pie.gradient"
+						[legend]="pie.showLegend"
+						[labels]="pie.showLabels"
+						[doughnut]="pie.doughnut"
+						[gradient]="pie.gradient"
+						(select)="onSelect($event)">
+					</ngx-charts-pie-chart>
+
+					<ngx-charts-pie-grid *ngIf="survey.chartType == 'pie-grid'"
+						[view]="view"
+						[scheme]="pie.colorScheme"
+						[results]="survey.results"
+						(select)="onSelect($event)">
+					</ngx-charts-pie-grid>
+				</div>
+			</md-card-content>
+		</md-card>
+	</md-grid-tile>
+</md-grid-list>
+
+<!--<div class="container">
+	<div class="row">
+		<div class="col-md-4" *ngFor="let survey of surveys; let i = index">
+			<md-card class="card">
+				<md-card-header>
+					<md-card-title>{{survey.question}}</md-card-title>
+				</md-card-header>
+				<md-card-content>
+					<div>
+						<ngx-charts-bar-horizontal *ngIf="survey.chartType == 'bar'" 
+							[view]="view"
+							[scheme]="bar.colorScheme"
+							[results]="survey.results"
+							[gradient]="bar.gradient"
+							[xAxis]="bar.showXAxis"
+							[yAxis]="bar.showYAxis"
+							[legend]="bar.showLegend"
+							[showXAxisLabel]="bar.showXAxisLabel"
+							[showYAxisLabel]="bar.showYAxisLabel"
+							[xAxisLabel]="bar.xAxisLabel"
+							[yAxisLabel]="bar.yAxisLabel"
+							(select)="onSelect($event)">
+						</ngx-charts-bar-horizontal>
+
+						<ngx-charts-pie-chart *ngIf="survey.chartType == 'pie'"
+							[view]="view"
+							[scheme]="pie.colorScheme"
+							[results]="survey.results"
+							[gradient]="pie.gradient"
+							[legend]="pie.showLegend"
+							[labels]="pie.showLabels"
+							[doughnut]="doughnut"
+							[gradient]="gradient"
+							(select)="onSelect($event)">
+						</ngx-charts-pie-chart>
+					</div>
+				</md-card-content>
+			</md-card>
+
+		<ngx-charts-pie-chart *ngIf="survey.chartType == 'pie'"
+			[scheme]="pie.colorScheme"
+			[results]="survey.results"
+			[gradient]="pie.gradient"
+			[legend]="pie.showLegend"
+			[labels]="pie.showLabels"
+			[doughnut]="doughnut"
+			[gradient]="gradient"
+			(select)="onSelect($event)">
+		</ngx-charts-pie-chart>
+		
+
+		<ngx-charts-pie-grid 
+			[view]="view"
+			[scheme]="pie.colorScheme"
+			[results]="survey.results"
+			(select)="onSelect($event)">
+		</ngx-charts-pie-grid>
+		</div>
+	</div>
+</div>-->
