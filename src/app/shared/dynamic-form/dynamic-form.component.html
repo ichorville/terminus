@@ -4,11 +4,18 @@
 			<h2>{{title}}</h2>
 			<form (submit)="submit($event)" [formGroup]="form" #dynamicForm="ngForm">
 				<div *ngFor="let formElement of formElements" class="form-group">
-					<label [attr.for]="formElement.name">{{formElement.label}}</label>
+					
+					
+
+					<!--<label [attr.for]="formElement.name">{{formElement.label}}</label>-->
 					<div [ngSwitch]="formElement.controlType">
-						<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 
+						<md-input-container class="full-width" *ngSwitchCase="'textbox'">
+						<input mdInput  placeholder="{{formElement.placeholder}}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" [value]=formElement.value>
+						</md-input-container>
+						
+						<!--<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 
 							[type]="formElement.type" class="form-control"
-							[value]=formElement.value placeholder="{{formElement.placeholder}}">
+							[value]=formElement.value placeholder="{{formElement.placeholder}}">-->
 
 						<input *ngSwitchCase="'file'" [formControlName]="formElement.key" [id]="formElement.key" 
 							[type]="formElement.type" class="form-control"

@@ -1,3 +1,69 @@
+<div class="content">
+	<!--<h3>Manage {{title}}</h3>-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6"><h3 class="title">Manage {{ title }}</h3>
+				</div>
+				<div class="col-md-6">
+				<a class="btn btn-success pull-right" routerLink="{{url}}/add">Add {{title}}</a>
+				</div>
+				<div class="card">
+					<div class="card-header" data-background-color="purple">
+						<!--<p class="category">search goes here</p>-->
+						<md-input-container class="full-width">
+							<input  mdInput placeholder="Search">
+						</md-input-container>
+					</div>
+					<div class="card-content table-responsive">
+						<table class="table">
+							<thead class="text-primary">
+								<th *ngFor="let column of columns">
+											{{column.name}}
+								</th> 
+								<th> Actions
+								</th>
+
+							</thead>
+							<tbody>
+								<tr *ngFor="let row of selectedRows">
+									<td *ngFor="let column of columns">
+										<span [ngSwitch]="column.type">
+											<span *ngSwitchCase="'string'">{{row[column.attr]}}</span>
+											<span *ngSwitchCase="'number'">{{row[column.attr]}}</span>
+											<span *ngSwitchCase="'array'">{{row[column.attr]}}</span>
+											<img *ngSwitchCase="'img'" [src]="row[column.attr]" width="70" height="20">
+										</span>
+									</td>          
+									<td>
+										<button type="button" class="btn btn-default" 
+												routerLink="{{url}}{{row.id}}/edit">
+											<span class="glyphicon glyphicon-pencil"></span>
+										</button>
+										<button type="button" class="btn btn-default" (click)="delete(row.id)">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+								<app-pagination
+									[pageCount]="pageCount" 
+									[startPage]="startPage" 
+									[paginationBarSize]="paginationBarSize" 
+									(onPaginate)="paginate($event)">
+								</app-pagination> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+  
+
+<!--
+
 <div class="container">
 	<div class="page-header">
 		<h1>Manage {{title}}</h1>
@@ -42,4 +108,4 @@
 			</app-pagination>    
 		</div>
 	</div>
-</div>
+</div>-->

@@ -1,5 +1,5 @@
 <nav>
-	<ul class="pagination">
+	<ul class="pagination" data-background-color="purple">
 		<li (click)="first()"><span>&laquo;</span></li>
 		<li (click)="previous()"><span>&lsaquo;</span></li>
 		<li *ngFor="let page of pages" [ngClass]="{'active' : currentPage == page}" (click)="paginate(page)">
