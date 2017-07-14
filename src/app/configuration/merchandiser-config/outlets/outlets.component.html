@@ -1,0 +1,41 @@
+<div class="app-body">
+	<app-merchandiser-config-nav-tab></app-merchandiser-config-nav-tab>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>{{title}}</h1>
+		</div>
+		<div *ngIf="selectedMerchandiser.value!=undefined">
+			<div class="row">
+				<div class="col-md-4 search">
+					<app-simple-search-box 
+						[label]="label" 
+						[terms]="merchandiserOptions" 
+						[defaultTerm]="selectedMerchandiser.value" 
+						(onSearchItemClick)="selectMerchandiser($event)">
+					</app-simple-search-box>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 offset-col-6 btn-group">
+					<button type="button" class="btn btn-primary" (click)="save()">Save</button>
+					<button type="button" class="btn btn-default" (click)="reset()">Reset</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="selectedMerchandiser.value!=undefined">
+			<app-merchandiser-config-mapping-table 
+				[columns]="columns" 
+				[rows]="rows" 
+				(onAssign)="assign($event)" 
+				(onUnassign)="unassign($event)"
+				(onFilter)="filter($event)">
+			</app-merchandiser-config-mapping-table>
+	</div>
+
+	<div class="alert alert-info" *ngIf="selectedMerchandiser.value==undefined">
+		<strong>There are no merchandiser available </strong>
+	</div>
+</div>

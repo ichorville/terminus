@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div [@gridState]="gridState" [ngClass]="{'alert': true, 'alert-success':success, 'alert-danger': !success}" role="alert">
+        {{message}}
+      </div>
+    </div>
+  </div>
+</div>

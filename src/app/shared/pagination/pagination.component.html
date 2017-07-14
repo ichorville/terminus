@@ -1,0 +1,11 @@
+<nav>
+	<ul class="pagination">
+		<li (click)="first()"><span>&laquo;</span></li>
+		<li (click)="previous()"><span>&lsaquo;</span></li>
+		<li *ngFor="let page of pages" [ngClass]="{'active' : currentPage == page}" (click)="paginate(page)">
+			<span>{{page}}</span>
+		</li>
+		<li (click)="next()"><span>&rsaquo;</span></li>
+		<li (click)="last()"><span>&raquo;</span></li>
+	</ul>
+</nav>

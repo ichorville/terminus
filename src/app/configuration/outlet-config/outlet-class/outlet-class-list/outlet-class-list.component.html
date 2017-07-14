@@ -1,0 +1,10 @@
+<div class="app-body">
+	<app-outlet-config-nav-tab></app-outlet-config-nav-tab>
+	<app-data-table 
+		[title]="title" 
+		[url]="url" 
+		[columns]="columns" 
+		[rows]="rows" 
+		(onDelete)="delete($event)">
+	</app-data-table>
+</div>

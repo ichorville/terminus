@@ -1,0 +1,121 @@
+<!--<div class="container app-body">
+	<ol class="breadcrumb">
+		<li><a routerLink="/administration/users/employees">Employees</a></li>
+		<li class="active">Add</li>
+	</ol>
+</div>
+
+<dynamic-form 
+	[title]="title" 
+	[formElements]="formElements" 
+	[buttonValue]="buttonValue"
+	(onFormSubmit)="submit($event)">
+</dynamic-form>-->
+
+<div class="container app-body">
+	<ol class="breadcrumb">
+		<li><a routerLink="/administration/users/employees">Employees</a></li>
+		<li class="active">Add</li>
+	</ol>
+</div>
+
+<div class="container">
+	<form  [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div>
+			<label for="id">Id</label>
+			<input class="form-control" type="text" id="id" formControlName="id" 
+				placeholder="Id" [(ngModel)]="employee.id" required><br>
+
+			<div *ngIf="formErrors.id" class="alert alert-danger">
+				{{ formErrors.id }}
+			</div>
+		</div>
+		<div>
+			<label for="firstName">First Name</label>
+			<input class="form-control" type="text" id="firstName" formControlName="firstName" 
+				placeholder="First Name" [(ngModel)]="employee.firstName" required><br>
+
+			<div *ngIf="formErrors.firstName" class="alert alert-danger">
+				{{ formErrors.firstName }}
+			</div>
+		</div>
+		<div>
+			<label for="lastName">Last Name</label>
+			<input class="form-control" type="text" id="lastName" formControlName="lastName" 
+				placeholder="Last Name" [(ngModel)]="employee.lastName" required><br>
+
+			<div *ngIf="formErrors.lastName" class="alert alert-danger">
+				{{ formErrors.lastName }}
+			</div>
+		</div>
+		<div>
+			<label for="email">Email</label>
+			<input class="form-control" type="text" id="email" formControlName="email" 
+				placeholder="Email" [(ngModel)]="employee.email"><br>
+		</div>
+		<div>
+			<label for="streetAddress">Street Address</label>
+			<input class="form-control" type="text" id="streetAddress" formControlName="streetAddress" 
+				placeholder="Street Address" [(ngModel)]="employee.streetAddress"><br>
+		</div>
+		<div>
+			<label for="notes">Notes</label>
+			<input class="form-control" type="text" id="notes" formControlName="notes" 
+				placeholder="Notes" [(ngModel)]="employee.notes"><br>
+		</div>
+		<div>
+			<label for="telephone">Telephone</label>
+			<input class="form-control" type="text" id="telephone" formControlName="telephone" 
+				placeholder="Telephone" [(ngModel)]="employee.telephone"><br>
+		</div>
+		<div>
+			<label for="username">Username</label>
+			<input class="form-control" type="text" id="username" formControlName="username" 
+				placeholder="Username" [(ngModel)]="employee.username" required><br>
+		</div>
+		<div *ngIf="employee.designationType > 1">
+			<label for="password">Password</label>
+			<input class="form-control" type="password" id="password" formControlName="password" 
+				placeholder="Password" [(ngModel)]="employee.password" #password required><br>
+		</div>
+		<div *ngIf="employee.designationType > 1">
+			<label for="confirmPassword">Confirm Password</label>
+			<input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" 
+				placeholder="Confirm Password" [(ngModel)]="employee.confirmPassword" required><br>
+
+			<div *ngIf="form.controls.password.touched">
+				<div class="alert alert-danger" *ngIf="form.hasError('mismatchedPasswords')">Passwords do not match.</div>
+			</div>
+		</div>
+		<div>
+			<label for="designationType">Designation Type</label>
+			<select 
+				class="form-control" 
+				[(ngModel)]="employee.designationType"
+				(change)="filter($event.target.value)"
+				formControlName="designationType" required>
+				<option
+					[value]="designation.key"
+					*ngFor="let designation of designationTypeOptions">
+						{{ designation.value }}	
+				</option>
+			</select><br>
+		</div>
+		<div>
+			<label for="parentEmployeeUid">Report To</label>
+			<select 
+				class="form-control" 
+				[(ngModel)]="employee.parentEmployeeUid"
+				formControlName="parentEmployeeUid" required>
+				<option
+					[value]="temp.key"
+					*ngFor="let temp of tempOptions">
+						{{ temp.value }}	
+				</option>
+			</select><br>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button><br>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,14 @@
+<div class="container app-body">
+  <ol class="breadcrumb">
+    <li><a routerLink="/master-data/outlets">Outlets</a></li>
+    <li class="active">Edit</li>
+  </ol>
+</div>
+
+<app-alert [onFormSubmitComplete]="onFormSubmitComplete"></app-alert>
+<dynamic-form 
+  [title]="title" 
+  [formElements]="formElements" 
+  [buttonValue]="buttonValue"
+  (onFormSubmit)="submit($event)">
+</dynamic-form>

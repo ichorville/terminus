@@ -1,0 +1,19 @@
+<label class="control-label">{{label}}</label>
+<div class="input-group">
+	<input #searchBox id="search-box" type="text" class="form-control" 
+		[(ngModel)]="selected" 
+		(focusin)="showDropdown()" 
+		(keyup)="search(searchBox.value)"
+	>
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button" (click)="toggleDropdown()">
+			<span class="glyphicon glyphicon-list"></span>
+		</button>
+	</span>
+</div>
+<ul *ngIf="showList" class="list-group">
+	<li *ngFor="let term of matches" class="list-group-item" 
+		(click)="select(term)">
+		{{term.value}}
+	</li>
+</ul>

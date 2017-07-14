@@ -1,0 +1,12 @@
+<div class="container app-body">
+    <ol class="breadcrumb">
+		  <li><a routerLink="/configuration/store/locations">Store Location</a></li>
+		  <li class="active">Add</li>
+	  </ol>
+</div>
+<dynamic-form 
+  [title]="title" 
+  [formElements]="formElements" 
+  [buttonValue]="buttonValue"
+  (onFormSubmit)="submit($event)">
+</dynamic-form>

@@ -1,0 +1,13 @@
+<div class="container app-body">
+	<ol class="breadcrumb">
+		<li><a routerLink="/administration/users/agents">Agents</a></li>
+		<li class="active">Edit</li>
+	</ol>
+</div>
+
+<dynamic-form 
+	[title]="title" 
+	[formElements]="formElements" 
+	[buttonValue]="buttonValue"
+	(onFormSubmit)="submit($event)">
+</dynamic-form>
