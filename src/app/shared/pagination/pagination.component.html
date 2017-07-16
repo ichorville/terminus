@@ -9,3 +9,6 @@
 		<li (click)="last()"><span>&raquo;</span></li>
 	</ul>
 </nav>
+
+<md-paginator [length]  = "100" *ngFor="let page of pages" [ngClass]="{'active' : currentPage == page}" (click)="paginate(page)">
+</md-paginator>

@@ -21,12 +21,19 @@
 							[type]="formElement.type" class="form-control"
 							[value]=formElement.value placeholder="{{formElement.placeholder}}" (change)="setFile($event)">
 
-						<select *ngSwitchCase="'dropdown'" class="form-control" [formControlName]="formElement.key" 
+						<md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder ="{{formElement.label}}" 
+							[id]="formElement.key" >
+							<md-option *ngFor="let opt of formElement.options" [value]="opt.key">
+									{{opt.value}}
+							</md-option>
+						</md-select>
+						
+						<!--<select *ngSwitchCase="'dropdown'" class="form-control" [formControlName]="formElement.key" 
 							[id]="formElement.key">
 								<option *ngFor="let opt of formElement.options" [value]="opt.key" [selected]="opt['selected']">
 									{{opt.value}}
 								</option>
-						</select>
+						</select>-->
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">{{buttonValue}}</button>
