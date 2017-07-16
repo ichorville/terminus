@@ -1,111 +1,78 @@
-<div class="content">
-	<!--<h3>Manage {{title}}</h3>-->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="col-md-6"><h3 class="title">Manage {{ title }}</h3>
-				</div>
-				<div class="col-md-6">
-				<a class="btn btn-success pull-right" routerLink="{{url}}/add">Add {{title}}</a>
-				</div>
-				<div class="card">
-					<div class="card-header" data-background-color="purple">
-						<!--<p class="category">search goes here</p>-->
-						<md-input-container class="full-width">
-							<input  mdInput placeholder="Search">
-						</md-input-container>
+<div class="container">
+    <div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<!-- interpollate title to view on Page -->
+			<h3 class="title">
+				Manage {{ title }}
+			</h3>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6"
+			style="padding-top: 5px;">
+			<a class="btn btn-primary pull-right" 
+				routerLinkActive="active" routerLink="{{url}}/add">
+				Add {{ title }}
+			</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header" data-background-color="purple">
+					<div class="row">
+						<!-- search module: accepts two parameters -->
+						<search
+							[terms]="resultArray"
+							[parameters]="columns">
+						</search>
 					</div>
-					<div class="card-content table-responsive">
-						<table class="table">
-							<thead class="text-primary">
+				</div>
+				<div class="card-content table-responsive">
+					<table class="table">
+						<thead class="text-primary">
+							<tr>
+								<!-- additional space for button options -->
+								<th></th>
+								<!-- load the columns as defined in the child component -->
 								<th *ngFor="let column of columns">
-											{{column.name}}
+									{{ column.name }}
 								</th> 
-								<th> Actions
-								</th>
-
-							</thead>
-							<tbody>
-								<tr *ngFor="let row of selectedRows">
-									<td *ngFor="let column of columns">
-										<span [ngSwitch]="column.type">
-											<span *ngSwitchCase="'string'">{{row[column.attr]}}</span>
-											<span *ngSwitchCase="'number'">{{row[column.attr]}}</span>
-											<span *ngSwitchCase="'array'">{{row[column.attr]}}</span>
-											<img *ngSwitchCase="'img'" [src]="row[column.attr]" width="70" height="20">
-										</span>
-									</td>          
-									<td>
-										<button type="button" class="btn btn-default" 
-												routerLink="{{url}}{{row.id}}/edit">
-											<span class="glyphicon glyphicon-pencil"></span>
-										</button>
-										<button type="button" class="btn btn-default" (click)="delete(row.id)">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-								<app-pagination
-									[pageCount]="pageCount" 
-									[startPage]="startPage" 
-									[paginationBarSize]="paginationBarSize" 
-									(onPaginate)="paginate($event)">
-								</app-pagination> 
-					</div>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of filteredRows">
+								<td class="td-actions text-right">
+									<button type="button" class="btn btn-primary btn-simple btn-xs"
+										routerLink="{{url}}{{row.id}}/edit">
+										<i class="material-icons">edit</i>
+									</button>
+									<button type="button" class="btn btn-danger btn-simple btn-xs">
+										<i class="material-icons">close</i>
+									</button>
+								</td>
+								<td *ngFor="let column of columns">
+									<!-- fill in each column with the recpective row element 
+										with the correct type checked -->
+									<div [ngSwitch]="column.type">
+										<div *ngSwitchCase="'string'">{{ row[column.attr] }}</div>
+										<div *ngSwitchCase="'number'">{{ row[column.attr] }}</div>
+										<div *ngSwitchCase="'array'">{{ row[column.attr] }}</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-  
-
-<!--
-
-<div class="container">
-	<div class="page-header">
-		<h1>Manage {{title}}</h1>
-	</div>
-	<a class="btn btn-default" routerLink="{{url}}/add">Add {{title}}</a>
-
 	<div class="row">
-		<div class="col-md-12">
-			<h2>{{title}}</h2>
-			<table class="table table-striped">
-				<tr>
-					<th *ngFor="let column of columns">
-						{{column.name}}
-					</th> 
-					<th></th>
-				</tr>
-				<tr *ngFor="let row of selectedRows">
-					<td *ngFor="let column of columns">
-						<span [ngSwitch]="column.type">
-							<span *ngSwitchCase="'string'">{{row[column.attr]}}</span>
-							<span *ngSwitchCase="'number'">{{row[column.attr]}}</span>
-							<span *ngSwitchCase="'array'">{{row[column.attr]}}</span>
-							<img *ngSwitchCase="'img'" [src]="row[column.attr]" width="50" height="50">
-						</span>
-					</td>          
-					<td>
-						<button type="button" class="btn btn-default" 
-								routerLink="{{url}}{{row.id}}/edit">
-							<span class="glyphicon glyphicon-pencil"></span>
-						</button>
-						<button type="button" class="btn btn-default" (click)="delete(row.id)">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button>
-					</td>
-				</tr>
-			</table>
-			<app-pagination
-				[pageCount]="pageCount" 
-				[startPage]="startPage" 
-				[paginationBarSize]="paginationBarSize" 
-				(onPaginate)="paginate($event)">
-			</app-pagination>    
+		<div class="col-md-12 nav-align-center">
+			<!-- pagination module: accepts three parameters -->
+			<pagination style="display: inline-block;"
+				[pages]="pages"
+				[selectedPage]="selectedPage"
+				(onPageClick)="paginate($event)">
+			</pagination>				
 		</div>
 	</div>
-</div>-->
+</div>

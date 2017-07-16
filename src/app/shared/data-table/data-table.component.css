@@ -851,7 +851,7 @@ h2.title {
 .navbar .navbar-nav > li > a.btn.btn-primary[disabled],
 .navbar .navbar-nav > li > a.btn.btn-primary[disabled]:hover,
 .navbar .navbar-nav > li > a.btn.btn-primary[disabled]:focus,
-.navbar .navbar-nav > li > a.btn.btn-primary[disabled].focus,
+.navbar .navbar-nav > li > a.btn.btn-primary[disabled].f navocus,
 .navbar .navbar-nav > li > a.btn.btn-primary[disabled]:active,
 .navbar .navbar-nav > li > a.btn.btn-primary[disabled].active, fieldset[disabled]
 .navbar .navbar-nav > li > a.btn.btn-primary, fieldset[disabled]
@@ -5066,4 +5066,8 @@ footer .btn {
 
 .full-width {
   width: 100%;
+}
+
+table {
+  white-space: nowrap;
 }

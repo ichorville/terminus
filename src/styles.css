@@ -1,9 +1,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.app-body {
-	padding-top: 10px;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 md-nav-list .md-list-item:hover, md-nav-list .md-list-item.md-list-item-focus {
     background: rgba(0, 0, 0, 0.0);
+}
+
+body, html {
+  font-family: 'Roboto' !important;
 }

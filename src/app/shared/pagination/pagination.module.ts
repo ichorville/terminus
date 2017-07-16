@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PaginationComponent } from './pagination.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { PaginationComponent }  from './pagination.component';
 
 @NgModule({
-	imports: [
-		CommonModule
+	imports: [ 
+		BrowserModule,
+		FormsModule,
+		HttpModule
 	],
-	declarations: [
-		PaginationComponent
+	declarations: [ 
+		 PaginationComponent 
 	],
-	exports: [
-		PaginationComponent
-	]
+    exports: [
+        PaginationComponent
+    ]
 })
 export class PaginationModule { }

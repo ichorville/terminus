@@ -10,7 +10,7 @@
 					<!--<label [attr.for]="formElement.name">{{formElement.label}}</label>-->
 					<div [ngSwitch]="formElement.controlType">
 						<md-input-container class="full-width" *ngSwitchCase="'textbox'">
-						<input mdInput  placeholder="{{formElement.placeholder}}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" [value]=formElement.value>
+							<input mdInput  placeholder="{{formElement.placeholder}}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" [value]=formElement.value>
 						</md-input-container>
 						
 						<!--<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 

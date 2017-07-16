@@ -1,5 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, 
+	EventEmitter, Output, OnChanges } from '@angular/core';
+
 import { DeleteEvent } from '../custom-events/delete-event';
+
+import { PaginationService } from '../services/pagination.service';
 
 @Component({
 	selector: 'app-data-table',
@@ -10,55 +14,72 @@ export class DataTableComponent implements OnInit, OnChanges {
 
 	@Input()
 	public title: string;
-	@Input()
-	public url: string;
+
 	@Input()
 	public columns: any[];
+
 	@Input()
 	public rows: any[];
+
+	@Input()
+	public url: string;
 
 	@Output()
 	onDelete: EventEmitter<DeleteEvent>;
 
-	selectedRows: any[];
-	rowCount: number;
-	pageSize: number;
-	pageCount: number;
-	startPage: number;
-	paginationBarSize: number;
+	pages: any[];
+	filteredRows: any[];
+	profile: any[];
 
-	constructor() {     
+	selectedPage: number;
+	isToggle: boolean = false;
+
+	public tempArray: any[];
+	public resultArray: any[];
+
+	constructor(
+		private _ps: PaginationService
+	) {     
+		this.pages = [];
+		this.filteredRows = [];
 		this.onDelete = new EventEmitter<DeleteEvent>();
-		this.rowCount = 0;
-		this.pageSize = 5;
-		this.startPage = 1;
-		this.paginationBarSize = 0;
-		this.selectedRows = this.rows;
 	}
 
 	ngOnInit() {
-		this.init();
+		setTimeout(() => {
+			// string base for the search module to search with
+			this.resultArray = this.rows;
+
+			// calculate the no of pagination pages
+			this._ps.getPageCount(this.rows.length).then((pages) => {
+				this.pages = pages;
+			});
+			// paginate the whole dataset according to the pagination pages
+			this._ps.paginate(5, this.rows).then((filteredRows) => {
+				this.tempArray = filteredRows;
+				this.filteredRows = this.tempArray[0].items;
+			});
+
+			// load the first data set hence first selected page
+			this.selectedPage = 1;
+		}, 2);
 	}
 
 	ngOnChanges() {
-		this.init();
+		// paginate on every button click: every change event
+		this.paginate(event);
+	}
+
+	paginate(event: any) {
+		if (event > 0) {
+			if (this.filteredRows) {
+				// extract the relevant data set from the paginated data array
+				this.filteredRows = this.tempArray[event - 1].items;
+			}
+		}
 	}
 
 	delete(id: string) {
 		this.onDelete.emit(new DeleteEvent(id));
-	}
-
-	init() {
-		this.selectedRows = this.rows;
-		this.rowCount = this.rows.length;
-		this.pageCount = Math.ceil(this.rowCount/this.pageSize);
-		this.paginationBarSize = this.pageCount > 5 ? 5 : this.pageCount;
-		this.paginate(this.startPage);
-	}
-
-	paginate(page: any) {
-		let start = (page - 1) * this.pageSize;
-		let end = page * this.pageSize;
-		this.selectedRows = this.rows.slice(start, end);		
 	}
 }

@@ -38,7 +38,8 @@ export class OutletListComponent implements OnInit {
 		 * Get all entities and load all entities
 		 */
 		this._oms.all().then(outlets => {
-			this.outlets = outlets['t'];
+			// this.outlets = outlets['t'];
+			this.outlets = outlets;
 			this.updateRows();
 		});
 
