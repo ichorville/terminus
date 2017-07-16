@@ -1,3 +1,22 @@
-<p>
-  search works!
-</p>
+<div class="col-md-8">
+	<md-input-container class="full-width">
+		<input mdInput placeholder="Search" (keyup)="search($event.target.value)">
+	</md-input-container>
+</div>
+<div class="col-md 4 pull right">
+	<button md-icon-button [mdMenuTriggerFor]="menu">
+		Select Parameters For Search
+		<md-icon>more_vert</md-icon>
+	</button>
+	<md-menu #menu="mdMenu">
+		<md-list>
+			<md-list-item *ngFor="let parameter of parameters">
+				<md-checkbox
+					[(ngModel)]="parameter.status"
+					(change)="selectParameter(parameter)">
+					{{ parameter.name }}
+				</md-checkbox>
+			</md-list-item>
+		</md-list>
+	</md-menu>
+</div>
