@@ -1,11 +1,30 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<ul class="nav nav-tabs">
+
+			<nav md-tab-nav-bar>
+				<a md-tab-link
+					*ngFor="let tab of tabs"
+					routerLink="{{tab.link}}"
+					routerLinkActive ="active">
+					{{tab.name}}
+				</a>
+			</nav>
+
+			<!--<md-tab-group>
+				<md-tab *ngFor="let tab of tabs"
+					routerLink="{{tab.link}}"
+					routerLinkActive ="active" label="{{tab.name}}">
+
+					<a routerLink="{{tab.link}}">{{tab.name}} </a>
+					</md-tab>
+			</md-tab-group>-->
+
+				<!--<ul class="nav nav-tabs">
 				<li *ngFor="let tab of tabs" role="presentation" routerLinkActive="active">
 					<a routerLink="{{tab.link}}">{{tab.name}}</a>
 				</li>
-			</ul>
+			</ul>-->
 		</div>
 	</div>
 </div>
