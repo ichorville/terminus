@@ -10,6 +10,7 @@ import { PaginationComponent }  from './pagination.component';
 		BrowserModule,
 		FormsModule,
 		HttpModule
+
 	],
 	declarations: [ 
 		 PaginationComponent 
