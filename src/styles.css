@@ -9,3 +9,6 @@ md-nav-list .md-list-item:hover, md-nav-list .md-list-item.md-list-item-focus {
 body, html {
   font-family: 'Roboto' !important;
 }
+.mat-checkbox-layout .mat-checkbox-label {
+    font-weight: 100 !important;
+}

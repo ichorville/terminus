@@ -122,9 +122,13 @@
 			</md-list-item>
 		</md-nav-list>
 	</md-sidenav>
-	<md-toolbar color="primary">
+	<!-- <md-toolbar color="primary">
 		<md-icon class="menu" (click)="sidenav.toggle()">menu</md-icon>
-	</md-toolbar>
+	</md-toolbar> -->
+	<div class="ui black big launch right attached fixed button">
+		<md-icon class="menu" (click)="sidenav.toggle()">menu</md-icon>
+		<span class="text">Menu</span>
+	</div>
 	<div class="main-content">
 		<router-outlet></router-outlet>		
 	</div>

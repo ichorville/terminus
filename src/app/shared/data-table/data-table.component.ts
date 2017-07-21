@@ -39,12 +39,11 @@ export class DataTableComponent implements OnInit, OnChanges {
 	public tempArray: any[];
 	public resultArray: any[];
 
-	initialSearchResults: any[];
-
 	constructor(
 		private _ps: PaginationService
 	) {     
 		this.pages = [];
+		this.rows = [];
 		this.filteredRows = [];
 		this.onDelete = new EventEmitter<DeleteEvent>();
 	}
@@ -56,9 +55,6 @@ export class DataTableComponent implements OnInit, OnChanges {
 
 				// string base for the search module to search with
 				this.resultArray = this.rows;
-
-				// initial load of data for search module when null search results occur
-				this.initialSearchResults = this.rows;
 
 				// calculate the no of pagination pages
 				this._ps.getPageCount(this.rows.length).then((pages) => {

@@ -14,7 +14,8 @@
 			<md-list-item *ngFor="let parameter of parameters">
 				<md-checkbox
 					[(ngModel)]="parameter.status"
-					(change)="selectParameter(parameter)">
+					(change)="selectParameter(parameter)"
+					style="font-weight: 100 !important;">
 					{{ parameter.name }}
 				</md-checkbox>
 			</md-list-item>
