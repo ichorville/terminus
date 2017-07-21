@@ -1,3 +1,9 @@
-<p>
-  asset-supplier-list works!
-</p>
+<div class="app-body">
+	<app-data-table 
+		[title]="title" 
+		[url]="url" 
+		[columns]="columns" 
+		[rows]="rows" 
+		(onDelete)="delete($event)">
+	</app-data-table>
+</div>
