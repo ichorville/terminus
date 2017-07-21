@@ -1,7 +1,8 @@
 <div class="col-md-11 col-sm-11 col-xs-10">
 	<md-input-container class="full-width">
 		<input [disabled]="selectedParameters.length == 0" 
-		mdInput placeholder="Search" (keyup)="search($event.target.value)">
+		mdInput placeholder="Search" (keyup)="search($event.target.value)"
+		type="text" autocomplete="off">
 	</md-input-container>
 </div>
 <div class="col-md-1 col-sm-1 col-xs-2" style="padding-top: 10px;">
