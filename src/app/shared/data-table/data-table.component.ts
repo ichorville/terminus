@@ -47,22 +47,26 @@ export class DataTableComponent implements OnInit, OnChanges {
 
 	ngOnInit() {
 		setTimeout(() => {
-			// string base for the search module to search with
-			this.resultArray = this.rows;
+			try {
+				// string base for the search module to search with
+				this.resultArray = this.rows;
 
-			// calculate the no of pagination pages
-			this._ps.getPageCount(this.rows.length).then((pages) => {
-				this.pages = pages;
-			});
-			// paginate the whole dataset according to the pagination pages
-			this._ps.paginate(5, this.rows).then((filteredRows) => {
-				this.tempArray = filteredRows;
-				this.filteredRows = this.tempArray[0].items;
-			});
+				// calculate the no of pagination pages
+				this._ps.getPageCount(this.rows.length).then((pages) => {
+					this.pages = pages;
+				});
+				// paginate the whole dataset according to the pagination pages
+				this._ps.paginate(5, this.rows).then((filteredRows) => {
+					this.tempArray = filteredRows;
+					this.filteredRows = this.tempArray[0].items;
+				});
 
-			// load the first data set hence first selected page
-			this.selectedPage = 1;
-		}, 2);
+				// load the first data set hence first selected page
+				this.selectedPage = 1;
+			} catch(e) {
+				
+			}
+		}, 500);
 	}
 
 	ngOnChanges() {
@@ -71,11 +75,20 @@ export class DataTableComponent implements OnInit, OnChanges {
 	}
 
 	paginate(event: any) {
-		if (event > 0) {
-			if (this.filteredRows) {
-				// extract the relevant data set from the paginated data array
-				this.filteredRows = this.tempArray[event - 1].items;
+		if (event) {
+			if (event > 0) {
+				if (this.filteredRows) {
+					// extract the relevant data set from the paginated data array
+					this.filteredRows = this.tempArray[event - 1].items;
+				}
 			}
+		}
+	}
+
+	reDraw(event: any) {
+		if (event != undefined) {
+			this.rows = event;
+			this.ngOnInit();
 		}
 	}
 

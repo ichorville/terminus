@@ -22,7 +22,8 @@
 						<!-- search module: accepts two parameters -->
 						<search
 							[terms]="resultArray"
-							[parameters]="columns">
+							[parameters]="columns"
+							(onFilter)="reDraw($event)">
 						</search>
 					</div>
 				</div>
