@@ -21,13 +21,14 @@
 					<div class="row">
 						<!-- search module: accepts two parameters -->
 						<search
+							[initialSearchResults]="initialSearchResults"
 							[terms]="resultArray"
 							[parameters]="columns"
 							(onFilter)="reDraw($event)">
 						</search>
 					</div>
 				</div>
-				<div class="card-content table-responsive">
+				<div *ngIf="isValid" class="card-content table-responsive">
 					<table class="table">
 						<thead class="text-primary">
 							<tr>
@@ -63,10 +64,13 @@
 						</tbody>
 					</table>
 				</div>
+				<div *ngIf="!isValid" class="card-content table-responsive">
+					<h3>No Matching Records Found</h3>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div *ngIf="isValid" class="row">
 		<div class="col-md-12 nav-align-center">
 			<!-- pagination module: accepts three parameters -->
 			<pagination style="display: inline-block;"
