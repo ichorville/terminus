@@ -31,11 +31,15 @@ export class DataTableComponent implements OnInit, OnChanges {
 	filteredRows: any[];
 	profile: any[];
 
+	isValid: boolean;
+
 	selectedPage: number;
 	isToggle: boolean = false;
 
 	public tempArray: any[];
 	public resultArray: any[];
+
+	initialSearchResults: any[];
 
 	constructor(
 		private _ps: PaginationService
@@ -48,8 +52,13 @@ export class DataTableComponent implements OnInit, OnChanges {
 	ngOnInit() {
 		setTimeout(() => {
 			try {
+				this.isValid = true;
+
 				// string base for the search module to search with
 				this.resultArray = this.rows;
+
+				// initial load of data for search module when null search results occur
+				this.initialSearchResults = this.rows;
 
 				// calculate the no of pagination pages
 				this._ps.getPageCount(this.rows.length).then((pages) => {
@@ -72,6 +81,8 @@ export class DataTableComponent implements OnInit, OnChanges {
 	ngOnChanges() {
 		// paginate on every button click: every change event
 		this.paginate(event);
+		
+		// this.reDraw(event);
 	}
 
 	paginate(event: any) {
@@ -87,8 +98,26 @@ export class DataTableComponent implements OnInit, OnChanges {
 
 	reDraw(event: any) {
 		if (event != undefined) {
-			this.rows = event;
-			this.ngOnInit();
+			if (event == 'NDF') {
+				this.isValid = false;
+			} else {
+				this.isValid = true;
+
+				this.rows = event;
+
+				// calculate the no of pagination pages
+				this._ps.getPageCount(this.rows.length).then((pages) => {
+					this.pages = pages;
+				});
+				// paginate the whole dataset according to the pagination pages
+				this._ps.paginate(5, this.rows).then((filteredRows) => {
+					this.tempArray = filteredRows;
+					this.filteredRows = this.tempArray[0].items;
+				});
+
+				// load the first data set hence first selected page
+				this.selectedPage = 1;
+			}
 		}
 	}
 

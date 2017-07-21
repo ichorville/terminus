@@ -16,18 +16,20 @@ export class SearchComponent implements OnInit, OnChanges {
 	@Input()
 	public parameters: any[];
 
+	@Input()
+	initialSearchResults: any[];
+
 	@Output()
 	onFilter: EventEmitter<any>;
 
 	term: string;
 	matches: any[];
-
+	
 	selectedParameters: any[];
 
 	constructor() {
 		this.matches = this.terms;
 		this.selectedParameters = [];
-
 		this.onFilter = new EventEmitter<any>();
 	}
 
@@ -44,8 +46,8 @@ export class SearchComponent implements OnInit, OnChanges {
 	search(term: string) {
 		if (term == '') {
 			this.matches = this.terms;
+			this.onFilter.emit(this.matches);
 		} else {
-			console.log(term);
 			let arr: any[] = [];
 
 			// iterate through the search parameters
@@ -69,8 +71,12 @@ export class SearchComponent implements OnInit, OnChanges {
 				return index == self.indexOf(elem);
 			});
 
-			console.log(this.matches);
-			// this.onFilter.emit(this.matches);
+			if (this.matches.length > 0) {
+				this.onFilter.emit(this.matches);
+			} 
+			if (this.matches.length == 0) {
+				this.onFilter.emit('NDF');
+			}
 		}
 	}
 
