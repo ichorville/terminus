@@ -73,6 +73,7 @@
 }
 .nav-pills:not(.nav-pills-icons) > li > a {
   border-radius: 5px;
+  cursor: pointer;
 }
 .nav-pills.nav-stacked > li + li {
   margin-top: 5px;
