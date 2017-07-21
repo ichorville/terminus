@@ -1,7 +1,7 @@
 export class FilterEvent {
-	value: string;
+	value: any;
 
-	constructor(value: string) {
+	constructor(value: any) {
 		this.value = value;
 	}
 }
