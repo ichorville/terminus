@@ -1,11 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, 
+	Output, EventEmitter, OnChanges } from '@angular/core';
+
+import { FilterEvent } from '../custom-events/filter-event';
 
 @Component({
 	selector: 'search',
 	templateUrl: './search.component.html',
 	styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnChanges {
 
 	@Input()
 	public terms: any[];
@@ -13,14 +16,19 @@ export class SearchComponent implements OnInit {
 	@Input()
 	public parameters: any[];
 
+	@Output()
+	onFilter: EventEmitter<any>;
+
 	term: string;
 	matches: any[];
 
 	selectedParameters: any[];
 
 	constructor() {
-		this.matches = [];
+		this.matches = this.terms;
 		this.selectedParameters = [];
+
+		this.onFilter = new EventEmitter<any>();
 	}
 
 	ngOnInit() {
@@ -29,43 +37,40 @@ export class SearchComponent implements OnInit {
 		});
 	}
 
+	ngOnChanges(changes) {
+		this.matches = this.terms;
+	}
+
 	search(term: string) {
-		if (this.selectedParameters.length == 0) {
-			if (term) {
-				this.matches = [];
-			} else {
-				this.term = null;
-			}
+		if (term == '') {
+			this.matches = this.terms;
 		} else {
-			if (term) {
-				let arr: any[] = [];
+			console.log(term);
+			let arr: any[] = [];
 
-				// iterate through the search parameters
-				for (var i in this.selectedParameters) { 
-					// search parameter toLowerCase
-					let text = this.selectedParameters[i].toLowerCase();
-					console.log(text);
-					// filter from object
-					this.terms.filter((element) => {
-						// filter from object key
-						Object.getOwnPropertyNames(element).filter((match) => {
-							if ((match == text) && (element[match].toLowerCase().indexOf(term.toLowerCase()) > -1)) {
-								// push to array if search condition passes
-								arr.push(element);
-							}
-						});
+			// iterate through the search parameters
+			for (var i in this.selectedParameters) { 
+				// search parameter toLowerCase
+				let text = this.selectedParameters[i].toLowerCase();
+				// filter from object
+				this.terms.filter((element) => {
+					// filter from object key
+					Object.getOwnPropertyNames(element).filter((match) => {
+						if ((match == text) && (element[match].toLowerCase().indexOf(term.toLowerCase()) > -1)) {
+							// push to array if search condition passes
+							arr.push(element);
+						}
 					});
-				}
-
-				// remove duplicate records
-				this.matches = arr.filter((elem, index, self) => {
-					return index == self.indexOf(elem);
 				});
-
-				console.log(this.matches);
-			} else {
-				this.term = null;
 			}
+
+			// remove duplicate records
+			this.matches = arr.filter((elem, index, self) => {
+				return index == self.indexOf(elem);
+			});
+
+			console.log(this.matches);
+			// this.onFilter.emit(this.matches);
 		}
 	}
 

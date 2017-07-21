@@ -1,11 +1,11 @@
-<div class="col-md-8">
+<div class="col-md-11 col-sm-11 col-xs-10">
 	<md-input-container class="full-width">
-		<input mdInput placeholder="Search" (keyup)="search($event.target.value)">
+		<input [disabled]="selectedParameters.length == 0" 
+		mdInput placeholder="Search" (keyup)="search($event.target.value)">
 	</md-input-container>
 </div>
-<div class="col-md 4 pull right">
+<div class="col-md-1 col-sm-1 col-xs-2" style="padding-top: 10px;">
 	<button md-icon-button [mdMenuTriggerFor]="menu">
-		Select Parameters For Search
 		<md-icon>more_vert</md-icon>
 	</button>
 	<md-menu #menu="mdMenu">
