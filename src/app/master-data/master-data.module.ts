@@ -8,6 +8,7 @@ import { MerchandiserMasterModule } from './merchandiser-master/merchandiser-mas
 import { ProductMasterModule } from './product-master/product-master.module';
 import { OutletMasterModule } from './outlet-master/outlet-master.module';
 import { CustomerMasterModule } from './customer-master/customer-master.module';
+import { AssetSupplierMasterModule } from './asset-supplier-master/asset-supplier-master.module';
 
 import { routing } from './master-data.routing';
 
@@ -21,7 +22,8 @@ import { routing } from './master-data.routing';
 		ProductMasterModule,
 		OutletMasterModule,
 		GeographyMasterModule,
-		CustomerMasterModule
+		CustomerMasterModule,
+		AssetSupplierMasterModule
 	],
 })
 
