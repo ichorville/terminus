@@ -13,6 +13,15 @@ import { PaginationService } from '../services/pagination.service';
 export class DataTableComponent implements OnInit, OnChanges {
 
 	@Input()
+	taskEdit: boolean;
+
+	@Input()
+	taskDetail: boolean;
+
+	@Input()
+	taskDelete: boolean;
+
+	@Input()
 	public title: string;
 
 	@Input()
@@ -32,6 +41,7 @@ export class DataTableComponent implements OnInit, OnChanges {
 	profile: any[];
 
 	isValid: boolean;
+	isInit: boolean;
 
 	selectedPage: number;
 	isToggle: boolean = false;
@@ -42,6 +52,8 @@ export class DataTableComponent implements OnInit, OnChanges {
 	constructor(
 		private _ps: PaginationService
 	) {     
+		// this.isValid = true;
+		this.isInit = false;
 		this.pages = [];
 		this.rows = [];
 		this.filteredRows = [];
@@ -51,8 +63,8 @@ export class DataTableComponent implements OnInit, OnChanges {
 	ngOnInit() {
 		setTimeout(() => {
 			try {
+				this.isInit = true;
 				this.isValid = true;
-
 				// string base for the search module to search with
 				this.resultArray = this.rows;
 

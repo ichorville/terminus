@@ -13,6 +13,9 @@ import { CustomerMasterService } from '../../customer-master/customer-master.ser
 })
 export class OutletListComponent implements OnInit {
 
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	outlets: any[];
 	classMap: any;
 	districtMap: any;
@@ -27,6 +30,8 @@ export class OutletListComponent implements OnInit {
 		private _cms: CustomerMasterService,
 		private _ocs: OutletClassService,
 	) {
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 		this.districtMap = {};
 		this.townMap = {};
@@ -38,8 +43,8 @@ export class OutletListComponent implements OnInit {
 		 * Get all entities and load all entities
 		 */
 		this._oms.all().then(outlets => {
-			this.outlets = outlets['t'];
-			// this.outlets = outlets;
+			// this.outlets = outlets['t'];
+			this.outlets = outlets;
 			this.updateRows();
 		});
 

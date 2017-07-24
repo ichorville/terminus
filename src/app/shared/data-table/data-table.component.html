@@ -42,15 +42,15 @@
 						<tbody>
 							<tr *ngFor="let row of filteredRows">
 								<td class="td-actions text-right">
-									<button type="button" class="btn btn-primary btn-simple btn-xs"
+									<button *ngIf="taskEdit" type="button" class="btn btn-primary btn-simple btn-xs"
 										routerLink="{{url}}{{row.id}}/edit">
 										<i class="material-icons">edit</i>
 									</button>
-									<button type="button" class="btn btn-primary btn-simple btn-xs"
+									<button *ngIf="taskDetail" type="button" class="btn btn-primary btn-simple btn-xs"
 										routerLink="{{url}}{{row.id}}/detail">
-										<i class="material-icons">edit</i>
+										<i class="material-icons">visibility</i>
 									</button>
-									<button type="button" class="btn btn-danger btn-simple btn-xs">
+									<button *ngIf="taskDelete" type="button" class="btn btn-danger btn-simple btn-xs">
 										<i class="material-icons">close</i>
 									</button>
 								</td>

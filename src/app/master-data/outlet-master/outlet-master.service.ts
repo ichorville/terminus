@@ -21,12 +21,12 @@ export class OutletMasterService {
 	}
 
 	all(): Promise<any[]> {
-		return this.http.get(this.url).toPromise().then((response) => {
-			return response.json();
-		});
-		// return Promise.resolve(true).then(() => {
-		// 	return Outlets;
+		// return this.http.get(this.url).toPromise().then((response) => {
+		// 	return response.json();
 		// });
+		return Promise.resolve(true).then(() => {
+			return Outlets;
+		});
 	}
 
 	get(id: number): Promise<any> {

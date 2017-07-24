@@ -1,5 +1,7 @@
-import {Component, OnInit, Output, EventEmitter, state,
-	trigger, style, transition, animate} from '@angular/core';
+import {
+	Component, OnInit, Output, EventEmitter, state,
+	trigger, style, transition, animate
+} from '@angular/core';
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
@@ -12,13 +14,13 @@ import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-subm
 
 import { CallService } from '../call.service';
 
-
 @Component({
 	selector: 'app-call-list',
 	templateUrl: './call-list.component.html',
 	styleUrls: ['./call-list.component.css']
 })
 export class CallListComponent implements OnInit {
+	taskDetail: boolean;
 	title: string;
 	calls: any[];
 	columns: any[];
@@ -26,16 +28,17 @@ export class CallListComponent implements OnInit {
 	buttonValue: string;
 	currentDate: any;
 	previousDate: any;
-	dateOffset:any = (24*60*60*1000) * 7;
+	dateOffset: any = (24 * 60 * 60 * 1000) * 7;
 	url: string;
-	status:any;
+	status: any;
 
 	constructor(private _cs: CallService) {
-			this.rows = [];
-			this.status = 0;
-	 }
+		this.taskDetail = true;
+		this.rows = [];
+		this.status = 0;
+	}
 
- ngOnInit() {
+	ngOnInit() {
 
 		this.currentDate = new Date();
 		this.currentDate = this.currentDate.getFullYear() + '-' + ('0' + (this.currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + this.currentDate.getDate()).slice(-2);
@@ -43,13 +46,13 @@ export class CallListComponent implements OnInit {
 		this.previousDate = new Date();
 		this.previousDate.setTime(this.previousDate.getTime() - this.dateOffset);
 		this.previousDate = this.previousDate.getFullYear() + '-' + ('0' + (this.previousDate.getMonth() + 1)).slice(-2) + '-' + ('0' + this.previousDate.getDate()).slice(-2);
-		
+
 		let date: any = {
 			'from': this.previousDate,
 			'to': this.currentDate,
 			'status': this.status
 		};
-		this._cs.all(date).then((calls) => {     
+		this._cs.all(date).then((calls) => {
 			this.calls = calls['t'];
 			this.updateRows();
 		});
@@ -64,22 +67,22 @@ export class CallListComponent implements OnInit {
 			{ name: 'Agent Name', attr: 'agent', type: 'string' },
 			{ name: 'Status', attr: 'status', type: 'string' },
 			{ name: 'Creation Date', attr: 'creationDate', type: 'string' }
-		];	
-}
+		];
+	}
 
 	submit(formSubmitEvent) {
 		formSubmitEvent.preventDefault();
-	
+
 
 		let date: any = {
 			'from': formSubmitEvent.target[0].value,
 			'to': formSubmitEvent.target[1].value,
 			'status': formSubmitEvent.target[2].value
 		};
-		this._cs.all(date).then((calls) => {     
+		this._cs.all(date).then((calls) => {
 			this.calls = calls['t'];
 			this.updateRows();
-		});  
+		});
 	}
 
 	private updateRows() {
@@ -87,7 +90,7 @@ export class CallListComponent implements OnInit {
 		this.calls.forEach(element => {
 			this.rows.push({
 				uid: element.UID,
-				id:element.ID,
+				id: element.ID,
 				scheduledStart: element.ScheduledStart,
 				scheduledEnd: element.ScheduledEnd,
 				outlet: element.Outlet,
