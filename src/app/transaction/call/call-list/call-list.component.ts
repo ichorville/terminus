@@ -27,6 +27,7 @@ export class CallListComponent implements OnInit {
 	currentDate: any;
 	previousDate: any;
 	dateOffset:any = (24*60*60*1000) * 7;
+	url: string;
 	status:any;
 
 	constructor(private _cs: CallService) {
@@ -54,6 +55,7 @@ export class CallListComponent implements OnInit {
 		});
 
 		this.title = 'Calls';
+		this.url = '/transactions/calls/';
 		this.columns = [
 			{ name: 'ID', attr: 'id', type: 'string' },
 			{ name: 'Start', attr: 'scheduledStart', type: 'string' },
@@ -94,5 +96,9 @@ export class CallListComponent implements OnInit {
 				creationDate: element.CreationDate
 			});
 		});
+	}
+
+	delete(any) {
+
 	}
 }

@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Subject';
 import { GlobalVariable } from '../../global';
 import 'rxjs/add/operator/toPromise';
 
+import { CALLS } from '../../shared/mock-data/sample-calls';
+
 @Injectable()
 export class CallService {
 	url: string;
@@ -19,9 +21,13 @@ export class CallService {
 		this.options = new RequestOptions({ headers: this.headers });
 	}
 
-	all(date:any): Promise<any[]> {
-		return this.http.get(`${this.url}/${date.from}/${date.to}/${date.status}`).toPromise().then((response) => {
-			return response.json();
+	all(date:any): Promise<any> {
+		console.log(date);
+		// return this.http.get(`${this.url}/${date.from}/${date.to}/${date.status}`).toPromise().then((response) => {
+		// 	return response.json();
+		// });
+		return Promise.resolve(true).then(() => {
+			return CALLS;
 		});
 	}
 }

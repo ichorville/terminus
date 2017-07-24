@@ -21,7 +21,8 @@ import { routing } from './asset-supplier-master.routing';
     CommonModule,
     routing,
     DataTableModule,
-    DynamicFormModule
+    DynamicFormModule,
+    AlertModule
   ],
   declarations: [
                   AssetSupplierMasterComponent,

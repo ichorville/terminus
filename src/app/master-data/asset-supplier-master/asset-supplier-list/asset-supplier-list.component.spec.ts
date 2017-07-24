@@ -3,16 +3,16 @@ import {ComponentFixture, TestBed,
 import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
 import { Headers, Http, RequestOptions } from '@angular/http';
 
-import { CustomerListComponent } from './customer-list.component';
+import { AssetSupplierListComponent } from './asset-supplier-list.component';
 //import { CustomerMasterService } from '../customer-master.service';
 
-describe('Component: CustomerListComponent', () => {
-    let comp: CustomerListComponent;
-    //let _cms: CustomerMasterService;
+describe('Component: AssetSupplierListComponent', () => {
+    let comp: AssetSupplierListComponent;
+    //let _aslc: AssetSupplierListComponent;
     let formSubmitEvent: FormSubmitEvent;
 
     beforeEach(() => {
-       // _cms = new StubService as any as CustomerMasterService;
+       // _aslc = new StubService as any as CustomerMasterService;
         //comp = new CustomerListComponent(_cms);
         formSubmitEvent = new FormSubmitEvent();
         comp.ngOnInit();
