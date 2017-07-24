@@ -52,7 +52,7 @@ export class DataTableComponent implements OnInit, OnChanges {
 	constructor(
 		private _ps: PaginationService
 	) {     
-		// this.isValid = true;
+		this.isValid = true;
 		this.isInit = false;
 		this.pages = [];
 		this.rows = [];
@@ -64,7 +64,7 @@ export class DataTableComponent implements OnInit, OnChanges {
 		setTimeout(() => {
 			try {
 				this.isInit = true;
-				this.isValid = true;
+				// this.isValid = true;
 				// string base for the search module to search with
 				this.resultArray = this.rows;
 

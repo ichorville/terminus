@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div *ngIf="isValid" class="card-content table-responsive">
-					<table class="table">
+					<table *ngIf="isInit" class="table">
 						<thead class="text-primary">
 							<tr>
 								<!-- additional space for button options -->
@@ -70,11 +70,16 @@
 				<div *ngIf="!isValid" class="card-content table-responsive">
 					<h3>No Matching Records Found</h3>
 				</div>
+				<div *ngIf="!isInit" style="display:flex;justify-content:center;margin-top:20px;margin-bottom:30px;">
+					<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+						<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+					</svg>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div *ngIf="isValid" class="row">
-		<div class="col-md-12 nav-align-center">
+		<div *ngIf="isInit" class="col-md-12 nav-align-center">
 			<!-- pagination module: accepts three parameters -->
 			<pagination style="display: inline-block;"
 				[pages]="pages"
