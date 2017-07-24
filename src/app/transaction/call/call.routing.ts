@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CallListComponent } from './call-list/call-list.component';
+import { CallDetailComponent } from './call-detail/call-detail.component';
 
 const callRoutes: Routes = [
 	{
@@ -12,6 +13,10 @@ const callRoutes: Routes = [
 	{
 		path: 'transactions/calls',
 		component: CallListComponent
+	},
+	{
+		path: 'transactions/calls/:id/detail',
+		component: CallDetailComponent
 	}
 ]
 export const routing: ModuleWithProviders = RouterModule.forChild(callRoutes);

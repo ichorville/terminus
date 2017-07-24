@@ -71,7 +71,7 @@ export class DataTableComponent implements OnInit, OnChanges {
 			} catch(e) {
 				
 			}
-		}, 500);
+		}, 2000);
 	}
 
 	ngOnChanges() {

@@ -29,8 +29,10 @@
 	</form>
 </div>
 
-<app-simple-table *ngIf="rows.length>0"
+<app-data-table 
 	[title]="title" 
+	[url]="url" 
 	[columns]="columns" 
-	[rows]="rows">
-</app-simple-table>
+	[rows]="rows" 
+	(onDelete)="delete($event)">
+</app-data-table>
