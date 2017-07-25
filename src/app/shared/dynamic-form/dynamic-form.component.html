@@ -1,43 +1,51 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<h2>{{title}}</h2>
-			<form (submit)="submit($event)" [formGroup]="form" #dynamicForm="ngForm">
-				<div *ngFor="let formElement of formElements" class="form-group">
-					
-					
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header" data-background-color="purple">
+						<h4 class="title">{{title}}</h4>
+							<p class="category">Please complete and save the form</p>
+					</div>
+						<div class="card-content">
+	
+							<form (submit)="submit($event)" [formGroup]="form" #dynamicForm="ngForm">
+								<div *ngFor="let formElement of formElements" class="form-group">
+									<!--<label [attr.for]="formElement.name">{{formElement.label}}</label>-->
+									<div [ngSwitch]="formElement.controlType">
+										<md-input-container class="full-width" *ngSwitchCase="'textbox'">
+											<input mdInput  placeholder="{{formElement.placeholder}}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" [value]=formElement.value>
+										</md-input-container>
+										
+										<!--<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 
+											[type]="formElement.type" class="form-control"
+											[value]=formElement.value placeholder="{{formElement.placeholder}}">-->
 
-					<!--<label [attr.for]="formElement.name">{{formElement.label}}</label>-->
-					<div [ngSwitch]="formElement.controlType">
-						<md-input-container class="full-width" *ngSwitchCase="'textbox'">
-							<input mdInput  placeholder="{{formElement.placeholder}}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" [value]=formElement.value>
-						</md-input-container>
+										<input *ngSwitchCase="'file'" [formControlName]="formElement.key" [id]="formElement.key" 
+											[type]="formElement.type" class="form-control"
+											[value]=formElement.value placeholder="{{formElement.placeholder}}" (change)="setFile($event)">
+
+										<md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder ="{{formElement.label}}" 
+											[id]="formElement.key" >
+											<md-option *ngFor="let opt of formElement.options" [value]="opt.key">
+													{{opt.value}}
+											</md-option>
+										</md-select>
 						
-						<!--<input *ngSwitchCase="'textbox'" [formControlName]="formElement.key" [id]="formElement.key" 
-							[type]="formElement.type" class="form-control"
-							[value]=formElement.value placeholder="{{formElement.placeholder}}">-->
-
-						<input *ngSwitchCase="'file'" [formControlName]="formElement.key" [id]="formElement.key" 
-							[type]="formElement.type" class="form-control"
-							[value]=formElement.value placeholder="{{formElement.placeholder}}" (change)="setFile($event)">
-
-						<md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder ="{{formElement.label}}" 
-							[id]="formElement.key" >
-							<md-option *ngFor="let opt of formElement.options" [value]="opt.key">
-									{{opt.value}}
-							</md-option>
-						</md-select>
-						
-						<!--<select *ngSwitchCase="'dropdown'" class="form-control" [formControlName]="formElement.key" 
-							[id]="formElement.key">
-								<option *ngFor="let opt of formElement.options" [value]="opt.key" [selected]="opt['selected']">
-									{{opt.value}}
-								</option>
-						</select>-->
+										<!--<select *ngSwitchCase="'dropdown'" class="form-control" [formControlName]="formElement.key" 
+											[id]="formElement.key">
+												<option *ngFor="let opt of formElement.options" [value]="opt.key" [selected]="opt['selected']">
+													{{opt.value}}
+												</option>
+										</select>-->
+									</div>
+								</div>
+									<button type="submit" class="btn btn-primary">{{buttonValue}}</button>
+							</form>
+						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">{{buttonValue}}</button>
-			</form>
 		</div>
 	</div>
 </div>
+
