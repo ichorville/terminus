@@ -30,4 +30,11 @@ export class CallService {
 			return CALLS;
 		});
 	}
+
+	get(id: any): Promise<any> {
+		let call = CALLS['t'].filter((element) => {
+			return element.ID == id;
+		});
+		return Promise.resolve(call[0]);
+	}
 }

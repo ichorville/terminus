@@ -1,18 +1,40 @@
-<div class="row">
-	<div class="col-md-8">
-		<ngx-gallery 
-			[options]="galleryOptions" 
-			[images]="galleryImages">
-		</ngx-gallery>
-	</div>
-	<div class="col-md-4">
-		<agm-map 
-			[latitude]="lat" 
-			[longitude]="lng">
-			 <agm-marker 
-			 	[latitude]="lat" 
-				[longitude]="lng">
-			</agm-marker>
-		</agm-map>
+<div class="container">
+	<div class="card">
+		<div class="card-header" data-background-color="purple">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="font-weight:100;">Outlet Name</th>
+						<th style="font-weight:100;">Agent</th> 
+						<th style="font-weight:100;">Call Status</th> 
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ call.Outlet }}</td>
+						<td>{{ call.Agent }}</td>
+						<td>{{ call.Status }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row">
+			<div class="col-md-4" style="padding:30px;">
+				<agm-map 
+					[latitude]="lat" 
+					[longitude]="lng">
+					<agm-marker 
+						[latitude]="lat" 
+						[longitude]="lng">
+					</agm-marker>
+				</agm-map>
+			</div>
+			<div class="col-md-8 image-slider">
+				<ngx-gallery 
+					[options]="galleryOptions" 
+					[images]="galleryImages">
+				</ngx-gallery>
+			</div>
+		</div>
 	</div>
 </div>
