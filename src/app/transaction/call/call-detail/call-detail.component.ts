@@ -35,38 +35,52 @@ export class CallDetailComponent implements OnInit {
             this._cs.get(id).then((call) => {
                 console.log(call);
                 this.call = call;
+                this.galleryImages = this.call['Assets'][0]['images'];
+                console.log(this.galleryImages);
             });
         });
 
+        // this.galleryOptions = [
+        //     {
+        //         width: '75%',
+        //         height: '400px',
+        //         thumbnailsColumns: 4,
+        //         imageAnimation: NgxGalleryAnimation.Slide
+        //     },
+        //     // max-width 800
+        //     {
+        //         breakpoint: 800,
+        //         width: '100%',
+        //         height: '600px',
+        //         imagePercent: 80,
+        //         thumbnailsPercent: 20,
+        //         thumbnailsMargin: 20,
+        //         thumbnailMargin: 20
+        //     },
+        //     // max-width 400
+        //     {
+        //         breakpoint: 400,
+        //         preview: false
+        //     }
+        // ];
+
         this.galleryOptions = [
-            {
-                width: '75%',
-                height: '400px',
-                thumbnailsColumns: 4,
-                imageAnimation: NgxGalleryAnimation.Slide
+            { 
+                "image": false, 
+                "height": "100px" 
             },
-            // max-width 800
-            {
-                breakpoint: 800,
-                width: '100%',
-                height: '600px',
-                imagePercent: 80,
-                thumbnailsPercent: 20,
-                thumbnailsMargin: 20,
-                thumbnailMargin: 20
-            },
-            // max-width 400
-            {
-                breakpoint: 400,
-                preview: false
+            { 
+                "breakpoint": 500, 
+                "width": "100%" 
             }
         ];
 
-        this.galleryImages = [
+        
+        let galleryImages1 = [
             {
-                small: 'assets/img/terminus.png',
-                medium: 'assets/img/terminus.png',
-                big: 'assets/img/terminus.png'
+                small: 'assets/img/2-big.jpeg',
+                medium: 'assets/img/2-big.jpeg',
+                big: 'assets/img/t2-big.jpeg'
             },
             {
                 small: 'assets/img/terminus.png',
@@ -79,6 +93,8 @@ export class CallDetailComponent implements OnInit {
                 big: 'assets/img/terminus.png'
             }
         ];
+        
+        console.log(galleryImages1);
     }
 
 }
