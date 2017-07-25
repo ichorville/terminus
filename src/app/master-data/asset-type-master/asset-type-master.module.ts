@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DataTableModule } from '../../shared/data-table/data-table.module';
+import { DynamicFormModule } from '../../shared/dynamic-form/dynamic-form.module';
+import { AlertModule } from '../../shared/alert/alert.module';
 
 import { AssetTypeMasterComponent } from './asset-type-master.component';
 import { AssetTypeAddComponent } from './asset-type-add/asset-type-add.component';
@@ -11,8 +17,11 @@ import { routing } from './asset-type-master.routing';
 
 @NgModule({
   imports: [
-    CommonModule,
-    routing
+   CommonModule,
+    routing,
+    DataTableModule,
+    DynamicFormModule,
+    AlertModule
   ],
   declarations: [
                   AssetTypeMasterComponent,
