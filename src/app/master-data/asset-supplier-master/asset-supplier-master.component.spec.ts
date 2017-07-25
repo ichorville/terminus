@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AssetSupplierMasterComponent } from './asset-supplier-master.component';
 
 
-describe('Component: CustomerMaster', () => {
+describe('Component: AssetSupplier', () => {
   it('should create an instance', () => {
     let component = new AssetSupplierMasterComponent();
     expect(component).toBeTruthy();

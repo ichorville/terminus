@@ -1,25 +1,54 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import {ComponentFixture, TestBed,
+               async, inject, fakeAsync, tick} from '@angular/core/testing';
+import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
+import { Headers, Http, RequestOptions } from '@angular/http';
 
 import { NewAssetsListComponent } from './new-assets-list.component';
+//import { CustomerMasterService } from '../customer-master.service';
 
-describe('NewAssetsListComponent', () => {
-  let component: NewAssetsListComponent;
-  let fixture: ComponentFixture<NewAssetsListComponent>;
+describe('Component: NewAssetsListComponent', () => {
+    let comp: NewAssetsListComponent;
+    //let _aslc: NewAssetsListComponent;
+    let formSubmitEvent: FormSubmitEvent;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NewAssetsListComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(() => {
+       // _aslc = new StubService as any as CustomerMasterService;
+        //comp = new CustomerListComponent(_cms);
+        formSubmitEvent = new FormSubmitEvent();
+        comp.ngOnInit();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NewAssetsListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    it('should create an instance', () => {
+        expect(comp).toBeTruthy();
+    });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+    it('Should fetch the customer list', () => {
+        expect(comp.columns[0].name).toBe('Customer Name');
+        expect(comp.columns[0].attr).toBe('name');
+        
+        expect(comp.columns.length).toBe(1);
+    });
 });
+
+class StubService {
+    customer: any;
+
+    constructor() {
+        this.customer = [
+            {
+                id: 2,
+                name: 'Name 1'
+            },
+            {
+                id: 3,
+                name: "name 2",
+            }
+        ];
+    }
+
+    all(): Promise<any> {
+        return Promise.resolve(this.customer);
+    }
+}
+
