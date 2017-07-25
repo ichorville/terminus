@@ -1,5 +1,96 @@
 <div class="container">
-	<div class="card">
+	<div class="row">
+		<div class="col-md-4">
+			<!-- Call location -->
+			<div class="card">
+				<div class="card-header" data-background-color="blue">
+					<h3 class="title">Call Location</h3>
+				</div>
+				<div style="padding:15px;">
+					<agm-map 
+						[latitude]="call.lat" 
+						[longitude]="call.lng">
+						<agm-marker 
+							[latitude]="call.lat" 
+							[longitude]="call.lng">
+						</agm-marker>
+					</agm-map>
+				</div>
+			</div>
+		</div>
+		<!-- Call Details -->
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header" data-background-color="green">
+					<h3 class="title">Call Profile</h3>
+				</div>
+				<div class="card-content">
+					<form>
+						<div class="row">
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Call ID" value="{{ call.ID }}" disabled>
+								</md-input-container>
+							</div>
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Call Status" value="{{ call.Status }}" disabled>
+								</md-input-container>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Scheduled Start" value="{{ call.ScheduledStart }}" disabled>
+								</md-input-container>
+							</div>
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Scheduled End" value="{{ call.ScheduledEnd }}" disabled>
+								</md-input-container>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Outlet" value="{{ call.Outlet }}" disabled>
+								</md-input-container>
+							</div>
+							<div class="col-md-6">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Agent" value="{{ call.Agent }}" disabled>
+								</md-input-container>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<md-input-container class="full-width">
+									<input mdInput placeholder="Outlet" value="{{ call.Outlet }}" disabled>
+								</md-input-container>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Asset details -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header" data-background-color="purple">
+					<h3 class="title">Asset Profile  <!-- add asset name if possible --></h3>
+				</div>
+				<div class="card-content" style="text-align:center;">
+					<ngx-gallery 
+						[options]="galleryOptions" 
+						[images]="galleryImages">
+					</ngx-gallery>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="card">
 		<div class="card-header" data-background-color="purple">
 			<table class="table">
 				<thead>
@@ -36,5 +127,6 @@
 				</ngx-gallery>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
+

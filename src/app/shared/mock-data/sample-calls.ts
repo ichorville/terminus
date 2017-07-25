@@ -13,7 +13,34 @@ export var CALLS = {
             Outlet: "Tan Outlet",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|89"
+            Key: "1421|89",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        {   small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/t2-big.jpeg' 
+                        },
+                        {   small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/t2-big.jpeg' 
+                        },
+                        {   small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/t2-big.jpeg' 
+                        }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -28,7 +55,25 @@ export var CALLS = {
             Outlet: "Walukarama Colombo 03",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|87"
+            Key: "1421|87",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -88,7 +133,25 @@ export var CALLS = {
             Outlet: "outlet 1",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|84"
+            Key: "1421|84",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/6-big.jpeg' },
+                        { big: 'assets/img/7-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -148,7 +211,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|76"
+            Key: "1421|76",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/7-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -193,7 +274,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|79"
+            Key: "1421|79",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/4-big.jpeg' },
+                        { big: 'assets/img/5-big.jpeg' },
+                        { big: 'assets/img/7-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -208,7 +307,25 @@ export var CALLS = {
             Outlet: "Outlet Yusuf",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|80"
+            Key: "1421|80",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/7-big.jpeg' },
+                        { big: 'assets/img/6-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -223,7 +340,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|74"
+            Key: "1421|74",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -238,7 +373,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|75"
+            Key: "1421|75",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -268,7 +421,24 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|71"
+            Key: "1421|71",lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/7-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -283,7 +453,25 @@ export var CALLS = {
             Outlet: "Walukarama Colombo 03",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|72"
+            Key: "1421|72",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -298,7 +486,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|68"
+            Key: "1421|68",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/4-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' },
+                        { big: 'assets/img/6-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -313,7 +519,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|69"
+            Key: "1421|69",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1421,
@@ -343,7 +567,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1413|67"
+            Key: "1413|67",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/5-big.jpeg' },
+                        { big: 'assets/img/6-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1414,
@@ -358,7 +600,25 @@ export var CALLS = {
             Outlet: "FP Jurong Point Hyper",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1414|66"
+            Key: "1414|66",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/5-big.jpeg' },
+                        { big: 'assets/img/6-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1411,
@@ -373,7 +633,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1411|64"
+            Key: "1411|64",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/4-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1413,
@@ -388,7 +666,25 @@ export var CALLS = {
             Outlet: "Walukarama Colombo 03",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1413|65"
+            Key: "1413|65",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/6-big.jpeg' },
+                        { big: 'assets/img/4-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1410,
@@ -403,7 +699,25 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1410|63"
+            Key: "1410|63",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/8-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/4-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1409,
@@ -418,7 +732,25 @@ export var CALLS = {
             Outlet: "7E - BLK 4 LEVEL 1",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1409|62"
+            Key: "1409|62",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/6-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/5-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1408,
@@ -433,7 +765,25 @@ export var CALLS = {
             Outlet: "Ang Mo Supermarket",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1408|61"
+            Key: "1408|61",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/8-big.jpeg' },
+                        { big: 'assets/img/5-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1407,
@@ -448,7 +798,25 @@ export var CALLS = {
             Outlet: "FP Jurong Point Hyper",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1407|60"
+            Key: "1407|60",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         },
         {
             SiteUID: 1407,
@@ -463,7 +831,25 @@ export var CALLS = {
             Outlet: "FP East Point",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1407|59"
+            Key: "1407|59",
+            lat: 7.224227000000000,
+            lng: 80.193933100000000,
+            Assets: [
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        { big: 'assets/img/4-big.jpeg' },
+                        { big: 'assets/img/7-big.jpeg' },
+                        { big: 'assets/img/2-big.jpeg' }
+                    ]
+                }
+            ]
         }
     ]
 };

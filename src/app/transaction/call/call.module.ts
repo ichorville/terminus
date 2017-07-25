@@ -26,6 +26,7 @@ import { routing } from './call.routing';
 		AlertModule,
 		DataTableModule,
 		NgxGalleryModule,
+		MaterialModule,
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyB7xCCaCLiNRXf5b-zAb_wcs8cxtmYAFdQ'
 		})
