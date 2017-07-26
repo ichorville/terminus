@@ -13,6 +13,7 @@ import { CustomerMasterService } from '../../customer-master/customer-master.ser
 })
 export class OutletListComponent implements OnInit {
 
+	addButton: boolean;
 	taskEdit: boolean;
 	taskDelete: boolean;
 
@@ -30,6 +31,7 @@ export class OutletListComponent implements OnInit {
 		private _cms: CustomerMasterService,
 		private _ocs: OutletClassService,
 	) {
+		this.addButton = true;
 		this.taskEdit = true;
 		this.taskDelete = true;
 		this.rows = [];

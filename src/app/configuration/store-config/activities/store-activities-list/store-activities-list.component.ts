@@ -8,6 +8,10 @@ import { StoreActivitiesService } from '../activities.service';
   styleUrls: ['./store-activities-list.component.css']
 })
 export class StoreActivitiesListComponent implements OnInit {
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	title: string;
 	url: string;
 	storeActivity: any[];
@@ -15,6 +19,9 @@ export class StoreActivitiesListComponent implements OnInit {
 	rows: any[];
 	constructor(private _sas: StoreActivitiesService) {
 		this.rows = [];
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 	}
 
 	ngOnInit() {

@@ -10,6 +10,10 @@ import { OutletClassService } from '../outlet-class.service';
 })
 export class OutletClassListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	outletClasses: any;
 	rows: any[];
 	url: string;
@@ -19,6 +23,9 @@ export class OutletClassListComponent implements OnInit {
 	constructor(
 		private _ocs: OutletClassService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 

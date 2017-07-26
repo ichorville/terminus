@@ -22,6 +22,9 @@ export class DistrictListComponent implements OnInit {
 	countriesMap: any;
 	regionsMap: any;
 	deleteValue: number;
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
 
 	constructor(
 		private _cms: CountryMasterService,
@@ -57,7 +60,9 @@ export class DistrictListComponent implements OnInit {
 				});
 			});
 		});
-
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.title = 'Districts';
 		this.url = '/master-data/geographies/districts/';
 		this.columns = [

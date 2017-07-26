@@ -13,6 +13,10 @@ import { TownMasterService } from '../town-master.service';
 })
 export class TownListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	towns: any[];
 	rows: any[];
 	url: string;
@@ -29,6 +33,9 @@ export class TownListComponent implements OnInit {
 		private _dms: DistrictMasterService,
 		private _tms: TownMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.countriesMap = {};
 		this.regionsMap = {};
 		this.districtMap = {};

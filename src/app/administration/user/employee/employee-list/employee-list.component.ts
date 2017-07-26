@@ -10,6 +10,9 @@ import { EmployeeService } from '../employee.service';
 	styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
 
   	employees: any[];
 	rows: any[];
@@ -23,6 +26,9 @@ export class EmployeeListComponent implements OnInit {
 	) { 
 		this.rows = [];
 		this.designationMap = {};
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 	}
 
 	ngOnInit() {

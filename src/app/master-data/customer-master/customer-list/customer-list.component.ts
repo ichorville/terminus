@@ -10,15 +10,21 @@ import { CustomerMasterService } from '../customer-master.service';
 	styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+	taskEdit: boolean;
+	taskDelete: boolean;
 	customers: any[];
 	rows: any[];
 	url: string;
 	columns: any[];
 	title: string;
+	addButton: boolean;
 
 	constructor(
 		private _cms: CustomerMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 

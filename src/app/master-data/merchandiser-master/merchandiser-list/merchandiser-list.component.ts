@@ -11,6 +11,10 @@ import { MerchandiserMasterService } from '../merchandiser-master.service';
 })
 export class MerchandiserListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	merchandisers: any[];
 	groupMap: any;
 	typeMap: any;
@@ -22,6 +26,9 @@ export class MerchandiserListComponent implements OnInit {
 	constructor(
 		private _mms: MerchandiserMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 

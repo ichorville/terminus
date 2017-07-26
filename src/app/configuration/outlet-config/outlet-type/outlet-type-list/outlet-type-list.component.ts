@@ -10,6 +10,10 @@ import { OutletTypeService } from '../outlet-type.service';
 })
 export class OutletTypeListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	outletTypes: any;
 	rows: any[];
 	url: string;
@@ -18,6 +22,9 @@ export class OutletTypeListComponent implements OnInit {
 
 	constructor( private _ots: OutletTypeService ) {
 		this.rows = [];
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 	}
 
 	ngOnInit() {

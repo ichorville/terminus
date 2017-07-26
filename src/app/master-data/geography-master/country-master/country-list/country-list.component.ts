@@ -16,6 +16,9 @@ export class CountryListComponent implements OnInit {
 	columns: any[];
 	title: string;
 	deleteValue: number;
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
 
 	constructor(
 		private _cms: CountryMasterService,
@@ -32,6 +35,9 @@ export class CountryListComponent implements OnInit {
 			this.countries = countries;
 			this.updateRows();
 		});
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.title = 'Countries';
 		this.url = '/master-data/geographies/countries/';
 		this.columns = [

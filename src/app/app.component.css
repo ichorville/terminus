@@ -114,6 +114,24 @@ md-list-item a:hover {
     left: 54px;
 }
 
-
-
-
+.example-spacer {
+  flex: 1 1 auto;
+}
+md-expansion-panel {
+	padding: 7px;
+}
+md-list-item {
+	cursor: pointer;
+}
+.mat-icon {
+	width: auto !important;
+}
+:host /deep/.mat-expansion-panel-body {
+	padding: 0 24px 0px !important;
+}
+:host /deep/.mat-list {
+	padding-top: 0px !important;
+}
+:host /deep/.mat-content {
+	font-size: 16px !important;
+}

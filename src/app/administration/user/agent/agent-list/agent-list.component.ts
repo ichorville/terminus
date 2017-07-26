@@ -11,6 +11,9 @@ import { EmployeeService } from '../../employee/employee.service';
 	styleUrls: ['./agent-list.component.css']
 })
 export class AgentListComponent implements OnInit {
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
 
 	users: any[];
 	rows: any[];
@@ -26,6 +29,9 @@ export class AgentListComponent implements OnInit {
 	) { 
 		this.rows = [];
 		this.employeeMap = {};
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 	}
 
 	ngOnInit() {

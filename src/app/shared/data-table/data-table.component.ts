@@ -22,6 +22,9 @@ export class DataTableComponent implements OnInit, OnChanges {
 	taskDelete: boolean;
 
 	@Input()
+	addButton: boolean;
+
+	@Input()
 	public title: string;
 
 	@Input()

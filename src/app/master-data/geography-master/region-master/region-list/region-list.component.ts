@@ -13,6 +13,10 @@ import { DistrictMasterService } from '../../district-master/district-master.ser
 })
 export class RegionListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	regions: any[];
 	url: string;
 	rows: any[];
@@ -26,6 +30,9 @@ export class RegionListComponent implements OnInit {
 		private _rms: RegionMasterService,
 		private _dms: DistrictMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.countriesMap = {};
 		this.rows = [];
 	}
