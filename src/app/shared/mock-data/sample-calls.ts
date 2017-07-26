@@ -26,20 +26,66 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        {   
+                        {
                             small: 'assets/img/2-big.jpeg',
                             medium: 'assets/img/2-big.jpeg',
-                            big: 'assets/img/2-big.jpeg' 
+                            big: 'assets/img/2-big.jpeg'
                         },
-                        {   
+                        {
                             small: 'assets/img/2-big.jpeg',
                             medium: 'assets/img/2-big.jpeg',
-                            big: 'assets/img/2-big.jpeg' 
+                            big: 'assets/img/2-big.jpeg'
                         },
-                        {   
+                        {
                             small: 'assets/img/2-big.jpeg',
                             medium: 'assets/img/2-big.jpeg',
-                            big: 'assets/img/2-big.jpeg' 
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/5-big.jpeg',
+                            medium: 'assets/img/5-big.jpeg',
+                            big: 'assets/img/5-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/8-big.jpeg',
+                            medium: 'assets/img/8-big.jpeg',
+                            big: 'assets/img/8-big.jpeg'
+                        }
+                    ]
+                },
+                {
+                    AssetUID: 3670,
+                    CreationDate: '2017-05-22',
+                    SerialNumber: 'T1003',
+                    LastModifiedDate: '2017-05-22',
+                    ExpiryDate: 'NULL',
+                    AssetType: 11,
+                    AssetCondition: 0,
+                    images: [
+                        {
+                            small: 'assets/img/4-big.jpeg',
+                            medium: 'assets/img/4-big.jpeg',
+                            big: 'assets/img/4-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/6-big.jpeg',
+                            medium: 'assets/img/6-big.jpeg',
+                            big: 'assets/img/6-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/5-big.jpeg',
+                            medium: 'assets/img/5-big.jpeg',
+                            big: 'assets/img/5-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/8-big.jpeg',
+                            medium: 'assets/img/8-big.jpeg',
+                            big: 'assets/img/8-big.jpeg'
                         }
                     ]
                 }
@@ -71,9 +117,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -149,9 +207,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/6-big.jpeg' },
-                        { big: 'assets/img/7-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -227,9 +297,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/7-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -290,9 +372,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/4-big.jpeg' },
-                        { big: 'assets/img/5-big.jpeg' },
-                        { big: 'assets/img/7-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -323,9 +417,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/7-big.jpeg' },
-                        { big: 'assets/img/6-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -356,9 +462,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -389,9 +507,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -424,7 +554,7 @@ export var CALLS = {
             Outlet: "Walukarama FG",
             Agent: "Michael Tan",
             Status: "Completed",
-            Key: "1421|71",lat: 7.224227000000000,
+            Key: "1421|71", lat: 7.224227000000000,
             lng: 80.193933100000000,
             Assets: [
                 {
@@ -436,9 +566,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/7-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -469,9 +611,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -502,9 +656,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/4-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' },
-                        { big: 'assets/img/6-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -535,9 +701,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -583,9 +761,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/5-big.jpeg' },
-                        { big: 'assets/img/6-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -616,9 +806,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/5-big.jpeg' },
-                        { big: 'assets/img/6-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -649,9 +851,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/4-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -682,9 +896,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/6-big.jpeg' },
-                        { big: 'assets/img/4-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -715,9 +941,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/8-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/4-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -748,9 +986,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/6-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/5-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -781,9 +1031,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/8-big.jpeg' },
-                        { big: 'assets/img/5-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -814,9 +1076,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]
@@ -847,9 +1121,21 @@ export var CALLS = {
                     AssetType: 11,
                     AssetCondition: 0,
                     images: [
-                        { big: 'assets/img/4-big.jpeg' },
-                        { big: 'assets/img/7-big.jpeg' },
-                        { big: 'assets/img/2-big.jpeg' }
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        },
+                        {
+                            small: 'assets/img/2-big.jpeg',
+                            medium: 'assets/img/2-big.jpeg',
+                            big: 'assets/img/2-big.jpeg'
+                        }
                     ]
                 }
             ]

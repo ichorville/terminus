@@ -3,7 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { CallService } from '../call.service';
 
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, 
+    NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
     selector: 'app-call-detail',
@@ -40,30 +41,6 @@ export class CallDetailComponent implements OnInit {
             });
         });
 
-        // this.galleryOptions = [
-        //     {
-        //         width: '75%',
-        //         height: '400px',
-        //         thumbnailsColumns: 4,
-        //         imageAnimation: NgxGalleryAnimation.Slide
-        //     },
-        //     // max-width 800
-        //     {
-        //         breakpoint: 800,
-        //         width: '100%',
-        //         height: '600px',
-        //         imagePercent: 80,
-        //         thumbnailsPercent: 20,
-        //         thumbnailsMargin: 20,
-        //         thumbnailMargin: 20
-        //     },
-        //     // max-width 400
-        //     {
-        //         breakpoint: 400,
-        //         preview: false
-        //     }
-        // ];
-
         this.galleryOptions = [
             { 
                 "image": false, 
@@ -74,27 +51,5 @@ export class CallDetailComponent implements OnInit {
                 "width": "100%" 
             }
         ];
-
-        
-        let galleryImages1 = [
-            {
-                small: 'assets/img/2-big.jpeg',
-                medium: 'assets/img/2-big.jpeg',
-                big: 'assets/img/2-big.jpeg'
-            },
-            {
-                small: 'assets/img/terminus.png',
-                medium: 'assets/img/terminus.png',
-                big: 'assets/img/terminus.png'
-            },
-            {
-                small: 'assets/img/terminus.png',
-                medium: 'assets/img/terminus.png',
-                big: 'assets/img/terminus.png'
-            }
-        ];
-        
-        console.log(galleryImages1);
     }
-
 }

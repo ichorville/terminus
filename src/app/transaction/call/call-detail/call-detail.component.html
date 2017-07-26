@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<!-- Call location -->
-			<div class="card">
+			<div #callLocation class="card">
 				<div class="card-header" data-background-color="blue">
 					<h3 class="title">Call Location</h3>
 				</div>
@@ -20,7 +20,7 @@
 		</div>
 		<!-- Call Details -->
 		<div class="col-md-8">
-			<div class="card">
+			<div #callProfile class="card">
 				<div class="card-header" data-background-color="green">
 					<h3 class="title">Call Profile</h3>
 				</div>
@@ -76,15 +76,30 @@
 	</div>
 	<!-- Asset details -->
 	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
+		<div *ngFor="let asset of call.Assets" class="col-md-12">
+			<div [id]="asset.AssetUID" class="card">
 				<div class="card-header" data-background-color="purple">
-					<h3 class="title">Asset Profile  <!-- add asset name if possible --></h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="font-weight:100;">Creation Date</th>
+								<th style="font-weight:100;">Serial Number</th> 
+								<th style="font-weight:100;">Asset Type</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{ asset.CreationDate }}</td>
+								<td>{{ asset.SerialNumber }}</td>
+								<td>{{ asset.AssetType }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<div class="card-content" style="text-align:center;">
 					<ngx-gallery 
 						[options]="galleryOptions" 
-						[images]="galleryImages">
+						[images]="asset.images">
 					</ngx-gallery>
 				</div>
 			</div>
