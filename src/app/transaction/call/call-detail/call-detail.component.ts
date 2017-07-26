@@ -80,7 +80,7 @@ export class CallDetailComponent implements OnInit {
             {
                 small: 'assets/img/2-big.jpeg',
                 medium: 'assets/img/2-big.jpeg',
-                big: 'assets/img/t2-big.jpeg'
+                big: 'assets/img/2-big.jpeg'
             },
             {
                 small: 'assets/img/terminus.png',
