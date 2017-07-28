@@ -21,6 +21,8 @@ import { routing } from './call.routing';
 	imports: [
 		BrowserModule,
 		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
 		routing,
 		DynamicFormModule,
 		AlertModule,

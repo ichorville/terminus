@@ -22,7 +22,6 @@ export class CallService {
 	}
 
 	all(date:any): Promise<any> {
-		console.log(date);
 		// return this.http.get(`${this.url}/${date.from}/${date.to}/${date.status}`).toPromise().then((response) => {
 		// 	return response.json();
 		// });

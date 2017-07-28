@@ -1,27 +1,17 @@
 import {
 	Component, OnInit, Output, EventEmitter, state,
-	trigger, style, transition, animate
-} from '@angular/core';
-
+	trigger, style, transition, animate } from '@angular/core';
 import { MdDatepickerModule, MdNativeDateModule, DateAdapter,
 	NativeDateAdapter, MD_DATE_FORMATS } from '@angular/material';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
-
-import { FormElement } from '../../../shared/form-elements/form-element';
-import { FormTextbox } from '../../../shared/form-elements/form-textbox';
-import { FormDropdown } from '../../../shared/form-elements/form-dropdown';
-import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
-import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-submit-complete-event';
 
 import { CallService } from '../call.service';
 
 export class AppDateAdapter extends NativeDateAdapter {
-
     format(date: Date, displayFormat: Object): string {
-
         if (displayFormat === 'input') {
             const day = date.getDate();
             const month = date.getMonth() + 1;
@@ -46,34 +36,6 @@ export const APP_DATE_FORMATS =
     }
 };
 
-const MY_DATE_FORMATS = {
-   parse: {
-       dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
-   },
-	// dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
-	dateInput: 'input',
-	monthYearLabel: {year: 'numeric', month: 'short'},
-	dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
-	monthYearA11yLabel: {year: 'numeric', month: 'long'},
-};
-
-   export class MyDateAdapter extends NativeDateAdapter {
-   format(date: Date, displayFormat: Object): string {
-       if (displayFormat == "input") {
-           let day = date.getDate();
-           let month = date.getMonth() + 1;
-           let year = date.getFullYear();
-           return this._to2digit(day) + '/' + this._to2digit(month) + '/' + year;
-       } else {
-           return date.toDateString();
-       }
-   }
-
-   private _to2digit(n: number) {
-       return ('00' + n).slice(-2);
-   } 
-}
-
 @Component({
 	selector: 'app-call-list',
 	templateUrl: './call-list.component.html',
@@ -85,12 +47,15 @@ const MY_DATE_FORMATS = {
 })
 export class CallListComponent implements OnInit {
 
-	state = [
-		{ key: '0', value: 'All' },
-		{ key: '5', value: 'In Progress' },
-		{ key: '6', value: 'Completed' }
+	callStatus = [
+		{ key: 0, value: 'All' },
+		{ key: 5, value: 'In Progress' },
+		{ key: 6, value: 'Completed' }
 	];
 
+	form: FormGroup;
+	call: Call;
+	
 	selectedValue: string;
 	taskDetail: boolean;
 	title: string;
@@ -102,16 +67,19 @@ export class CallListComponent implements OnInit {
 	previousDate: any;
 	dateOffset: any = (24 * 60 * 60 * 1000) * 7;
 	url: string;
-	status: '0';
+	status: any;
 
-	constructor(private _cs: CallService) {
+	constructor(
+		private _cs: CallService,
+		private fb: FormBuilder
+	) {
 		this.taskDetail = true;
 		this.rows = [];
-		// this.status = 0;
+		this.status = 0;
+		this.call = new Call();
 	}
 
 	ngOnInit() {
-
 		this.currentDate = new Date();
 		this.currentDate = this.currentDate.getFullYear() + '-' + ('0' + (this.currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + this.currentDate.getDate()).slice(-2);
 
@@ -119,15 +87,18 @@ export class CallListComponent implements OnInit {
 		this.previousDate.setTime(this.previousDate.getTime() - this.dateOffset);
 		this.previousDate = this.previousDate.getFullYear() + '-' + ('0' + (this.previousDate.getMonth() + 1)).slice(-2) + '-' + ('0' + this.previousDate.getDate()).slice(-2);
 
+		this.call.callStart = this.previousDate;
+		this.call.callEnd = this.currentDate;
+		this.call.callStatus = this.status;
+
+		this.buildForm();
+
 		let date: any = {
 			'from': this.previousDate,
 			'to': this.currentDate,
 			'status': this.status
 		};
 		
-
-		
-
 		this._cs.all(date).then((calls) => {
 			this.calls = calls['t'];
 			this.updateRows();
@@ -146,21 +117,81 @@ export class CallListComponent implements OnInit {
 		];
 	}
 
-	submit(formSubmitEvent) {
-		formSubmitEvent.preventDefault();
-		console.log(formSubmitEvent);
-
-		console.log(document.getElementById('state'));
-
-		let date: any = {
-			'from': formSubmitEvent.target[0].value,
-			'to': formSubmitEvent.target[1].value,
-			'status': formSubmitEvent.target[2].value
-		};
-		this._cs.all(date).then((calls) => {
-			this.calls = calls['t'];
-			this.updateRows();
+	buildForm(): void {
+		this.form = this.fb.group({
+			'from': [this.call.callStart, [Validators.required]],
+			'to': [this.call.callEnd, [Validators.required]],
+			'status': [this.call.callStatus, [Validators.required]]
 		});
+		this.form.valueChanges.subscribe(data => this.onValueChanged(data));
+		this.onValueChanged();
+	}
+	
+	onValueChanged(data?: any) {
+		if(!this.form) {
+			return;
+		}
+		const thisForm = this.form;
+
+		for(const field in this.formErrors) {
+			// clear previous messages if any
+			this.formErrors[field] = '';
+			const control = thisForm.get(field);
+
+			if(control && control.dirty && !control.valid) {
+				const messages = this.validationMessages[field];
+				for(const key in control.errors) {
+					this.formErrors[field] += messages[key] + ' ';
+				}
+			}
+		}
+	}
+
+	formErrors = {
+		'from': '',
+		'to': '',
+		'status': ''
+	};
+
+	validationMessages = {
+		'from': {
+			'required': 'Call Start Date is required.',
+		},
+		'to': {
+			'required': 'Call End Date is required.'
+		},
+		'status': {
+			'required': 'Call status is required.'
+		}
+	};
+
+	onSubmit(): void {
+		if (this.form.valid) {
+			let date: any = {
+				'from': this.call.callStart == this.previousDate ? this.previousDate : this.call.callStart.getFullYear() + '-' + ('0' + (this.call.callStart.getMonth() + 1)).slice(-2) + '-' + ('0' + this.call.callStart.getDate()).slice(-2),
+				'to': this.call.callEnd == this.currentDate ? this.currentDate : this.call.callEnd.getFullYear() + '-' + ('0' + (this.call.callEnd.getMonth() + 1)).slice(-2) + '-' + ('0' + this.call.callEnd.getDate()).slice(-2),
+				'status': this.call.callStatus
+			};
+			this._cs.all(date).then((calls) => {
+				this.calls = calls['t'];
+				this.updateRows();
+			});
+		} else {
+			const thisForm = this.form;
+
+			for(const field in this.formErrors) {
+				// clear previous messages if any
+				this.formErrors[field] = '';
+				const control = thisForm.get(field);
+
+				if(control && control.dirty && !control.valid) {
+					const messages = this.validationMessages[field];
+					for(const key in control.errors) {
+						this.formErrors[field] += messages[key] + ' ';
+					}
+				}
+			}
+		}
 	}
 
 	private updateRows() {
@@ -178,9 +209,10 @@ export class CallListComponent implements OnInit {
 			});
 		});
 	}
-
-	delete(any) {
-
-	}
 }
 
+export class Call {
+	callStart: Date;
+	callEnd: Date;
+	callStatus: number;
+}
