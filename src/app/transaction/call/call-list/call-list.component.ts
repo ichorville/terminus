@@ -2,6 +2,10 @@ import {
 	Component, OnInit, Output, EventEmitter, state,
 	trigger, style, transition, animate
 } from '@angular/core';
+
+import { MdDatepickerModule, MdNativeDateModule, DateAdapter,
+	NativeDateAdapter, MD_DATE_FORMATS } from '@angular/material';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
@@ -14,12 +18,80 @@ import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-subm
 
 import { CallService } from '../call.service';
 
+export class AppDateAdapter extends NativeDateAdapter {
+
+    format(date: Date, displayFormat: Object): string {
+
+        if (displayFormat === 'input') {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        } else {
+            return date.toDateString();
+        }
+    }
+}
+
+export const APP_DATE_FORMATS =
+{
+    parse: {
+        dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+    },
+    display: {
+        dateInput: 'input',
+        monthYearLabel: { year: 'numeric', month: 'numeric' },
+        dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+        monthYearA11yLabel: { year: 'numeric', month: 'long' },
+    }
+};
+
+const MY_DATE_FORMATS = {
+   parse: {
+       dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
+   },
+	// dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+	dateInput: 'input',
+	monthYearLabel: {year: 'numeric', month: 'short'},
+	dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+	monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
+
+   export class MyDateAdapter extends NativeDateAdapter {
+   format(date: Date, displayFormat: Object): string {
+       if (displayFormat == "input") {
+           let day = date.getDate();
+           let month = date.getMonth() + 1;
+           let year = date.getFullYear();
+           return this._to2digit(day) + '/' + this._to2digit(month) + '/' + year;
+       } else {
+           return date.toDateString();
+       }
+   }
+
+   private _to2digit(n: number) {
+       return ('00' + n).slice(-2);
+   } 
+}
+
 @Component({
 	selector: 'app-call-list',
 	templateUrl: './call-list.component.html',
-	styleUrls: ['./call-list.component.css']
+	styleUrls: ['./call-list.component.css'],
+	providers: [
+        { provide: DateAdapter, useClass: AppDateAdapter },
+        { provide: MD_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+    ]
 })
 export class CallListComponent implements OnInit {
+
+	state = [
+		{ key: '0', value: 'All' },
+		{ key: '5', value: 'In Progress' },
+		{ key: '6', value: 'Completed' }
+	];
+
+	selectedValue: string;
 	taskDetail: boolean;
 	title: string;
 	calls: any[];
@@ -30,12 +102,12 @@ export class CallListComponent implements OnInit {
 	previousDate: any;
 	dateOffset: any = (24 * 60 * 60 * 1000) * 7;
 	url: string;
-	status: any;
+	status: '0';
 
 	constructor(private _cs: CallService) {
 		this.taskDetail = true;
 		this.rows = [];
-		this.status = 0;
+		// this.status = 0;
 	}
 
 	ngOnInit() {
@@ -52,6 +124,10 @@ export class CallListComponent implements OnInit {
 			'to': this.currentDate,
 			'status': this.status
 		};
+		
+
+		
+
 		this._cs.all(date).then((calls) => {
 			this.calls = calls['t'];
 			this.updateRows();
@@ -72,7 +148,9 @@ export class CallListComponent implements OnInit {
 
 	submit(formSubmitEvent) {
 		formSubmitEvent.preventDefault();
+		console.log(formSubmitEvent);
 
+		console.log(document.getElementById('state'));
 
 		let date: any = {
 			'from': formSubmitEvent.target[0].value,
@@ -105,3 +183,4 @@ export class CallListComponent implements OnInit {
 
 	}
 }
+

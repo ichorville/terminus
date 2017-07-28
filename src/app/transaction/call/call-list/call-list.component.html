@@ -1,34 +1,39 @@
 <div class="container">
 	<div class="page-header">
-		<h1>Manage {{title}}</h1>
+		<h1>Manage {{ title }}</h1>
 	</div>
-
 	<form class="form-inline" (submit)="submit($event)">
 		<div class="row justify-content-between">
-			<div class="form-group col-md-4">
-				<label for="from">From:</label>
-				<input type="date" class="form-control" id="from" placeholder="From" [value]=previousDate>
+			<div class="col-md-4">
+				<md-input-container style="width:100%;">
+					<input mdInput [mdDatepicker]="pickerFrom" placeholder="From:" 
+						[value]=previousDate>
+					<button mdSuffix [mdDatepickerToggle]="pickerFrom"></button>
+				</md-input-container>
+				<md-datepicker #pickerFrom></md-datepicker>
 			</div>
-			<div class="form-group col-md-4">
-				<label for="to">To:</label>
-				<input type="date" class="form-control" id="to" placeholder="To" [value]=currentDate>
+			<div class="col-md-4">
+				<md-input-container style="width:100%;">
+					<input mdInput [mdDatepicker]="pickerTo" placeholder="To:" 
+						[value]=currentDate>
+					<button mdSuffix [mdDatepickerToggle]="pickerTo"></button>
+				</md-input-container>
+				<md-datepicker #pickerTo></md-datepicker>
 			</div>
-
-			<div class="form-group col-md-4">
-				<label for="status">Status:</label>
-				<select class="form-control" id="status">
-					<option value='0'>All</option>
-					<option value='5'>In Progress</option>
-					<option value='6'>Completed</option>
-		<!--			<option value='4'>Canceled</option>     -->
-		<!--			<option value='7'>Lost</option>			-->
-				</select>
+			<div class="col-md-3">
+				<md-select style="width:100%;padding-top:10px;padding-bottom:20px;"
+					placeholder="Status:" id="state">
+					<md-option *ngFor="let state of state" [value]="state.key">
+						{{ state.value }}
+					</md-option>
+				</md-select>
+			</div>
+			<div class="col-md-1">
+				<button md-raised-button>Submit</button>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </div>
-
 <app-data-table 
 	[taskDetail]="taskDetail"
 	[url]="url" 

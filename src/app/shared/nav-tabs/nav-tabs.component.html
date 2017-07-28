@@ -3,13 +3,19 @@
 		<div class="col-md-12">
 
 			<nav md-tab-nav-bar>
-				<a md-tab-link
+				 <a md-tab-link
 					*ngFor="let tab of tabs"
-					routerLink="{{tab.link}}"
+					routerLink="{{ tab.link }}"
 					routerLinkActive ="active">
-					{{tab.name}}
-				</a>
-			</nav>
+					<span *ngIf="router.url === tab.link" 
+						class="mat-ink-bar" 
+						style="visibility: visible; left: 0px; width: 160px;">
+					</span> 
+					{{ tab.name }}
+				</a> 
+			</nav> 
+
+			
 
 			<!--<md-tab-group>
 				<md-tab *ngFor="let tab of tabs"

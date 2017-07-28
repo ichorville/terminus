@@ -33,5 +33,4 @@ export class GeographyNavTabComponent implements OnInit {
 			}
 		];
 	}
-
 }

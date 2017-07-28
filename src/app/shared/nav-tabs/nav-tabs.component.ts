@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-tabs',
@@ -10,7 +11,11 @@ export class NavTabsComponent implements OnInit {
   @Input()
 	tabs: any[];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { 
+
+  }
 
   ngOnInit() {
   }

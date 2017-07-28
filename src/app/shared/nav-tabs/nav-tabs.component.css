@@ -1,3 +1,6 @@
 a {
     text-decoration: none !important;
 }
+.mat-ink-bar {
+    background-image: linear-gradient(#f44336, #f44336), linear-gradient(#D2D2D2, #D2D2D2) !important;
+}
