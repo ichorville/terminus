@@ -10,6 +10,7 @@ import { OutletMasterModule } from './outlet-master/outlet-master.module';
 import { CustomerMasterModule } from './customer-master/customer-master.module';
 import { AssetSupplierMasterModule } from './asset-supplier-master/asset-supplier-master.module';
 import { AssetTypeMasterModule } from './asset-type-master/asset-type-master.module';
+import { AssetMasterModule } from './asset-master/asset-master.module';
 
 import { routing } from './master-data.routing';
 
@@ -25,7 +26,8 @@ import { routing } from './master-data.routing';
 		GeographyMasterModule,
 		CustomerMasterModule,
 		AssetSupplierMasterModule,
-		AssetTypeMasterModule
+		AssetTypeMasterModule,
+		AssetMasterModule
 	],
 })
 
