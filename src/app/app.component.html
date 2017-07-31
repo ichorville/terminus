@@ -51,9 +51,24 @@
 				<md-expansion-panel-header>Master Data</md-expansion-panel-header>
 				<md-list>
 					<md-list-item routerLinkActive="active"
+						 routerLink="/master-data/suppliers">
+						<md-icon class="icon" md-list-avatar>business_center</md-icon>
+						<a>Suppliers</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active"
+						 routerLink="/master-data/asset-types">
+						<md-icon class="icon" md-list-avatar>art_track</md-icon>
+						<a>Facility types</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active"
+						 routerLink="/master-data/assets">
+						<md-icon class="icon" md-list-avatar>aspect_ratio</md-icon>
+						<a>Facilities</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active"
 						 routerLink="/master-data/outlets">
 						<md-icon class="icon" md-list-avatar>store</md-icon>
-						<a>Outlets</a>
+						<a>Locations</a>
 					</md-list-item>
 					<md-divider></md-divider>
 					<md-list-item routerLinkActive="active"
@@ -73,16 +88,7 @@
 						<md-icon class="icon" md-list-avatar>person</md-icon>
 						<a>Customers</a>
 					</md-list-item>
-					<md-list-item routerLinkActive="active"
-						 routerLink="/master-data/suppliers">
-						<md-icon class="icon" md-list-avatar>business_center</md-icon>
-						<a>Suppliers</a>
-					</md-list-item>
-					<md-list-item routerLinkActive="active"
-						 routerLink="/master-data/asset-types">
-						<md-icon class="icon" md-list-avatar>art_track</md-icon>
-						<a>Asset types</a>
-					</md-list-item>
+					
 				</md-list>
 			</md-expansion-panel>
 			<md-expansion-panel [hideToggle]="hideToggle">
