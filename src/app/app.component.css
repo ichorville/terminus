@@ -2,6 +2,14 @@ md-sidenav {
 	width: 25%;
 }
 
+.icon-spacer {
+  padding: 0 14px;
+}
+
+.menu-icon-spacer {
+  flex: 1 1 auto;
+}
+
 .menu {
 	cursor: pointer;
 }
