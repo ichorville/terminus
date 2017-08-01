@@ -10,6 +10,10 @@ import { ProductGroupService } from '../product-group.service';
 })
 export class ProductGroupListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	productGroups: any[];
 	rows: any[];
 	url: string;
@@ -19,6 +23,9 @@ export class ProductGroupListComponent implements OnInit {
 	constructor(
 		private _pgs: ProductGroupService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 
