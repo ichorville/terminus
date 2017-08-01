@@ -73,6 +73,7 @@ export class OutletEditComponent implements OnInit {
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._oms.get(id).then((outlet) => {
+				console.log(outlet);
 				this.outlet = outlet[0];
 				this._cms.all().then((customers) => {
 					this.customerOptions = [];
@@ -178,7 +179,7 @@ export class OutletEditComponent implements OnInit {
 				type: 'text',
 				requried: false,
 				order: 3,
-				placeholder: 'Address'
+				placeholder: 'Registration Number'
 			}),
 			new FormTextbox({
 				key: 'address',
@@ -194,7 +195,7 @@ export class OutletEditComponent implements OnInit {
 				key: 'customer',
 				label: 'Customer',
 				value: this.outlet['CustomerUid'],
-				controlType: 'dropbox',
+				controlType: 'dropdown',
 				options: this.customerOptions,
 				required: true,
 				order: 4
@@ -203,7 +204,7 @@ export class OutletEditComponent implements OnInit {
 				key: 'region',
 				label: 'Region',
 				value: this.outlet['RegionUid'],
-				controlType: 'dropbox',
+				controlType: 'dropdown',
 				options: this.regionOptions,
 				required: true,
 				order: 5
@@ -212,7 +213,7 @@ export class OutletEditComponent implements OnInit {
 				key: 'district',
 				label: 'District',
 				value: this.outlet['DistrictUid'],
-				controlType: 'dropbox',
+				controlType: 'dropdown',
 				options: this.districtOptions,
 				required: true,
 				order: 6
@@ -221,7 +222,7 @@ export class OutletEditComponent implements OnInit {
 				key: 'town',
 				label: 'Town',
 				value: this.outlet['TownUid'],
-				controlType: 'dropbox',
+				controlType: 'dropdown',
 				options: this.townOptions,
 				required: true,
 				order: 7
@@ -280,7 +281,7 @@ export class OutletEditComponent implements OnInit {
 				key: 'outletClass',
 				label: 'Outlet Class',
 				value: this.outlet['ClassUid'],
-				controlType: 'dropbox',
+				controlType: 'dropdown',
 				options: this.outletClassOptions,
 				required: true,
 				order: 13
