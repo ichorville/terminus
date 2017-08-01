@@ -28,7 +28,7 @@ export class AssetTypeListComponent implements OnInit {
 		// 	this.customers = customers;
 		// 	this.updateRows();
 	//	});
-		this.title = 'Facility types';
+		this.title = 'Facility Types';
 		this.url = '/master-data/asset-types';
 		this.columns = [
 			{ name: 'type', attr: 'name', type: 'string' }
