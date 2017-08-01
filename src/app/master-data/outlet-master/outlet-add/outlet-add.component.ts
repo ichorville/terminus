@@ -2,6 +2,7 @@ import {
 	Component, OnInit, Output, EventEmitter, state,
 	trigger, style, transition, animate
 } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs/Subject';
@@ -115,6 +116,7 @@ export class OutletAddComponent implements OnInit {
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {
+		console.log(formSubmitEvent);
 		let formValues = formSubmitEvent.formObject;
 		let outlet: any = {
 			'id': formValues.id,
@@ -132,13 +134,15 @@ export class OutletAddComponent implements OnInit {
 			'visitFrequency': +formValues.visitFrequency
 		};
 
-		this._oms.create(outlet).then(response => {
-			if (response.status == 200) {
-				this.router.navigateByUrl('/master-data/outlets');
-			} else {
-				alert('Outlet Add Error');
-			}
-		});
+		console.log(outlet);
+
+		// this._oms.create(outlet).then(response => {
+		// 	if (response.status == 200) {
+		// 		this.router.navigateByUrl('/master-data/outlets');
+		// 	} else {
+		// 		alert('Outlet Add Error');
+		// 	}
+		// });
 	}
 
 	private createForm() {
@@ -150,7 +154,10 @@ export class OutletAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Id'
+				placeholder: 'Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'name',
@@ -158,9 +165,25 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: true,
+				required: true,
 				order: 2,
-				placeholder: 'Name'
+				placeholder: 'Name',
+				validators: [
+					Validators.required,
+				]
+			}),
+			new FormTextbox({
+				key: 'address',
+				label: 'Street Address',
+				value: '',
+				controlType: 'textbox',
+				type: 'text',
+				required: true,
+				order: 3,
+				placeholder: 'Street Address',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'registrationNumber',
@@ -168,18 +191,12 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: true,
-				order: 3,
-				placeholder: 'Name'
-			}),
-			new FormDropdown({
-				key: 'outletClass',
-				label: 'Outlet Class',
-				value: '',
-				controlType: 'dropbox',
-				options: this.classOptions,
 				required: true,
-				order: 4
+				order: 4,
+				placeholder: 'Registration Number',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'customer',
@@ -188,16 +205,10 @@ export class OutletAddComponent implements OnInit {
 				controlType: 'dropbox',
 				options: this.customerOptions,
 				required: true,
-				order: 5
-			}),
-			new FormDropdown({
-				key: 'country',
-				label: 'Country',
-				value: '',
-				controlType: 'dropbox',
-				options: this.countryOptions,
-				required: true,
-				order: 6
+				order: 5,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'region',
@@ -206,7 +217,10 @@ export class OutletAddComponent implements OnInit {
 				controlType: 'dropbox',
 				options: this.regionOptions,
 				required: true,
-				order: 7
+				order: 6,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'district',
@@ -215,7 +229,10 @@ export class OutletAddComponent implements OnInit {
 				controlType: 'dropbox',
 				options: this.districtOptions,
 				required: true,
-				order: 8
+				order: 7,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'town',
@@ -224,7 +241,10 @@ export class OutletAddComponent implements OnInit {
 				controlType: 'dropbox',
 				options: this.townOptions,
 				required: true,
-				order: 9
+				order: 8,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'postalCode',
@@ -232,8 +252,8 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: false,
-				order: 10,
+				required: false,
+				order: 9,
 				placeholder: 'Postal Code'
 			}),
 			new FormTextbox({
@@ -242,8 +262,8 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: false,
-				order: 11,
+				required: false,
+				order: 10,
 				placeholder: 'Phone'
 			}),
 			new FormTextbox({
@@ -252,29 +272,9 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: false,
-				order: 12,
+				required: false,
+				order: 11,
 				placeholder: 'Mobile'
-			}),
-			new FormTextbox({
-				key: 'address',
-				label: 'Street Address',
-				value: '',
-				controlType: 'textbox',
-				type: 'text',
-				requried: false,
-				order: 13,
-				placeholder: 'Street Address'
-			}),
-			new FormTextbox({
-				key: 'email',
-				label: 'Email',
-				value: '',
-				controlType: 'textbox',
-				type: 'text',
-				requried: false,
-				order: 14,
-				placeholder: 'Email'
 			}),
 			new FormTextbox({
 				key: 'fax',
@@ -282,20 +282,43 @@ export class OutletAddComponent implements OnInit {
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: false,
-				order: 15,
-				placeholder: 'Fax'
-			}),			
+				required: false,
+				order: 12,
+				placeholder: 'Fax',
+			}),
+			new FormTextbox({
+				key: 'email',
+				label: 'Email',
+				value: '',
+				controlType: 'textbox',
+				type: 'text',
+				required: false,
+				order: 13,
+				placeholder: 'Email',			
+			}),
+			new FormDropdown({
+				key: 'outletClass',
+				label: 'Outlet Class',
+				value: '',
+				controlType: 'dropbox',
+				options: this.classOptions,
+				required: true,
+				order: 14
+			}),
 			new FormTextbox({
 				key: 'visitFrequency',
 				label: 'Visit Frequency',
 				value: '',
 				controlType: 'textbox',
 				type: 'text',
-				requried: false,
-				order: 16,
-				placeholder: 'Visit Frequency'
-			}),
+				required: false,
+				order: 15,
+				placeholder: 'Visit Frequency',
+				validators: [
+					Validators.minLength(1),
+					Validators.maxLength(3),  
+				]				
+			})
 		]
 	}
 }

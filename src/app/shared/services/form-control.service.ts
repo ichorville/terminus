@@ -5,19 +5,21 @@ import { FormElement } from '../form-elements/form-element';
 @Injectable()
 export class FormControlService {
 
-  constructor() { }
+	constructor() { }
 
-  toFormGroup(formElements: FormElement<any>[]) {
-    let group: any = {};
+	toFormGroup(formElements: FormElement<any>[]) {
+		let group: any = {};
 
-    formElements.forEach(formElement => {
-      group[formElement.key] = formElement.required ? 
-                  new FormControl(formElement.value || '', Validators.required)
-                  : new FormControl(formElement.value || '');
+		formElements.forEach(formElement => {
+			// group[formElement.key] = formElement.required ?
+			// 	new FormControl(formElement.value || '', Validators.required)
+			// 		: new FormControl(formElement.value || '');
 
-    });
+			group[formElement.key] = new FormControl(formElement.value || '', formElement.validators);
 
-    return new FormGroup(group);
-  }
+		});
+
+		return new FormGroup(group);
+	}
 
 }

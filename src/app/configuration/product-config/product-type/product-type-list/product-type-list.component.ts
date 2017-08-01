@@ -10,6 +10,10 @@ import { ProductTypeService } from '../product-type.service';
 })
 export class ProductTypeListComponent implements OnInit {
 
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
 	productTypes: any;
 	rows: any[];
 	url: string;
@@ -19,6 +23,9 @@ export class ProductTypeListComponent implements OnInit {
 	constructor(
 		private _pts: ProductTypeService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 

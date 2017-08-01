@@ -22,6 +22,8 @@ import { routing } from './outlet-master.routing';
 	imports: [
 		CommonModule,
 		routing,
+		FormsModule,
+		ReactiveFormsModule,
 		DataTableModule,
 		DynamicFormModule,
 		AlertModule,

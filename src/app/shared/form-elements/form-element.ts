@@ -6,6 +6,8 @@ export class FormElement<T> {
 	order: number;
 	controlType: string;
 	placeholder: string;
+	validators: any[];
+	errors: string[];
 
 	constructor(options: {
 		value?: T,
@@ -14,7 +16,8 @@ export class FormElement<T> {
 		required?: boolean,
 		order?: number,
 		controlType?: string,
-		placeholder?: string
+		placeholder?: string,
+		validators?: any[]
 	} = {}) {
 		this.value = options.value;
 		this.key = options.key || '';
@@ -23,5 +26,7 @@ export class FormElement<T> {
 		this.order = options.order === undefined ? 1 : options.order;
 		this.controlType = options.controlType || '';
 		this.placeholder = options.placeholder || '';
+		this.validators = options.validators || [];
+		this.errors = [];
 	}
 }
