@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, 
+	AfterContentChecked, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FormElement } from '../form-elements/form-element';
@@ -9,14 +10,18 @@ import { FormSubmitEvent } from '../custom-events/form-submit-event';
 	selector: 'dynamic-form',
 	templateUrl: './dynamic-form.component.html',
 	styleUrls: ['./dynamic-form.component.css'],
-	providers: [FormControlService]
+	providers: [
+		FormControlService
+	]
 })
 export class DynamicFormComponent implements OnInit {
 
 	@Input()
 	formElements: FormElement<any>[];
+
 	@Input()
 	buttonValue: string;
+
 	@Input()
 	title: string;
 
@@ -26,23 +31,40 @@ export class DynamicFormComponent implements OnInit {
 	form: FormGroup;
 	formSubmitEvent: FormSubmitEvent;
 
-	constructor(private _fcs: FormControlService) {
+	mockModel = {};
+
+	constructor(
+		private _fcs: FormControlService
+	) {
 		this.formSubmitEvent = new FormSubmitEvent();
 		this.onFormSubmit = new EventEmitter<FormSubmitEvent>();
 	}
 
 	ngOnInit() {
+		this.formElements.forEach(formElement => {
+			this.mockModel[formElement['key']] = formElement['value'];
+		});
+
 		this.form = this._fcs.toFormGroup(this.formElements);
+
+		this.form.valueChanges.subscribe(data => this.onValueChanged(data));
+		this.onValueChanged();
 	}
 
-	ngOnChanges() {
-		this.form = this._fcs.toFormGroup(this.formElements);
+	ngAfterContentChecked() {
+		this.formElements.forEach(formElement => {
+			this.mockModel[formElement['key']] = formElement['value'];
+		});
 	}
 
-	submit(e) {
-		this.formSubmitEvent.formObject = this.form.value;
-		this.formSubmitEvent.event = e;
-		this.onFormSubmit.emit(this.formSubmitEvent);
+	onSubmit() {
+		if (this.form.valid) {
+			this.formSubmitEvent.formObject = this.mockModel;
+			this.formSubmitEvent.event = 'submitEvent';
+			this.onFormSubmit.emit(this.formSubmitEvent);
+		} else {
+			this.onValueChanged();
+		}
 	}
 
 	setFile(e) {
@@ -55,4 +77,19 @@ export class DynamicFormComponent implements OnInit {
 		this.onFormSubmit.emit(this.formSubmitEvent);
 	}
 
+	onValueChanged(data?: any) {
+		if (!this.form) {
+			return;
+		}
+		const form = this.form;
+
+		for (const formElement in this.formElements) {
+			this.formElements[formElement]['errors'] = [];
+			const control = form.get(this.formElements[formElement]['key']);
+			if (control && control.dirty && !control.valid) {
+				const message = `${this.formElements[formElement]['placeholder']} is required`;
+				this.formElements[formElement]['errors'].push(message);
+			}
+		}
+	}
 }

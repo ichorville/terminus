@@ -1,38 +1,51 @@
 <div class="container">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header" data-background-color="purple">
 						<h4 class="title">{{ title }}</h4>
 						<p class="category">Please complete and save the form</p>
 					</div>
-					<div class="card-content">
-						<form (submit)="submit($event)" [formGroup]="form" #dynamicForm="ngForm">
-							<div *ngFor="let formElement of formElements" class="form-group">
+					<div class="card-content" *ngIf="mockModel">
+						<form (ngSubmit)="onSubmit()" [formGroup]="form">
+							<div *ngFor="let formElement of formElements">
 								<div [ngSwitch]="formElement.controlType">
-									<!-- form input  -->
+									<!-- form textbox  -->
 									<md-input-container class="full-width" *ngSwitchCase="'textbox'">
 										<input mdInput placeholder="{{ formElement.placeholder }}" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type"
-										 [value]=formElement.value>
+											[value]=formElement.value autocomplete="off" [(ngModel)]="mockModel[formElement['key']]">
+										<!-- form textbox errors  -->
+										<md-error *ngIf="formElement.errors">
+											{{ formElement.errors }}
+										</md-error> 
 									</md-input-container>
 									<!-- form file upload  -->
 									<input *ngSwitchCase="'file'" [formControlName]="formElement.key" [id]="formElement.key" [type]="formElement.type" class="form-control"
-									 [value]=formElement.value placeholder="{{ formElement.placeholder }}" (change)="setFile($event)">
+										[value]=formElement.value placeholder="{{ formElement.placeholder }}" (change)="setFile($event)"
+										[(ngModel)]="mockModel[formElement['key']]">
 									<!-- form dropdown  -->
-									<md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder="{{ formElement.label }}"
-									 [id]="formElement.key">
+									 <md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder="{{ formElement.label }}"
+									 	[id]="formElement.key" [attr.name]="formElement.key" [(ngModel)]="mockModel[formElement['key']]">
 										<md-option *ngFor="let opt of formElement.options" [value]="opt.key">
-											{{opt.value}}
+											{{ opt.value }}
 										</md-option>
-									</md-select>
+										<!-- form dropdown errors  -->
+										<md-error *ngIf="formElement.errors">
+											{{ formElement.errors }}
+										</md-error> 
+									</md-select> 
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">{{ buttonValue }}</button>
+							<button type="submit"  md-raised-button [disabled]="!form.valid">
+								{{ buttonValue }}
+							</button>
 						</form>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3"></div>
 		</div>
 	</div>
 </div>
