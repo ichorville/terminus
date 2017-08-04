@@ -31,3 +31,6 @@
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
 }
+h3 {
+    color: tomato;
+}
