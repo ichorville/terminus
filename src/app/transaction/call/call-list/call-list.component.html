@@ -42,8 +42,15 @@
 			</div>
 		</div>
 	</form>
+	<div class="col-md-12">
+		<div class="card" *ngIf="calls.length == 0">
+			<div class="card-content table-responsive">
+				<h3>No Matching Records Found</h3>
+			</div>
+		</div>
+	</div>
 </div>
-<app-data-table 
+<app-data-table *ngIf="calls.length > 0"
 	[taskDetail]="taskDetail"
 	[url]="url" 
 	[columns]="columns" 

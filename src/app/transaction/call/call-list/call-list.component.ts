@@ -73,6 +73,7 @@ export class CallListComponent implements OnInit {
 		private _cs: CallService,
 		private fb: FormBuilder
 	) {
+		this.calls = [];
 		this.taskDetail = true;
 		this.rows = [];
 		this.status = 0;
@@ -101,7 +102,9 @@ export class CallListComponent implements OnInit {
 		
 		this._cs.all(date).then((calls) => {
 			this.calls = calls['t'];
-			this.updateRows();
+			if (this.calls.length > 0) {
+				this.updateRows();
+			} 
 		});
 
 		this.title = 'Calls';
@@ -174,7 +177,10 @@ export class CallListComponent implements OnInit {
 			};
 			this._cs.all(date).then((calls) => {
 				this.calls = calls['t'];
-				this.updateRows();
+				console.log(this.calls);
+				if (this.calls.length > 0) {
+					this.updateRows();
+				}
 			});
 		} else {
 			const thisForm = this.form;

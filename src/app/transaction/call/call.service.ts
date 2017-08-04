@@ -22,12 +22,13 @@ export class CallService {
 	}
 
 	all(date:any): Promise<any> {
-		// return this.http.get(`${this.url}/${date.from}/${date.to}/${date.status}`).toPromise().then((response) => {
-		// 	return response.json();
-		// });
-		return Promise.resolve(true).then(() => {
-			return CALLS;
+		console.log(`${this.url}/${date.from}/${date.to}/${date.status}`);
+		return this.http.get(`${this.url}/${date.from}/${date.to}/${date.status}`).toPromise().then((response) => {
+			return response.json();
 		});
+		// return Promise.resolve(true).then(() => {
+		// 	return CALLS;
+		// });
 	}
 
 	get(id: any): Promise<any> {

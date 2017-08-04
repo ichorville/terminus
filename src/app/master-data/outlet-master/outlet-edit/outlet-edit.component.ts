@@ -23,9 +23,9 @@ import { OutletClassService } from '../../../configuration/outlet-config/outlet-
 
 
 @Component({
-  selector: 'app-outlet-edit',
-  templateUrl: './outlet-edit.component.html',
-  styleUrls: ['./outlet-edit.component.css']
+	selector: 'app-outlet-edit',
+	templateUrl: './outlet-edit.component.html',
+	styleUrls: ['./outlet-edit.component.css']
 })
 export class OutletEditComponent implements OnInit {
 
@@ -39,12 +39,12 @@ export class OutletEditComponent implements OnInit {
 
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
-	customerOptions: {key: string, value: string}[];
+	customerOptions: { key: string, value: string }[];
 	countryOptions: { key: string, value: string }[];
-  	regionOptions: {key: string, value: string}[];
-	districtOptions: {key: string, value: string}[];
-  	townOptions: {key: string, value: string}[];
-  	outletClassOptions: {key: string, value: string}[];
+	regionOptions: { key: string, value: string }[];
+	districtOptions: { key: string, value: string }[];
+	townOptions: { key: string, value: string }[];
+	outletClassOptions: { key: string, value: string }[];
 
 
 	constructor(
@@ -86,7 +86,7 @@ export class OutletEditComponent implements OnInit {
 				this._ctms.all().then((countries) => {
 					this.countryOptions = [];
 					countries.forEach((element) => {
-						this.countryOptions.push({key: element.Uid, value: element.Description})
+						this.countryOptions.push({ key: element.Uid, value: element.Description })
 					});
 					this.createForm();
 				});
@@ -94,7 +94,7 @@ export class OutletEditComponent implements OnInit {
 				this._rms.all().then((regions) => {
 					this.regionOptions = [];
 					regions.forEach((element) => {
-						this.regionOptions.push({key: element.Uid, value: element.Description})
+						this.regionOptions.push({ key: element.Uid, value: element.Description })
 					});
 					this.createForm();
 				})
@@ -102,7 +102,7 @@ export class OutletEditComponent implements OnInit {
 				this._dms.all().then((districts) => {
 					this.districtOptions = [];
 					districts.forEach((element) => {
-						this.districtOptions.push({key: element.Uid, value: element.Description})
+						this.districtOptions.push({ key: element.Uid, value: element.Description })
 					});
 					this.createForm();
 				})
@@ -110,7 +110,7 @@ export class OutletEditComponent implements OnInit {
 				this._tms.all().then((towns) => {
 					this.townOptions = [];
 					towns.forEach((element) => {
-						this.townOptions.push({key: element.Uid, value: element.Description})
+						this.townOptions.push({ key: element.Uid, value: element.Description })
 					});
 					this.createForm();
 				});
@@ -143,7 +143,7 @@ export class OutletEditComponent implements OnInit {
 			'fax': formValues.fax,
 			'email': formValues.email,
 			'classUid': formValues.outletClass,
-			'visitFrequency': formValues.visitFrequency					
+			'visitFrequency': formValues.visitFrequency
 		};
 		this._oms.update(outlet).then(() => {
 			this.router.navigateByUrl('/master-data/outlets');
@@ -298,5 +298,4 @@ export class OutletEditComponent implements OnInit {
 			}),
 		]
 	}
-
 }
