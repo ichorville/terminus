@@ -42,6 +42,9 @@ export class DynamicFormComponent implements OnInit {
 
 	ngOnInit() {
 		this.formElements.forEach(formElement => {
+			if (formElement['filter']) {
+				console.log(formElement['filter'][0]['parent']);
+			}
 			this.mockModel[formElement['key']] = formElement['value'];
 		});
 
@@ -52,7 +55,7 @@ export class DynamicFormComponent implements OnInit {
 	}
 
 	ngAfterContentChecked() {
-		this.formElements.forEach(formElement => {
+		this.formElements.forEach(formElement => { 
 			this.mockModel[formElement['key']] = formElement['value'];
 		});
 	}
@@ -75,6 +78,10 @@ export class DynamicFormComponent implements OnInit {
 
 	add() {
 		this.onFormSubmit.emit(this.formSubmitEvent);
+	}
+
+	onChange(event) {
+		console.log(event);
 	}
 
 	onValueChanged(data?: any) {

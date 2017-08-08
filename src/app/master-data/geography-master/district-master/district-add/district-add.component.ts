@@ -52,11 +52,13 @@ export class DistrictAddComponent implements OnInit {
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {
+				console.log(element);
 				this.countryOptions.push({ key: element.Uid, value: element.Description });
 			});
 			this._rms.all().then((regions) => {
 				this.regionOptions = [];
 				regions.forEach((element) => {
+					console.log(element);
 					this.regionOptions.push({ key: element.Uid, value: element.Description });
 				});
 				this.createForm();
@@ -88,6 +90,10 @@ export class DistrictAddComponent implements OnInit {
 				value: '',
 				controlType: 'dropbox',
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: 2
+				}],
 				required: true,
 				order: 1
 			}),
@@ -97,6 +103,10 @@ export class DistrictAddComponent implements OnInit {
 				value: '',
 				controlType: 'dropbox',
 				options: this.regionOptions,
+				filter: [{
+					parent: 1,
+					child: null
+				}],
 				required: true,
 				order: 2
 			}),

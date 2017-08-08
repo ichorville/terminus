@@ -27,7 +27,8 @@
 										[(ngModel)]="mockModel[formElement['key']]">
 									<!-- form dropdown  -->
 									 <md-select *ngSwitchCase="'dropdown'" class="full-width" [formControlName]="formElement.key " placeholder="{{ formElement.label }}"
-									 	[id]="formElement.key" [attr.name]="formElement.key" [(ngModel)]="mockModel[formElement['key']]">
+										[id]="formElement.key" [attr.name]="formElement.key" [(ngModel)]="mockModel[formElement['key']]"
+										(change)="onChange($event)" [disabled]="formElement['filter'][0]['parent'] != null">
 										<md-option *ngFor="let opt of formElement.options" [value]="opt.key">
 											{{ opt.value }}
 										</md-option>

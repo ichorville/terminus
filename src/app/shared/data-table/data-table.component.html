@@ -39,7 +39,7 @@
 								</th> 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody *ngIf="filteredRows.length > 0">
 							<tr *ngFor="let row of filteredRows">
 								<td class="td-actions text-right">
 									<button *ngIf="taskEdit" type="button" class="btn btn-primary btn-simple btn-xs"

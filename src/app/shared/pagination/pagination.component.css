@@ -1,14 +1,20 @@
 .selected {
-    background-color: #9c27b0 !important;
-    color: white !important;
+  background-color: #9c27b0 !important;
+  color: white !important;
 }
+
 .disabled {
-    color: #777;
-    cursor: not-allowed !important;
-    background-color: #fff;
-    border-color: #ddd;
+  color: #777;
+  cursor: not-allowed !important;
+  background-color: #fff;
+  border-color: #ddd;
 }
-.nav-pills > li > a {
+
+.nav>li>a {
+  padding: 10px 0px !important;
+}
+
+.nav-pills>li>a {
   line-height: 20px;
   text-transform: uppercase;
   font-size: 12px;
@@ -18,41 +24,61 @@
   color: #555555;
   transition: all .3s;
 }
-.nav-pills > li > a:hover {
+
+.nav-pills>li>a:hover {
   background-color: rgba(200, 200, 200, 0.2);
 }
-.nav-pills > li i {
+
+.nav-pills>li i {
   display: block;
   font-size: 20px;
 }
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
   background-color: #9c27b0;
   color: #FFFFFF;
   box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
-.nav-pills:not(.nav-pills-icons) > li > a {
+
+.nav-pills:not(.nav-pills-icons)>li>a {
   border-radius: 25px;
   cursor: pointer;
 }
-.nav-pills.nav-stacked > li + li {
+
+.nav-pills.nav-stacked>li+li {
   margin-top: 5px;
 }
-.nav-pills.nav-pills-info > li.active > a, .nav-pills.nav-pills-info > li.active > a:focus, .nav-pills.nav-pills-info > li.active > a:hover {
+
+.nav-pills.nav-pills-info>li.active>a,
+.nav-pills.nav-pills-info>li.active>a:focus,
+.nav-pills.nav-pills-info>li.active>a:hover {
   background-color: #00bcd4;
   box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
 }
-.nav-pills.nav-pills-success > li.active > a, .nav-pills.nav-pills-success > li.active > a:focus, .nav-pills.nav-pills-success > li.active > a:hover {
+
+.nav-pills.nav-pills-success>li.active>a,
+.nav-pills.nav-pills-success>li.active>a:focus,
+.nav-pills.nav-pills-success>li.active>a:hover {
   background-color: #4caf50;
   box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2);
 }
-.nav-pills.nav-pills-warning > li.active > a, .nav-pills.nav-pills-warning > li.active > a:focus, .nav-pills.nav-pills-warning > li.active > a:hover {
+
+.nav-pills.nav-pills-warning>li.active>a,
+.nav-pills.nav-pills-warning>li.active>a:focus,
+.nav-pills.nav-pills-warning>li.active>a:hover {
   background-color: #ff9800;
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
-.nav-pills.nav-pills-danger > li.active > a, .nav-pills.nav-pills-danger > li.active > a:focus, .nav-pills.nav-pills-danger > li.active > a:hover {
+
+.nav-pills.nav-pills-danger>li.active>a,
+.nav-pills.nav-pills-danger>li.active>a:focus,
+.nav-pills.nav-pills-danger>li.active>a:hover {
   background-color: #f44336;
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
+
 .nav-align-center .nav-pills {
   display: inline-block;
 }
