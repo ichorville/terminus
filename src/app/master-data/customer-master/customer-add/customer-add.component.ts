@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter, state,
 	 				trigger, style, transition, animate} from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 import { FormElement } from '../../../shared/form-elements/form-element';
@@ -66,9 +67,11 @@ export class CustomerAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Name'
-			}),
-
+				placeholder: 'Name',
+				validators: [
+					Validators.required,
+				]
+			})
 		]
 	}
 }
