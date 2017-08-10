@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter, state,
 	trigger, style, transition, animate} from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+
 import { Subject } from 'rxjs/Subject';
 
 import { FormElement } from '../../../../shared/form-elements/form-element';
@@ -61,7 +63,10 @@ export class StoreActivitiesAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Id'
+				placeholder: 'Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 
 			new FormTextbox({
@@ -71,8 +76,11 @@ export class StoreActivitiesAddComponent implements OnInit {
 				controlType: 'textbox',
 				type: 'text',
 				requried: true,
-				order: 3,
-				placeholder: 'Description'
+				order: 2,
+				placeholder: 'Description',
+				validators: [
+					Validators.required,
+				]
 			}),
 
 			new FormTextbox({
@@ -83,7 +91,10 @@ export class StoreActivitiesAddComponent implements OnInit {
 				type: 'text',
 				requried: false,
 				order: 3,
-				placeholder: 'Priority'
+				placeholder: 'Priority',
+				validators: [
+					Validators.required,
+				]
 			}),
 		]
 	}
