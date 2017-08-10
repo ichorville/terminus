@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 import { FormElement } from '../../../../shared/form-elements/form-element';
@@ -31,9 +32,9 @@ export class TownEditComponent implements OnInit {
 	message: string;
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
-	countryOptions: { key: string, value: string }[];
-	regionOptions: { key: string, value: string }[];
-	districtOptions: { key: string, value: string }[];
+	countryOptions: { key: string, value: string, parent: string }[];
+	regionOptions: { key: string, value: string, parent: string }[];
+	districtOptions: { key: string, value: string, parent: string }[];
 
 	uid: string;
 	parentUid: number;
@@ -72,7 +73,7 @@ export class TownEditComponent implements OnInit {
 				this._dms.all().then((districts) => {
 					this.districtOptions = [];
 					districts.forEach((element) => {
-						this.districtOptions.push({ key: element.Uid, value: element.Description });
+						this.districtOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 						if (this.parentUid == element.Uid) {
 							this.district = element.Description;
 							this.districtParentUid = element.ParentUid;
@@ -82,7 +83,7 @@ export class TownEditComponent implements OnInit {
 					this._rms.all().then((regions) => {
 						this.regionOptions = [];
 						regions.forEach((element) => {
-							this.regionOptions.push({ key: element.Uid, value: element.Description });
+							this.regionOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 							if (this.districtParentUid == element.Uid) {
 								this.region = element.Description;
 								this.regionParentUid = element.ParentUid;
@@ -92,7 +93,7 @@ export class TownEditComponent implements OnInit {
 						this._cms.all().then((countries) => {
 							this.countryOptions = [];
 							countries.forEach((element) => {
-								this.countryOptions.push({ key: element.Uid, value: element.Description });
+								this.countryOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 								if (this.regionParentUid == element.Uid) {
 									this.country = element.Description;
 								}
@@ -122,8 +123,8 @@ export class TownEditComponent implements OnInit {
 			}
 		});
 	}
-	private createForm() {
 
+	private createForm() {
 		this.formElements = [
 			new FormDropdown({
 				key: 'country',
@@ -131,8 +132,15 @@ export class TownEditComponent implements OnInit {
 				value: this.regionParentUid,
 				controlType: 'dropbox',
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: 2
+				}],
 				required: true,
-				order: 1
+				order: 1,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'region',
@@ -140,8 +148,15 @@ export class TownEditComponent implements OnInit {
 				value: this.districtParentUid,
 				controlType: 'dropbox',
 				options: this.regionOptions,
+				filter: [{
+					parent: 1,
+					child: 3
+				}],
 				required: true,
-				order: 2
+				order: 2,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'district',
@@ -149,8 +164,15 @@ export class TownEditComponent implements OnInit {
 				value: this.town['ParentUid'],
 				controlType: 'dropbox',
 				options: this.districtOptions,
+				filter: [{
+					parent: 2,
+					child: null
+				}],
 				required: true,
-				order: 3
+				order: 3,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'id',
@@ -159,7 +181,10 @@ export class TownEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 4,
-				placeholder: 'Town Id'
+				placeholder: 'Town Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'description',
@@ -168,7 +193,10 @@ export class TownEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 5,
-				placeholder: 'Town Name'
+				placeholder: 'Town Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		]
 	}

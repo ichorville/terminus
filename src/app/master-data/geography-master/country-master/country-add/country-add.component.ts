@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter, state,
 	trigger, style, transition, animate
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
 import { FormElement } from '../../../../shared/form-elements/form-element';
@@ -64,7 +65,10 @@ export class CountryAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Country Id'
+				placeholder: 'Country Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'name',
@@ -73,7 +77,10 @@ export class CountryAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Country Name'
+				placeholder: 'Country Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}

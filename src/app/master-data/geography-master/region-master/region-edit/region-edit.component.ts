@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 import { FormElement } from '../../../../shared/form-elements/form-element';
@@ -96,8 +97,15 @@ export class RegionEditComponent implements OnInit {
 				value: this.regionParentUid,
 				controlType: 'dropbox',
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: null
+				}],
 				required: true,
-				order: 1
+				order: 1,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'id',
@@ -106,7 +114,10 @@ export class RegionEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Region Id'
+				placeholder: 'Region Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'description',
@@ -115,7 +126,10 @@ export class RegionEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 3,
-				placeholder: 'Region Name'
+				placeholder: 'Region Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}

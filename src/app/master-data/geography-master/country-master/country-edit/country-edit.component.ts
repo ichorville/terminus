@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -77,7 +78,10 @@ export class CountryEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Country Id'
+				placeholder: 'Country Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'description',
@@ -86,7 +90,10 @@ export class CountryEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Description'
+				placeholder: 'Description',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}
