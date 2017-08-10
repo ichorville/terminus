@@ -3,6 +3,7 @@ import {
     trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms'
 
 import { Subject } from 'rxjs/Subject';
 import { FormElement } from '../../../shared/form-elements/form-element';
@@ -15,9 +16,9 @@ import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-subm
 import { CustomerMasterService } from '../customer-master.service';
 
 @Component({
-  selector: 'app-customer-edit',
-  templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.css']
+	selector: 'app-customer-edit',
+	templateUrl: './customer-edit.component.html',
+	styleUrls: ['./customer-edit.component.css']
 })
 export class CustomerEditComponent implements OnInit {
 
@@ -74,7 +75,10 @@ export class CustomerEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Name'
+				placeholder: 'Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}

@@ -77,8 +77,10 @@ export class DataTableComponent implements OnInit, OnChanges {
 				});
 				// paginate the whole dataset according to the pagination pages
 				this._ps.paginate(5, this.rows).then((filteredRows) => {
-					this.tempArray = filteredRows;
-					this.filteredRows = this.tempArray[0].items;
+					if (filteredRows[0].items) {
+						this.tempArray = filteredRows;
+						this.filteredRows = this.tempArray[0].items;
+					}
 				});
 
 				// load the first data set hence first selected page

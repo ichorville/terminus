@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, 
+import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef,
 	AfterContentChecked, EventEmitter, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { FormElement } from '../form-elements/form-element';
 import { FormControlService } from '../services/form-control.service';
@@ -33,14 +33,20 @@ export class DynamicFormComponent implements OnInit {
 
 	mockModel = {};
 
+	tempFormElements: any[];
+
 	constructor(
-		private _fcs: FormControlService
+		private _fcs: FormControlService,
+		private cd: ChangeDetectorRef
 	) {
+		this.tempFormElements = [];
 		this.formSubmitEvent = new FormSubmitEvent();
 		this.onFormSubmit = new EventEmitter<FormSubmitEvent>();
 	}
 
 	ngOnInit() {
+		this.tempFormElements = this.formElements;
+		
 		this.formElements.forEach(formElement => {
 			this.mockModel[formElement['key']] = formElement['value'];
 		});
@@ -52,9 +58,14 @@ export class DynamicFormComponent implements OnInit {
 	}
 
 	ngAfterContentChecked() {
-		this.formElements.forEach(formElement => {
+		this.formElements.forEach(formElement => { 
 			this.mockModel[formElement['key']] = formElement['value'];
-		});
+		});	
+		this.cd.detectChanges();
+	}
+
+	ngAfterViewChecked() {
+		this.tempFormElements = this.formElements;
 	}
 
 	onSubmit() {
@@ -75,6 +86,28 @@ export class DynamicFormComponent implements OnInit {
 
 	add() {
 		this.onFormSubmit.emit(this.formSubmitEvent);
+	}
+
+	onChange(value, event) {
+		if (event.filter) {
+			// get relevant form element
+			this.formElements.forEach(formElement => {
+				if (formElement.order == event.filter[0]['child']) {
+					formElement.disabled = false;
+					// get relevant temp form element
+					this.tempFormElements.forEach(tempElement => {
+						if (tempElement.order == event.filter[0]['child']) {
+							formElement['options'] = tempElement['options'].filter(element => {
+								// filter from parentUid
+								if (element['parent'] == value['value']) {
+									return true;
+								}
+							});
+						}
+					});
+				}
+			});
+		}
 	}
 
 	onValueChanged(data?: any) {

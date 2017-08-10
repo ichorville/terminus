@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -31,9 +32,9 @@ export class TownAddComponent implements OnInit {
 
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
-	countryOptions: { key: string, value: string }[];
-	regionOptions: { key: string, value: string }[];
-	districtOptions: { key: string, value: string }[];
+	countryOptions: { key: string, value: string, parent: string }[];
+	regionOptions: { key: string, value: string, parent: string }[];
+	districtOptions: { key: string, value: string, parent: string }[];
 
 	constructor(
 		private router: Router,
@@ -55,20 +56,19 @@ export class TownAddComponent implements OnInit {
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {
-				console.log(element);
-				this.countryOptions.push({ key: element.Uid, value: element.Description });
+				this.countryOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 			});
 			this.createForm();
 			this._rms.all().then((regions) => {
 				this.regionOptions = [];
 				regions.forEach((element) => {
-					this.regionOptions.push({ key: element.Uid, value: element.Description });
+					this.regionOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 				});
 				this.createForm();
 				this._dms.all().then((districts) => {
 					this.districtOptions = [];
 					districts.forEach((element) => {
-						this.districtOptions.push({ key: element.Uid, value: element.Description });
+						this.districtOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 					});
 					this.createForm();
 				});				
@@ -99,27 +99,51 @@ export class TownAddComponent implements OnInit {
 				label: 'Country',
 				value: '',
 				controlType: 'dropbox',
+				disabled: false,
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: 2
+				}],
 				required: true,
-				order: 1
+				order: 1,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'region',
 				label: 'Region',
 				value: '',
 				controlType: 'dropbox',
+				disabled: true,
 				options: this.regionOptions,
+				filter: [{
+					parent: 1,
+					child: 3
+				}],
 				required: true,
-				order: 2
+				order: 2,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'district',
 				label: 'District',
 				value: '',
 				controlType: 'dropbox',
+				disabled: true,
 				options: this.districtOptions,
+				filter: [{
+					parent: 2,
+					child: null
+				}],
 				required: true,
-				order: 3
+				order: 3,
+				validators: [
+					Validators.required,
+				]
 			}),
 				new FormTextbox({
 				key: 'id',
@@ -128,7 +152,10 @@ export class TownAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 4,
-				placeholder: 'Town Id'
+				placeholder: 'Town Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'name',
@@ -137,7 +164,10 @@ export class TownAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 5,
-				placeholder: 'Town Name'
+				placeholder: 'Town Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}

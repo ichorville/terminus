@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 import { FormElement } from '../../../../shared/form-elements/form-element';
@@ -17,7 +18,6 @@ import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../district-master.service';
 import { TownMasterService } from '../../town-master/town-master.service';
 
-
 @Component({
 	selector: 'app-district-edit',
 	templateUrl: './district-edit.component.html',
@@ -31,8 +31,8 @@ export class DistrictEditComponent implements OnInit {
 	formElements: FormElement<any>[];
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
-	countryOptions: { key: string, value: string }[];
-	regionOptions: { key: string, value: string }[];
+	countryOptions: { key: string, value: string, parent: string }[];
+	regionOptions: { key: string, value: string, parent: string }[];
 
 	uid: string;
 	country: string;
@@ -57,7 +57,6 @@ export class DistrictEditComponent implements OnInit {
 		this.createForm();
 	}
 
-
 	ngOnInit() {
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
@@ -72,13 +71,13 @@ export class DistrictEditComponent implements OnInit {
 							this.regionParentUid = element.ParentUid;
 							this.region = element.Description;
 						}
-						this.regionOptions.push({ key: element.Uid, value: element.Description });
+						this.regionOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 					});
 
 					this._cms.all().then((countries) => {
 						this.countryOptions = [];
 						countries.forEach((element) => {
-							this.countryOptions.push({ key: element.Uid, value: element.Description });
+							this.countryOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 							if (this.regionParentUid == element.Uid) {
 								this.country = element.Description;
 							}
@@ -116,8 +115,15 @@ export class DistrictEditComponent implements OnInit {
 				value: this.regionParentUid,
 				controlType: 'dropbox',
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: 2
+				}],
 				required: true,
-				order: 1
+				order: 1,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'region',
@@ -125,8 +131,15 @@ export class DistrictEditComponent implements OnInit {
 				value: this.districtParentUid,
 				controlType: 'dropbox',
 				options: this.regionOptions,
+				filter: [{
+					parent: 1,
+					child: null
+				}],
 				required: true,
-				order: 2
+				order: 2,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'id',
@@ -135,7 +148,10 @@ export class DistrictEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 3,
-				placeholder: 'District Id'
+				placeholder: 'District Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'description',
@@ -144,7 +160,10 @@ export class DistrictEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 4,
-				placeholder: 'District Name'
+				placeholder: 'District Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}

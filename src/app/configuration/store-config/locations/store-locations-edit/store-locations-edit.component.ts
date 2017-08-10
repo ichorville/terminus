@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -74,7 +75,10 @@ private createForm() {
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Id'
+				placeholder: 'Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'description',
@@ -83,7 +87,10 @@ private createForm() {
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Description'
+				placeholder: 'Description',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'priority',
@@ -92,7 +99,10 @@ private createForm() {
 				controlType: 'textbox',
 				required: true,
 				order: 3,
-				placeholder: 'Priority'
+				placeholder: 'Priority',
+				validators: [
+					Validators.required,
+				]
 			})
 		]
 	}

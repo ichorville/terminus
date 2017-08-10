@@ -352,6 +352,7 @@
 button {
   background: linear-gradient(60deg, #26c6da, #00acc1);
   color: white !important;
+  margin-top: 15px
 }
 
 button:disabled {

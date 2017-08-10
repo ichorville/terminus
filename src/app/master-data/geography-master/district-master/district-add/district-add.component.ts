@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -33,8 +34,8 @@ export class DistrictAddComponent implements OnInit {
 
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
-	countryOptions: { key: string, value: string }[];
-	regionOptions: { key: string, value: string }[];
+	countryOptions: { key: string, value: string, parent: string }[];
+	regionOptions: { key: string, value: string, parent: string }[];
 
 	constructor(
 		private router: Router,
@@ -52,12 +53,14 @@ export class DistrictAddComponent implements OnInit {
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {
-				this.countryOptions.push({ key: element.Uid, value: element.Description });
+				console.log(element);
+				this.countryOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 			});
 			this._rms.all().then((regions) => {
 				this.regionOptions = [];
 				regions.forEach((element) => {
-					this.regionOptions.push({ key: element.Uid, value: element.Description });
+					console.log(element);
+					this.regionOptions.push({ key: element.Uid, value: element.Description, parent: element.ParentUid });
 				});
 				this.createForm();
 			}); 
@@ -87,18 +90,34 @@ export class DistrictAddComponent implements OnInit {
 				label: 'Country',
 				value: '',
 				controlType: 'dropbox',
+				disabled: false,
 				options: this.countryOptions,
+				filter: [{
+					parent: null,
+					child: 2
+				}],
 				required: true,
-				order: 1
+				order: 1,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormDropdown({
 				key: 'region',
 				label: 'Region',
 				value: '',
 				controlType: 'dropbox',
+				disabled: true,
 				options: this.regionOptions,
+				filter: [{
+					parent: 1,
+					child: null
+				}],
 				required: true,
-				order: 2
+				order: 2,
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'id',
@@ -107,7 +126,10 @@ export class DistrictAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 3,
-				placeholder: 'District Id'
+				placeholder: 'District Id',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'name',
@@ -116,7 +138,10 @@ export class DistrictAddComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 4,
-				placeholder: 'District Name'
+				placeholder: 'District Name',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}
