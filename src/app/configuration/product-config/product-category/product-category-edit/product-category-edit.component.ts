@@ -3,6 +3,7 @@ import {
 	trigger, style, transition, animate
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -88,8 +89,11 @@ export class ProductCategoryEditComponent implements OnInit {
 				value: this.productCategory['Description'],
 				controlType: 'textbox',
 				required: true,
-				order: 2,
-				placeholder: 'Description'
+				order: 1,
+				placeholder: 'Description',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'categoryType',
@@ -97,8 +101,11 @@ export class ProductCategoryEditComponent implements OnInit {
 				value: this.productCategory['CategoryType'],
 				controlType: 'textbox',
 				required: true,
-				order: 3,
-				placeholder: 'Category Type'
+				order: 2,
+				placeholder: 'Category Type',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
 				key: 'parentUid',
@@ -107,7 +114,10 @@ export class ProductCategoryEditComponent implements OnInit {
 				controlType: 'textbox',
 				required: true,
 				order: 3,
-				placeholder: 'Parent Uid'
+				placeholder: 'Parent Uid',
+				validators: [
+					Validators.required,
+				]
 			})		
 		];
 	}
