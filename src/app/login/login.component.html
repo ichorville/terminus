@@ -48,20 +48,23 @@
                         <img src="../../assets/img/terminus.png" alt="Vantage">
                     </div> 
               </div>
-        <p>Please login to continue</p>
-        <md-input-container class="full-width-input">
+        <div class="row">
+        <md-input-container class="full-width">
           <input mdInput placeholder="User" formControlName="userName" required>
           <md-error *ngIf="isFieldInvalid('userName')">
             Please inform your user name
           </md-error>
         </md-input-container>
-        <md-input-container class="full-width-input">
+        </div>
+        <div class="row">
+        <md-input-container class="full-width">
           <input mdInput type="password" placeholder="Password" formControlName="password" required>
           <md-error *ngIf="isFieldInvalid('userName')">
             Please inform your password
           </md-error>
         </md-input-container>
-        <button md-raised-button color="primary" type="submit">Login</button>
+        </div>
+        <button class="full-width btn-login" md-raised-button type="submit">Login</button>
       </form>
     </md-card-content>
   </md-card>
