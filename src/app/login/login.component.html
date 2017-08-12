@@ -1,0 +1,69 @@
+<!--<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <md-card>
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+               
+                <div class="row">
+                    <div class="col-xs-12">
+                        <md-input-container for="userName" class="full-width">
+                            <input mdInput placeholder="userName"  id="userName" 
+                            formControlName="userName" [(ngModel)]="user.userName">
+							<md-error *ngIf="formErrors.userName">
+								{{ formErrors.userName }}
+							</md-error>
+                        </md-input-container>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <md-input-container for="password" class="full-width">
+                            <input mdInput [type]="'password'" placeholder="Password" id="password" 
+                            formControlName="password" [(ngModel)]="user.password">
+                            <md-error>
+								{{ formErrors.password }}
+							</md-error>
+                        </md-input-container>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="submit" class="full-width btn-login" md-raised-button>Login</button>
+                    </div> 
+                </div>
+            </form>
+        </md-card>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+</div>-->
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+  <md-card>
+    <md-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+         <div class="row">
+                    <div class="col-xs-12 center">
+                        <img src="../../assets/img/terminus.png" alt="Vantage">
+                    </div> 
+              </div>
+        <p>Please login to continue</p>
+        <md-input-container class="full-width-input">
+          <input mdInput placeholder="User" formControlName="userName" required>
+          <md-error *ngIf="isFieldInvalid('userName')">
+            Please inform your user name
+          </md-error>
+        </md-input-container>
+        <md-input-container class="full-width-input">
+          <input mdInput type="password" placeholder="Password" formControlName="password" required>
+          <md-error *ngIf="isFieldInvalid('userName')">
+            Please inform your password
+          </md-error>
+        </md-input-container>
+        <button md-raised-button color="primary" type="submit">Login</button>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>
+</div>

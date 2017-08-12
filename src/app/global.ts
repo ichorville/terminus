@@ -3,4 +3,10 @@ export const GlobalVariable = Object.freeze({
 	// http://10.20.10.16/VantageMerchandiser/api' //http://localhost:64598/api'
 
 	BASE_API_URL: 'http://www.axienta.lk/VantageMerchandiser45/api'
+	
 });
+
+export const LoginVariable = Object ({ 
+	IS_LOGGED_IN: false
+});
+	
