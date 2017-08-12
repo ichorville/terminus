@@ -9,7 +9,7 @@ import { Location, LocationStrategy } from '@angular/common';
 let comp: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
 
-describe('App: NestleMerchandiserApp', () => {
+describe('App: Vantage Terminus', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [

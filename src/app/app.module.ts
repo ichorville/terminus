@@ -16,6 +16,10 @@ import { AdministrationModule } from './administration/administration.module';
 // import { LogModule } from './log/log.module';
 // import { DashboardModule } from './dashboard/dashboard.module';
 import {TransactionModule} from './transaction/transaction.module';
+import { LoginModule } from './login/login.module';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+
 
 
 
@@ -23,11 +27,15 @@ import {TransactionModule} from './transaction/transaction.module';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
+		HeaderComponent,
+		AuthComponent,
 			],
 	imports: [
 		BrowserModule,
@@ -37,6 +45,7 @@ import { AppComponent } from './app.component';
 		FormsModule,
 		HttpModule,
 		routing,
+		LoginModule,
 		HomeModule,		
 		MasterDataModule,
 		ConfigurationModule,
@@ -44,10 +53,9 @@ import { AppComponent } from './app.component';
 		// LogModule,
 		// DashboardModule,
 		TransactionModule
+		
 	],
-	providers: [
-
-	],
+	providers: [AuthService, AuthGuard],
 	bootstrap: [
 		AppComponent
 	]
