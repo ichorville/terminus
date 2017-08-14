@@ -17,6 +17,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 import { CountryMasterService } from '../../country-master/country-master.service';
 import { RegionMasterService } from '../region-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-region-add',
 	templateUrl: './region-add.component.html',
@@ -45,6 +47,9 @@ export class RegionAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {

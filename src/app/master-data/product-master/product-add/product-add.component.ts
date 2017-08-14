@@ -17,6 +17,8 @@ import { ProductMasterService } from '../product-master.service';
 import {ProductTypeService} from '../../../configuration/product-config/product-type/product-type.service';
 import {ProductGroupService} from '../../../configuration/product-config/product-group/product-group.service';
 
+import { LoginVariable } from '../../../global';
+
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
@@ -50,6 +52,9 @@ export class ProductAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._pms.categories().then((categories) => {
 			this.categoryOptions = [];
 			categories['t'].forEach((element) => {

@@ -18,6 +18,8 @@ import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../district-master.service';
 import { TownMasterService } from '../../town-master/town-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-district-edit',
 	templateUrl: './district-edit.component.html',
@@ -58,6 +60,9 @@ export class DistrictEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._dms.get(id).then((district) => {

@@ -13,6 +13,8 @@ import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-subm
 
 import { CustomerMasterService } from '../customer-master.service';
 
+import { LoginVariable } from '../../../global';
+
 @Component({
 	selector: 'app-customer-add',
 	templateUrl: './customer-add.component.html',
@@ -40,7 +42,9 @@ export class CustomerAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {

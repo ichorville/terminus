@@ -10,6 +10,8 @@ import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
 import { CallService } from '../call.service';
 
+import { LoginVariable } from '../../../global';
+
 export class AppDateAdapter extends NativeDateAdapter {
     format(date: Date, displayFormat: Object): string {
         if (displayFormat === 'input') {
@@ -71,7 +73,8 @@ export class CallListComponent implements OnInit {
 
 	constructor(
 		private _cs: CallService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	) {
 		this.calls = [];
 		this.taskDetail = true;
@@ -81,6 +84,10 @@ export class CallListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
+
 		this.currentDate = new Date();
 		this.currentDate = this.currentDate.getFullYear() + '-' + ('0' + (this.currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + this.currentDate.getDate()).slice(-2);
 

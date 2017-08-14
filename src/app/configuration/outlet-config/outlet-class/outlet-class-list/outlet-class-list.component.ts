@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { OutletClassService } from '../outlet-class.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-outlet-class-list',
@@ -21,7 +25,8 @@ export class OutletClassListComponent implements OnInit {
 	title: string;
 
 	constructor(
-		private _ocs: OutletClassService
+		private _ocs: OutletClassService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -30,9 +35,9 @@ export class OutletClassListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}	
 		this._ocs.all().then((outletClasses) => {
 			this.outletClasses = outletClasses['t'];
 			this.updateRows();

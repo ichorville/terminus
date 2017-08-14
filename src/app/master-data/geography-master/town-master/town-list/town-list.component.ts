@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { CountryMasterService } from '../../country-master/country-master.service';
 import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../../district-master/district-master.service';
 import { TownMasterService } from '../town-master.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-town-list',
@@ -31,7 +35,8 @@ export class TownListComponent implements OnInit {
 		private _cms: CountryMasterService,
 		private _rms: RegionMasterService,
 		private _dms: DistrictMasterService,
-		private _tms: TownMasterService
+		private _tms: TownMasterService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -44,9 +49,9 @@ export class TownListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._cms.all().then((countries) => {
 			countries.forEach((element) => {
 				this.countriesMap[element.Uid] = element.Description;

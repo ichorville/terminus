@@ -13,9 +13,10 @@ import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event
 import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-submit-complete-event';
 
 import { ProductMasterService } from '../product-master.service';
-import {ProductTypeService} from '../../../configuration/product-config/product-type/product-type.service';
-import {ProductGroupService} from '../../../configuration/product-config/product-group/product-group.service';
+import { ProductTypeService } from '../../../configuration/product-config/product-type/product-type.service';
+import { ProductGroupService } from '../../../configuration/product-config/product-group/product-group.service';
 
+import { LoginVariable } from '../../../global';
 
 @Component({
 	selector: 'app-product-edit',
@@ -39,11 +40,11 @@ export class ProductEditComponent implements OnInit {
 	productGroup: string;
 
 	constructor(
-			private router: Router,
-			private route: ActivatedRoute,
-			private _pms: ProductMasterService,
-			private _pts: ProductTypeService,
-			private _pgs: ProductGroupService
+		private router: Router,
+		private route: ActivatedRoute,
+		private _pms: ProductMasterService,
+		private _pts: ProductTypeService,
+		private _pgs: ProductGroupService
 	) { 
 		this.title = 'Edit Product';
 		this.buttonValue = 'Update';
@@ -53,6 +54,9 @@ export class ProductEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._pms.get(id).then((product) => {

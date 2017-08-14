@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { ProductCategoryService } from '../product-category.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-product-category-list',
@@ -21,7 +25,8 @@ export class ProductCategoryListComponent implements OnInit {
 	title: string;
 
 	constructor(
-		private _pcs: ProductCategoryService
+		private _pcs: ProductCategoryService,
+		private router: Router
 	) { 
 		this.addButton = true;
 		this.taskEdit = true;
@@ -30,6 +35,9 @@ export class ProductCategoryListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._pcs.all().then((productCategories) => {
 			this.productCategories = productCategories['t'];
 			this.updateRows();

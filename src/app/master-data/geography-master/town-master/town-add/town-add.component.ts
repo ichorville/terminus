@@ -19,6 +19,8 @@ import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../../district-master/district-master.service';
 import { TownMasterService } from '../town-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-town-add',
 	templateUrl: './town-add.component.html',
@@ -53,6 +55,9 @@ export class TownAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {

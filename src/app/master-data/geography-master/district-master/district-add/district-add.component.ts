@@ -18,6 +18,8 @@ import { CountryMasterService } from '../../country-master/country-master.servic
 import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../district-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-district-add',
 	templateUrl: './district-add.component.html',
@@ -50,6 +52,9 @@ export class DistrictAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._cms.all().then((countries) => {
 			this.countryOptions = [];
 			countries.forEach((element) => {

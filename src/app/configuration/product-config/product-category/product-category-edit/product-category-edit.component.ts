@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { ProductCategoryService } from '../product-category.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-product-category-edit',
 	templateUrl: './product-category-edit.component.html',
@@ -44,6 +46,9 @@ export class ProductCategoryEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._pcs.get(id).then((productCategory) => {

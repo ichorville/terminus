@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { ProductTypeService } from '../product-type.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-product-type-list',
@@ -21,7 +25,8 @@ export class ProductTypeListComponent implements OnInit {
 	title: string;;
 
 	constructor(
-		private _pts: ProductTypeService
+		private _pts: ProductTypeService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -30,9 +35,9 @@ export class ProductTypeListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._pts.all().then((productTypes) => {
 			this.productTypes = productTypes['t'];
 			this.updateRows();

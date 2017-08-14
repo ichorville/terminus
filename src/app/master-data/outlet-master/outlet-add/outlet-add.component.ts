@@ -22,6 +22,8 @@ import { DistrictMasterService } from '../../geography-master/district-master/di
 import { TownMasterService } from '../../geography-master/town-master/town-master.service';
 import { OutletClassService } from '../../../configuration/outlet-config/outlet-class/outlet-class.service';
 
+import { LoginVariable } from '../../../global';
+
 @Component({
 	selector: 'app-outlet-add',
 	templateUrl: './outlet-add.component.html',
@@ -65,6 +67,10 @@ export class OutletAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
+
 		this._cms.all().then((customers) => {
 			this.customerOptions = [];
 			customers.forEach((element) => {

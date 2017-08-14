@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { FirebaseListObservable } from 'angularfire2';
+import { Router} from '@angular/router';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
 import { ProductMasterService } from '../product-master.service';
+
+import { LoginVariable } from '../../../global';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +25,8 @@ export class ProductListComponent implements OnInit {
 	title: string;
 
 	constructor(
-		private _pms: ProductMasterService
+		private _pms: ProductMasterService,
+		private router: Router
 	) {
 		this.rows = [];
 		this.addButton = true;
@@ -31,9 +35,9 @@ export class ProductListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._pms.all().then((products) => {
 			this.products = products['t'];
 			this.updateRows();

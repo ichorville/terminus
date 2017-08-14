@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-// import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
 import { CustomerMasterService } from '../customer-master.service';
+
+import { LoginVariable } from '../../../global';
 
 @Component({
 	selector: 'app-customer-list',
@@ -20,7 +23,8 @@ export class CustomerListComponent implements OnInit {
 	addButton: boolean;
 
 	constructor(
-		private _cms: CustomerMasterService
+		private _cms: CustomerMasterService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -29,9 +33,9 @@ export class CustomerListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}	
 		this._cms.all().then((customers) => {
 			this.customers = customers;
 			this.updateRows();

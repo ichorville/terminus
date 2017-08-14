@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { StoreActivitiesService } from '../activities.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-store-activities-edit',
 	templateUrl: './store-activities-edit.component.html',
@@ -43,6 +45,9 @@ export class StoreActivitiesEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._sas.get(id).then((storeActivity) => {

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { OutletTypeService } from '../outlet-type.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-outlet-type-list',
@@ -20,7 +23,10 @@ export class OutletTypeListComponent implements OnInit {
 	columns: any[];
 	title: string;;
 
-	constructor( private _ots: OutletTypeService ) {
+	constructor( 
+		private _ots: OutletTypeService,
+		private router: Router 
+	) {
 		this.rows = [];
 		this.addButton = true;
 		this.taskEdit = true;
@@ -28,6 +34,9 @@ export class OutletTypeListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._ots.all().then((outletTypes) => {
 			this.outletTypes = outletTypes['t'];
 			this.updateRows();

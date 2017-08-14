@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-//import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 
 import { CountryMasterService } from '../../country-master/country-master.service';
 import { RegionMasterService } from '../region-master.service';
 import { DistrictMasterService } from '../../district-master/district-master.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-region-list',
@@ -28,7 +31,8 @@ export class RegionListComponent implements OnInit {
 	constructor(
 		private _cms: CountryMasterService,
 		private _rms: RegionMasterService,
-		private _dms: DistrictMasterService
+		private _dms: DistrictMasterService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -38,9 +42,9 @@ export class RegionListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}	
 		this._cms.all().then((countries) => {
 			countries.forEach((element) => {
 				this.countriesMap[element.Uid] = element.Description;

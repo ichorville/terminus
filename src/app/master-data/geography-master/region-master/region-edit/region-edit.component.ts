@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 import { CountryMasterService } from '../../country-master/country-master.service';
 import { RegionMasterService } from '../region-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-region-edit',
 	templateUrl: './region-edit.component.html',
@@ -51,6 +53,9 @@ export class RegionEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._rms.get(id).then((region) => {
