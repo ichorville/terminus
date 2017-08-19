@@ -5,38 +5,30 @@ import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
-import { routing } from './app.routing';
-
-import './rxjs-extensions';
 import { MasterDataModule } from './master-data/master-data.module';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { HomeModule } from './home/home.module';
 import { AdministrationModule } from './administration/administration.module';
 // import { LogModule } from './log/log.module';
 // import { DashboardModule } from './dashboard/dashboard.module';
-import {TransactionModule} from './transaction/transaction.module';
+import { TransactionModule } from './transaction/transaction.module';
 import { LoginModule } from './login/login.module';
-import { AuthGuard } from './auth/auth.guard';
-import { AuthService } from './auth/auth.service';
 
-
-
-
+import { AuthModule } from './auth/auth.module';
 
 import 'hammerjs';
+import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthComponent } from './auth/auth.component';
 
+import { routing } from './app.routing';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HeaderComponent,
-		AuthComponent,
-			],
+		HeaderComponent
+	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -44,7 +36,6 @@ import { AuthComponent } from './auth/auth.component';
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		routing,
 		LoginModule,
 		HomeModule,		
 		MasterDataModule,
@@ -52,10 +43,11 @@ import { AuthComponent } from './auth/auth.component';
 		AdministrationModule,
 		// LogModule,
 		// DashboardModule,
-		TransactionModule
-		
+		TransactionModule,
+		AuthModule,
+		routing,
 	],
-	providers: [AuthService, AuthGuard],
+	providers: [],
 	bootstrap: [
 		AppComponent
 	]
