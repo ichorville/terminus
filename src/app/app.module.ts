@@ -9,11 +9,11 @@ import { MasterDataModule } from './master-data/master-data.module';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { HomeModule } from './home/home.module';
 import { AdministrationModule } from './administration/administration.module';
-// import { LogModule } from './log/log.module';
-// import { DashboardModule } from './dashboard/dashboard.module';
+import { LogModule } from './log/log.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { LoginModule } from './login/login.module';
-
+import { SidenavModule } from './sidenav/sidenav.module';
 import { AuthModule } from './auth/auth.module';
 
 import 'hammerjs';
@@ -46,6 +46,7 @@ import { routing } from './app.routing';
 		// DashboardModule,
 		TransactionModule,
 		AuthModule,
+		SidenavModule,
 		routing,
 	],
 	providers: [],
