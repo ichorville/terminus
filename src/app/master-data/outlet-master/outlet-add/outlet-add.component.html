@@ -1,13 +1,13 @@
 <div class="container app-body">
-  <ol class="breadcrumb">
-    <li><a routerLink="/master-data/outlets">Outlets</a></li>
-    <li class="active">Add</li>
-  </ol>
+	<ol class="breadcrumb">
+		<li><a routerLink="/master-data/outlets">Outlets</a></li>
+		<li class="active">Add</li>
+	</ol>
 </div>
 
 <dynamic-form 
-  [title]="title" 
-  [formElements]="formElements" 
-  [buttonValue]="buttonValue"
-  (onFormSubmit)="submit($event)">
+	[title]="title" 
+	[formElements]="formElements" 
+	[buttonValue]="buttonValue" 
+	(onFormSubmit)="submit($event)">
 </dynamic-form>
