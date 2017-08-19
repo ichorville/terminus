@@ -47,7 +47,6 @@ export class OutletEditComponent implements OnInit {
 	townOptions: { key: string, value: string }[];
 	outletClassOptions: { key: string, value: string }[];
 
-
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
@@ -72,7 +71,7 @@ export class OutletEditComponent implements OnInit {
 
 	ngOnInit() {
 		if (LoginVariable.IS_LOGGED_IN == false) {
-			this.router.navigateByUrl(`/login`);
+			return this.router.navigateByUrl(`/login`);
 		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];

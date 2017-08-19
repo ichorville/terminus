@@ -325,6 +325,6 @@ export class OutletAddComponent implements OnInit {
 					Validators.maxLength(3),  
 				]				
 			})
-		]
+		];
 	}
 }
