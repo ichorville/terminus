@@ -1,5 +1,5 @@
 <md-sidenav-container *ngIf="isLoggedIn$ | async as isLoggedIn">
-	<md-sidenav #sidenav mode="over">
+	<md-sidenav #sidenav mode="over" opened="false">
 		<md-card class="profile-section">
 			<div class="container container-width">
 				<div class="row">
@@ -13,7 +13,7 @@
 			<md-expansion-panel #panel1 [hideToggle]="hideToggle">
 				<md-expansion-panel-header>Dashboards</md-expansion-panel-header>
 				<md-list>
-					<md-list-item routerLink="/dashboards/surveys">
+					<md-list-item routerLink="/dashboards">
 						<md-icon class="icon" md-list-avatar>dashboard</md-icon>
 						<a>Dashboard</a>
 					</md-list-item>
@@ -141,7 +141,7 @@
 	<md-toolbar color="primary">
 		<md-icon class="menu" (click)="sidenav.toggle()">menu</md-icon>
 		<span class="example-spacer"></span>
-		<button md-icon-button routerLink="/dashboards/surveys">
+		<button md-icon-button routerLink="/dashboards">
 			<md-icon class="example-icon">dashboard</md-icon>
 		</button>
 		<button md-icon-button [mdMenuTriggerFor]="menu">

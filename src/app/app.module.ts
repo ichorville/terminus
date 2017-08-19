@@ -40,7 +40,7 @@ import { routing } from './app.routing';
 		ConfigurationModule,
 		AdministrationModule,
 		// LogModule,
-		// DashboardModule,
+		DashboardModule,
 		TransactionModule,
 		AuthModule,
 		SidenavModule,

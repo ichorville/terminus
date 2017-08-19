@@ -1,18 +1,25 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SurveyComponent } from './survey/survey.component';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { DashboardComponent } from './dashboard.component';
 
 const dashboardRoutes: Routes = [
 	{
-		path: '',
-		redirectTo: '/dashboards/surveys',
-		pathMatch: 'full'
-	},
-	{
-		path: 'dashboards/surveys',
-		component: SurveyComponent
-	}
+        path: '',
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
+    {
+        path: '',
+        component: SidenavComponent,
+        children: [
+            {
+				path: 'dashboards',
+				component: DashboardComponent
+			}
+        ]
+    }
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forChild(dashboardRoutes);

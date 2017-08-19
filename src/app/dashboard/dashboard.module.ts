@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts'
-import { SurveyModule } from './survey/survey.module';
+
+import { DashboardComponent } from './dashboard.component';
 
 import { routing } from './dashboard.routing';
 
@@ -10,9 +11,11 @@ import { routing } from './dashboard.routing';
 	imports: [
 		CommonModule,
 		MaterialModule,
-		NgxChartsModule,
-		routing,
-		SurveyModule
+		//NgxChartsModule,
+		routing
+	],
+	declarations: [
+		DashboardComponent
 	]
 })
 export class DashboardModule { }
