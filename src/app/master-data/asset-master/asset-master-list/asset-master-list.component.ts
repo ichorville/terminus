@@ -1,38 +1,47 @@
-
 import { Component, OnInit } from '@angular/core';
-// import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
-//import { CustomerMasterService } from '../asset-s';
+import { AssetMasterService } from '../asset-master.service';
+
+import { LoginVariable } from '../../../global';
 
 @Component({
   selector: 'app-asset-master-list',
   templateUrl: './asset-master-list.component.html',
   styleUrls: ['./asset-master-list.component.css']
 })
-
-
 export class AssetMasterListComponent implements OnInit {
-	customers: any[];
+
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
+	assets: any[];
 	rows: any[];
 	url: string;
 	columns: any[];
 	title: string;
 
 	constructor(
-		//private _cms: CustomerMasterService
+		private router: Router,
+		private _ams: AssetMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 
-	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
-		// this._cms.all().then((customers) => {
-		// 	this.customers = customers;
-		// 	this.updateRows();
-	//	});
+	ngOnInit() {	
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			return this.router.navigateByUrl(`/login`);
+		}	
+		this._ams.all().then((assets) => {
+			this.assets = assets;
+			this.updateRows();
+		});
 		this.title = 'Facilities';
 		this.url = '/master-data/assets/';
 		this.columns = [
@@ -40,24 +49,22 @@ export class AssetMasterListComponent implements OnInit {
 		];
 	}
 
-	// delete(deleteEvent: DeleteEvent) {
-	// 		console.log(deleteEvent);
-	// 		// this._cms.remove(deleteEvent.id).then((status) => {
-	// 		// if(status == 200) {
-	// 		// 	this._cms.all().then((customers) => {
-	// 		// 		this.customers = customers;
-	// 		// 		this.updateRows();
-	// 		// 	});
-	// 		} else 
-	// 		{
-	// 			alert('Could not delete due to error' + status);
-	// 		}
-	// 	});
-	// }
+	delete(deleteEvent: DeleteEvent) {
+		// this._ams.remove(deleteEvent.id).then((status) => {
+		// 	if(status == 200) {
+		// 		this._ams.all().then((assets) => {
+		// 			this.assets = assets;
+		// 			this.updateRows();
+		// 		});
+		// 	} else {
+		// 		alert('Could not delete due to error' + status);
+		// 	}
+		// });
+	}
 
 	private updateRows() {
 		this.rows = [];
-		this.customers.forEach(element => {
+		this.assets.forEach(element => {
 			this.rows.push({
 				id: element.Uid,
 				name: element.Name
@@ -65,13 +72,3 @@ export class AssetMasterListComponent implements OnInit {
 		});
 	}
 }
-
-
-// export class AssetSupplierListComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
