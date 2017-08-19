@@ -1,3 +1,159 @@
-<p>
-  sidenav works!
-</p>
+<md-sidenav-container *ngIf="isLoggedIn$ | async as isLoggedIn">
+	<md-sidenav #sidenav mode="over">
+		<md-card class="profile-section">
+			<div class="container container-width">
+				<div class="row">
+					<md-card-header>
+						<img class="profile-image" md-card-image src="assets/img/terminus.png">
+					</md-card-header>
+				</div>
+			</div>
+		</md-card>
+		<md-accordion [displayMode]="flat" [multi]="multi" class="md-expansion-demo-width">
+			<md-expansion-panel #panel1 [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Dashboards</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLink="/dashboards/surveys">
+						<md-icon class="icon" md-list-avatar>dashboard</md-icon>
+						<a>Dashboard</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+			<md-expansion-panel [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Transactions</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLinkActive="active" routerLink="/transactions/activities">
+						<md-icon class="icon" md-list-avatar>work</md-icon>
+						<a>Activities</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/transactions/calls">
+						<md-icon class="icon" md-list-avatar>call</md-icon>
+						<a>Calls</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/transactions/newassets">
+						<md-icon class="icon" md-list-avatar>playlist_add</md-icon>
+						<a>New Facilities</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/transactions/surveys">
+						<md-icon class="icon" md-list-avatar>insert_drive_file</md-icon>
+						<a>Surveys</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+			<md-expansion-panel [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Master Data</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/suppliers">
+						<md-icon class="icon" md-list-avatar>business_center</md-icon>
+						<a>Suppliers</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/asset-types">
+						<md-icon class="icon" md-list-avatar>art_track</md-icon>
+						<a>Facility Types</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/assets">
+						<md-icon class="icon" md-list-avatar>aspect_ratio</md-icon>
+						<a>Facilities</a>
+					</md-list-item>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/outlets">
+						<md-icon class="icon" md-list-avatar>store</md-icon>
+						<a>Locations</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/products">
+						<md-icon class="icon" md-list-avatar>storage</md-icon>
+						<a>Products</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/geographies">
+						<md-icon class="icon" md-list-avatar>public</md-icon>
+						<a>Geographies</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/master-data/customers">
+						<md-icon class="icon" md-list-avatar>person</md-icon>
+						<a>Customers</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+			<md-expansion-panel [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Configuration</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLinkActive="active" routerLink="/configuration/merchandisers">
+						<md-icon class="icon" md-list-avatar>contacts</md-icon>
+						<a>Merchandisers</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/configuration/outlets">
+						<md-icon class="icon" md-list-avatar>store</md-icon>
+						<a>Outlets</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/configuration/products">
+						<md-icon class="icon" md-list-avatar>storage</md-icon>
+						<a>Products</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/configuration/store">
+						<md-icon class="icon" md-list-avatar>business</md-icon>
+						<a>Stores</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/configuration/surveys">
+						<md-icon class="icon" md-list-avatar>insert_drive_file</md-icon>
+						<a>Surveys</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+			<md-expansion-panel [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Administration</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLinkActive="active" routerLink="/administration/devices">
+						<md-icon class="icon" md-list-avatar>devices</md-icon>
+						<a>Devices</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/administration/users">
+						<md-icon class="icon" md-list-avatar>person</md-icon>
+						<a>Users</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+			<md-expansion-panel [hideToggle]="hideToggle">
+				<md-expansion-panel-header>Logs</md-expansion-panel-header>
+				<md-list>
+					<md-list-item routerLinkActive="active" routerLink="/log/login-history">
+						<md-icon class="icon" md-list-avatar>history</md-icon>
+						<a>Login History</a>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item routerLinkActive="active" routerLink="/log/mobile-error-log">
+						<md-icon class="icon" md-list-avatar>phonelink_setup</md-icon>
+						<a>Mobile Error Log</a>
+					</md-list-item>
+				</md-list>
+			</md-expansion-panel>
+		</md-accordion>
+	</md-sidenav>
+	<md-toolbar color="primary">
+		<md-icon class="menu" (click)="sidenav.toggle()">menu</md-icon>
+		<span class="example-spacer"></span>
+		<button md-icon-button routerLink="/dashboards/surveys">
+			<md-icon class="example-icon">dashboard</md-icon>
+		</button>
+		<button md-icon-button [mdMenuTriggerFor]="menu">
+			<md-icon>person</md-icon>
+		</button>
+		<md-menu #menu="mdMenu">
+			<button md-button (click)="onLogout()" *ngIf="isLoggedIn"><md-icon>exit_to_app</md-icon>
+				<span>Log out</span>
+			</button>
+		</md-menu>
+	</md-toolbar>
+	<div class="main-content">
+		<router-outlet></router-outlet>		 
+   </div>
+</md-sidenav-container>

@@ -21,3 +21,5 @@ const sidenavRoutes: Routes = [
         ]
     }
 ]
+
+export const routing: ModuleWithProviders = RouterModule.forChild(sidenavRoutes);

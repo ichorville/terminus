@@ -6,12 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SidenavComponent } from './sidenav.component';
 
+import { routing } from './sidenav.routing';
+
 @NgModule({
 	imports: [
 		CommonModule,
 		MaterialModule,
 		FormsModule,
 		ReactiveFormsModule,
+		routing
 	],
 	declarations: [
 		SidenavComponent

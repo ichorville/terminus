@@ -1,0 +1,149 @@
+md-sidenav {
+	width: 25%;
+}
+
+.icon-spacer {
+  padding: 0 14px;
+}
+
+.menu-icon-spacer {
+  flex: 1 1 auto;
+}
+
+.menu {
+	cursor: pointer;
+}
+
+.main-content {
+	padding-top: 20px;
+	height: 800px;
+}
+
+.profile-image {
+	width: 100%;
+	height: 150%;
+}
+
+.user-section {
+	line-height: 5px;
+	padding-top: 15px;
+}
+
+.title {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 18px;
+	color: #444348;
+	margin-left: -30px;
+    margin-right: -40px;
+	padding-top: 15px;
+    padding-bottom: 15px;
+	padding-left: 30px;
+	background: rgba(0,0,0,0.09);
+}
+
+md-nav-list {
+	padding-top: 0px;
+	padding-left: 30px;
+	padding-right: 40px;
+}
+
+md-list-item {
+	display: flex !important;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+  	color: black;
+  	font-size: 16px;
+	font-weight: 300;
+	color: #A3A3A3;
+    margin-left: -30px;
+    margin-right: -40px;
+}
+
+md-list-item:hover {
+	background: rgba(0,0,0,.05);
+	color: rgba(0,0,0,0.87);
+	text-decoration: none;
+	font-weight: 400;
+	transition: .3s ease-out;
+}
+
+md-list-item a:hover {
+	color: rgba(0,0,0,0.87);
+	text-decoration: none;
+	font-weight: 400;
+	transition: .3s ease-out;
+}
+
+.icon {
+	margin-left: 60px;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.container-width {
+	width: 250px;
+}
+
+.margin {
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+@media (max-width:767px) {
+	md-sidenav {
+		width: 80%;
+	}
+}
+
+.ui.black.big.launch.right.attached.fixed.button {
+    position: fixed;
+    top: 2.5em;
+    left: 0px;
+    width: 55px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transition: 0.3s width ease, 0.5s transform ease;
+}
+
+.ui.black.big.launch.right.attached.fixed.button:hover {
+    width: 120px;
+}
+
+.fixed.launch.button .content.icon {
+    margin-left: 0px;
+}
+
+.fixed.launch.button .text {
+    position: absolute;
+    white-space: nowrap;
+    top: auto;
+    left: 54px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+md-expansion-panel {
+	padding: 7px;
+}
+md-list-item {
+	cursor: pointer;
+}
+.mat-icon {
+	width: auto !important;
+}
+:host /deep/.mat-expansion-panel-body {
+	padding: 0 24px 0px !important;
+}
+:host /deep/.mat-list {
+	padding-top: 0px !important;
+}
+:host /deep/.mat-content {
+	font-size: 16px !important;
+}
+md-toolbar {
+	background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2) !important;
+}
