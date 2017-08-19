@@ -2,6 +2,10 @@ md-sidenav {
 	width: 25%;
 }
 
+md-sidenav-container {
+	height: 100vh;
+}
+
 .icon-spacer {
   padding: 0 14px;
 }
@@ -16,7 +20,6 @@ md-sidenav {
 
 .main-content {
 	padding-top: 20px;
-	height: 800px;
 }
 
 .profile-image {
