@@ -21,14 +21,11 @@ import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
 
-import { HeaderComponent } from './header/header.component';
-
 import { routing } from './app.routing';
 
 @NgModule({
 	declarations: [
-		AppComponent,
-		HeaderComponent
+		AppComponent
 	],
 	imports: [
 		BrowserModule,
@@ -47,7 +44,7 @@ import { routing } from './app.routing';
 		TransactionModule,
 		AuthModule,
 		SidenavModule,
-		routing,
+		routing
 	],
 	providers: [],
 	bootstrap: [
