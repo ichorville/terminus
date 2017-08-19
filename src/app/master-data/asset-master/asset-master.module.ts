@@ -6,28 +6,33 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/data-table/data-table.module';
 import { DynamicFormModule } from '../../shared/dynamic-form/dynamic-form.module';
 import { AlertModule } from '../../shared/alert/alert.module';
-import { AssetMasterComponent } from './asset-master.component';
 
+import { AssetMasterComponent } from './asset-master.component';
 import { AssetMasterListComponent } from './asset-master-list/asset-master-list.component';
 import { AssetMasterEditComponent } from './asset-master-edit/asset-master-edit.component';
 import { AssetMasterDetailsComponent } from './asset-master-details/asset-master-details.component';
 
-import { routing } from './asset-master.routing';
+import { AssetMasterService } from './asset-master.service';
 
+import { routing } from './asset-master.routing';
+import { AssetMasterAddComponent } from './asset-master-add/asset-master-add.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    routing,
-    DataTableModule,
-    DynamicFormModule,
-    AlertModule
-  ],
-  declarations: [AssetMasterComponent,
-                AssetMasterListComponent,
-                AssetMasterEditComponent,
-                AssetMasterDetailsComponent              
-                
-                ]
+	imports: [
+		CommonModule,
+		DataTableModule,
+		DynamicFormModule,
+		AlertModule,
+		routing
+	],
+	declarations: [AssetMasterComponent,
+		AssetMasterListComponent,
+		AssetMasterEditComponent,
+		AssetMasterDetailsComponent,
+		AssetMasterAddComponent
+	], 
+	providers: [
+		AssetMasterService
+	]
 })
 export class AssetMasterModule { }
