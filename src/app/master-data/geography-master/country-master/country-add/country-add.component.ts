@@ -14,6 +14,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { CountryMasterService } from '../country-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-country-add',
 	templateUrl: './country-add.component.html',
@@ -39,7 +41,11 @@ export class CountryAddComponent implements OnInit {
 		this.createForm();
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
+	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;

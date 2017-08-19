@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-//import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
 import { OutletMasterService } from '../outlet-master.service';
 import { OutletClassService } from '../../../configuration/outlet-config/outlet-class/outlet-class.service';
 import { CustomerMasterService } from '../../customer-master/customer-master.service';
+
+import { LoginVariable } from '../../../global';
 
 @Component({
 	selector: 'app-outlet-list',
@@ -30,6 +33,7 @@ export class OutletListComponent implements OnInit {
 		private _oms: OutletMasterService,
 		private _cms: CustomerMasterService,
 		private _ocs: OutletClassService,
+		private router: Router
 	) {
 		this.addButton = true;
 		this.taskEdit = true;
@@ -41,9 +45,9 @@ export class OutletListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._oms.all().then(outlets => {
 			this.outlets = outlets['t'];
 			// this.outlets = outlets;

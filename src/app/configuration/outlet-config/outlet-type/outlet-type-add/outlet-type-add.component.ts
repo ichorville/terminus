@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { OutletTypeService } from '../outlet-type.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-outlet-type-add',
 	templateUrl: './outlet-type-add.component.html',
@@ -41,7 +43,9 @@ export class OutletTypeAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {

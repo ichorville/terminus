@@ -14,8 +14,9 @@ import { FormDropdown } from '../../../../shared/form-elements/form-dropdown';
 import { FormSubmitEvent } from '../../../../shared/custom-events/form-submit-event';
 import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-submit-complete-event';
 
-// import { FirebaseObjectObservable } from 'angularfire2';
 import { OutletClassService } from '../outlet-class.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-outlet-class-edit',
@@ -45,6 +46,9 @@ export class OutletClassEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._ocs.get(id).then((outletClass) => {

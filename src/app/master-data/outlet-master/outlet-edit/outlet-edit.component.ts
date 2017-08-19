@@ -21,6 +21,7 @@ import { DistrictMasterService } from '../../geography-master/district-master/di
 import { TownMasterService } from '../../geography-master/town-master/town-master.service';
 import { OutletClassService } from '../../../configuration/outlet-config/outlet-class/outlet-class.service';
 
+import { LoginVariable } from '../../../global';
 
 @Component({
 	selector: 'app-outlet-edit',
@@ -70,6 +71,9 @@ export class OutletEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._oms.get(id).then((outlet) => {

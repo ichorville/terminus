@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 import { StoreActivitiesService } from '../activities.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
   selector: 'app-store-activities-list',
@@ -17,7 +21,11 @@ export class StoreActivitiesListComponent implements OnInit {
 	storeActivity: any[];
 	columns: any[];
 	rows: any[];
-	constructor(private _sas: StoreActivitiesService) {
+
+	constructor(
+		private _sas: StoreActivitiesService,
+		private router: Router
+	) {
 		this.rows = [];
 		this.addButton = true;
 		this.taskEdit = true;
@@ -25,6 +33,9 @@ export class StoreActivitiesListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this._sas.all().then((storeActivity) => {
 			this.storeActivity = storeActivity['t'];
 			this.updateRows();

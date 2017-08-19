@@ -14,6 +14,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { StoreLocationsService } from '../locations.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
   selector: 'app-store-location-add',
   templateUrl: './store-locations-add.component.html',
@@ -39,7 +41,9 @@ export class StoreLocationsAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {

@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { ProductGroupService } from '../product-group.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-product-group-add',
 	templateUrl: './product-group-add.component.html',
@@ -41,7 +43,9 @@ export class ProductGroupAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {

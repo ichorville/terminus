@@ -16,6 +16,8 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { CountryMasterService } from '../country-master.service';
 
+import { LoginVariable } from '../../../../global';
+
 @Component({
 	selector: 'app-country-edit',
 	templateUrl: './country-edit.component.html',
@@ -43,6 +45,9 @@ export class CountryEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._cms.get(id).then((country) => {

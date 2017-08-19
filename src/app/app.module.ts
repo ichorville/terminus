@@ -20,6 +20,7 @@ import 'hammerjs';
 import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
+
 import { HeaderComponent } from './header/header.component';
 
 import { routing } from './app.routing';

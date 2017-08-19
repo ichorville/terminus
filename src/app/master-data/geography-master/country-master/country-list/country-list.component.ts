@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 import { CountryMasterService } from '../country-master.service';
 import { RegionMasterService } from '../../region-master/region-master.service';
+
+import { LoginVariable } from '../../../../global';
 
 @Component({
   selector: 'app-country-list',
@@ -22,15 +26,16 @@ export class CountryListComponent implements OnInit {
 
 	constructor(
 		private _cms: CountryMasterService,
-		private _rms: RegionMasterService
+		private _rms: RegionMasterService,
+		private router: Router
 	) {
 		this.rows = [];
 	}
 
 	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}	
 		this._cms.all().then((countries) => {
 			this.countries = countries;
 			this.updateRows();
