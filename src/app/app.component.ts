@@ -15,8 +15,6 @@ import { LoginVariable } from './global';
 	
 })
 export class AppComponent {
-	title = 'app works!';
-	//IS_LOGGED_IN=LoginVariable.IS_LOGGED_IN;
 	
 	constructor(private location: Location) { }
 
