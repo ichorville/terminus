@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CountryMasterModule } from './country-master/country-master.module'; 
 import { RegionMasterModule } from './region-master/region-master.module';
 import { DistrictMasterModule } from './district-master/district-master.module';
 import { TownMasterModule } from './town-master/town-master.module';
-
 
 import { routing } from './geography-master.routing';
 
@@ -22,8 +22,8 @@ import { routing } from './geography-master.routing';
 		CountryMasterModule,
 		RegionMasterModule,
 		DistrictMasterModule,
-		TownMasterModule
-		
+		TownMasterModule,
+		BrowserAnimationsModule
 	],
 })
 

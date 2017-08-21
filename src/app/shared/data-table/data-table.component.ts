@@ -5,10 +5,14 @@ import { DeleteEvent } from '../custom-events/delete-event';
 
 import { PaginationService } from '../services/pagination.service';
 
+import { fadeInAnimation } from '../animations/fade-in.animation';
+
 @Component({
 	selector: 'app-data-table',
 	templateUrl: './data-table.component.html',
-	styleUrls: ['./data-table.component.css']
+	styleUrls: ['./data-table.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class DataTableComponent implements OnInit, OnChanges {
 

@@ -16,12 +16,16 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { CountryMasterService } from '../country-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-country-edit',
 	templateUrl: './country-edit.component.html',
-	styleUrls: ['./country-edit.component.css']
+	styleUrls: ['./country-edit.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class CountryEditComponent implements OnInit {
 

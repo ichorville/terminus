@@ -5,12 +5,16 @@ import { DeleteEvent } from '../../../../shared/custom-events/delete-event';
 import { CountryMasterService } from '../country-master.service';
 import { RegionMasterService } from '../../region-master/region-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
-  styleUrls: ['./country-list.component.css']
+  styleUrls: ['./country-list.component.css'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class CountryListComponent implements OnInit {
 

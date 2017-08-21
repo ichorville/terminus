@@ -8,12 +8,16 @@ import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../../district-master/district-master.service';
 import { TownMasterService } from '../town-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-town-list',
 	templateUrl: './town-list.component.html',
-	styleUrls: ['./town-list.component.css']
+	styleUrls: ['./town-list.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class TownListComponent implements OnInit {
 

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PaginationModule } from '../pagination/pagination.module';
 import { SearchModule } from '../search/search.module';
@@ -16,7 +18,9 @@ import { PaginationService } from '../services/pagination.service';
 		RouterModule,
 		PaginationModule,
 		MaterialModule,
-		SearchModule
+		SearchModule,
+		BrowserModule,
+		BrowserAnimationsModule
 	],
 	declarations: [
 		DataTableComponent

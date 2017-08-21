@@ -8,12 +8,16 @@ import { RegionMasterService } from '../../region-master/region-master.service';
 import { DistrictMasterService } from '../district-master.service';
 import { TownMasterService } from '../../town-master/town-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-district-list',
 	templateUrl: './district-list.component.html',
-	styleUrls: ['./district-list.component.css']
+	styleUrls: ['./district-list.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class DistrictListComponent implements OnInit {
 

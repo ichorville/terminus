@@ -14,12 +14,16 @@ import { FormSubmitCompleteEvent } from '../../../../shared/custom-events/form-s
 
 import { CountryMasterService } from '../country-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-country-add',
 	templateUrl: './country-add.component.html',
-	styleUrls: ['./country-add.component.css']
+	styleUrls: ['./country-add.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class CountryAddComponent implements OnInit {
 	title: string;

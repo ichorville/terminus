@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { DataTableModule } from '../../../shared/data-table/data-table.module';
 import { DynamicFormModule } from '../../../shared/dynamic-form/dynamic-form.module';
 
@@ -22,7 +25,9 @@ import { routing } from './country-master.routing';
 		routing,
 		DataTableModule,
 		DynamicFormModule,
-		GeographyNavTabModule
+		GeographyNavTabModule,
+		BrowserModule,
+		BrowserAnimationsModule
 	],
 	declarations: [
 		CountryMasterComponent,

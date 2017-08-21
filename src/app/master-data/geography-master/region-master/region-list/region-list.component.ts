@@ -7,12 +7,16 @@ import { CountryMasterService } from '../../country-master/country-master.servic
 import { RegionMasterService } from '../region-master.service';
 import { DistrictMasterService } from '../../district-master/district-master.service';
 
+import { fadeInAnimation } from '../../../../shared/animations/fade-in.animation';
+
 import { LoginVariable } from '../../../../global';
 
 @Component({
 	selector: 'app-region-list',
 	templateUrl: './region-list.component.html',
-	styleUrls: ['./region-list.component.css']
+	styleUrls: ['./region-list.component.css'],
+	animations: [fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class RegionListComponent implements OnInit {
 
