@@ -1,19 +1,7 @@
-// import { Component, OnInit } from '@angular/core';
-
-// export class AssetSupplierAddComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-import {Component, OnInit, Output, EventEmitter, state,
-	 				trigger, style, transition, animate} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Subject } from 'rxjs/Subject';
+
 import { FormElement } from '../../../shared/form-elements/form-element';
 import { FormTextbox } from '../../../shared/form-elements/form-textbox';
 import { FormDropdown } from '../../../shared/form-elements/form-dropdown';
@@ -21,13 +9,17 @@ import { FormDropdown } from '../../../shared/form-elements/form-dropdown';
 import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
 import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-submit-complete-event';
 
-//import { CustomerMasterService } from '../customer-master.service';
+import { AssetSupplierMasterService } from '../asset-supplier-master.service';
+import { LoginVariable } from '../../../global';
 
+import { fadeInAnimation } from '../../../shared/animations/fade-in.animation';
 
 @Component({
-  selector: 'app-asset-supplier-add',
-  templateUrl: './asset-supplier-add.component.html',
-  styleUrls: ['./asset-supplier-add.component.css']
+	selector: 'app-asset-supplier-add',
+	templateUrl: './asset-supplier-add.component.html',
+	styleUrls: ['./asset-supplier-add.component.css'],
+	animations: [ fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class AssetSupplierAddComponent implements OnInit {
 
@@ -35,14 +27,12 @@ export class AssetSupplierAddComponent implements OnInit {
 	buttonValue: string;
 	formElements: FormElement<any>[];
 	message: string;
-	gridState: string;
-	messageCssClass: string;
 
 	onFormSubmitComplete: Subject<FormSubmitCompleteEvent>;
 
 	constructor(
 		private router: Router,
-	//	private _cms: CustomerMasterService
+		private _asms: AssetSupplierMasterService
 	) {
 		this.title = 'Add Supplier';
 		this.buttonValue = 'Save';
@@ -51,22 +41,23 @@ export class AssetSupplierAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			this.router.navigateByUrl(`/login`);
+		}
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;
-		let customer: any = {
-			'name': formValues.Name
+		let supplier: any = {
+			// add necessary attributes
 		};
-	
-		//this._cms.create(customer).then((status) => {
-		// 	if(status == 200) {
-		// 		this.router.navigateByUrl('/master-data/customers');
-		// 	} else {
-		// 		alert('Cannot Add Due to Error');
-		// 	}
-		// });
+		this._asms.create(supplier).then((status) => {
+			if(status == 200) {
+				this.router.navigateByUrl('/master-data/suppliers');
+			} else {
+				alert('Cannot Add Due to Error');
+			}
+		});
 	}
 
 	private createForm() {
@@ -80,38 +71,34 @@ export class AssetSupplierAddComponent implements OnInit {
 				order: 1,
 				placeholder: 'Supplier ID'
 			}),
-
 			new FormTextbox({
 				key: 'Name',
 				label: 'Name',
 				value: '',
 				controlType: 'textbox',
 				required: true,
-				order: 1,
+				order: 2,
 				placeholder: 'Name'
 			}),
-
 			new FormTextbox({
 				key: 'Address',
 				label: 'Address',
 				value: '',
 				controlType: 'textbox',
 				required: true,
-				order: 1,
+				order: 3,
 				placeholder: 'Address'
 			}),
-
 			new FormTextbox({
 				key: 'RefferenceId',
 				label: 'Refference ID',
 				value: '',
 				controlType: 'textbox',
 				required: true,
-				order: 1,
+				order: 4,
 				placeholder: 'Refference ID'
-			}),
-
-		]
+			})
+		];
 	}
 }
 

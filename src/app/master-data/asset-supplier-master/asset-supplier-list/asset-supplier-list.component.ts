@@ -1,36 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-// import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
+
 import { DeleteEvent } from '../../../shared/custom-events/delete-event';
 
-//import { CustomerMasterService } from '../asset-s';
+import { AssetSupplierMasterService } from '../asset-supplier-master.service';
+
+import { LoginVariable } from '../../../global';
 
 @Component({
-  selector: 'app-asset-supplier-list',
-  templateUrl: './asset-supplier-list.component.html',
-  styleUrls: ['./asset-supplier-list.component.css']
+	selector: 'app-asset-supplier-list',
+	templateUrl: './asset-supplier-list.component.html',
+	styleUrls: ['./asset-supplier-list.component.css']
 })
-
 export class AssetSupplierListComponent implements OnInit {
-	customers: any[];
+	
+	addButton: boolean;
+	taskEdit: boolean;
+	taskDelete: boolean;
+
+	suppliers: any[];
 	rows: any[];
 	url: string;
 	columns: any[];
 	title: string;
 
 	constructor(
-		//private _cms: CustomerMasterService
+		private router: Router,
+		private _asms: AssetSupplierMasterService
 	) {
+		this.addButton = true;
+		this.taskEdit = true;
+		this.taskDelete = true;
 		this.rows = [];
 	}
 
-	ngOnInit() {
-		/**
-		 * Get all entities and load all entities
-		 */		
-		// this._cms.all().then((customers) => {
-		// 	this.customers = customers;
-		// 	this.updateRows();
-	//	});
+	ngOnInit() {	
+		if (LoginVariable.IS_LOGGED_IN == false) {
+			return this.router.navigateByUrl(`/login`);
+		}
+		this._asms.all().then((suppliers) => {
+			this.suppliers = suppliers;
+			this.updateRows();
+		});
 		this.title = 'Suppliers';
 		this.url = '/master-data/suppliers/';
 		this.columns = [
@@ -38,24 +49,22 @@ export class AssetSupplierListComponent implements OnInit {
 		];
 	}
 
-	// delete(deleteEvent: DeleteEvent) {
-	// 		console.log(deleteEvent);
-	// 		// this._cms.remove(deleteEvent.id).then((status) => {
-	// 		// if(status == 200) {
-	// 		// 	this._cms.all().then((customers) => {
-	// 		// 		this.customers = customers;
-	// 		// 		this.updateRows();
-	// 		// 	});
-	// 		} else 
-	// 		{
-	// 			alert('Could not delete due to error' + status);
-	// 		}
-	// 	});
-	// }
+	delete(deleteEvent: DeleteEvent) {
+		// this._cms.remove(deleteEvent.id).then((status) => {
+		// 	if (status == 200) {
+		// 		this._cms.all().then((customers) => {
+		// 			this.customers = customers;
+		// 			this.updateRows();
+		// 		});
+		// 	} else {
+		// 		alert('Could not delete due to error' + status);
+		// 	}
+		// });
+	}
 
 	private updateRows() {
 		this.rows = [];
-		this.customers.forEach(element => {
+		this.suppliers.forEach(element => {
 			this.rows.push({
 				id: element.Uid,
 				name: element.Name
@@ -63,13 +72,3 @@ export class AssetSupplierListComponent implements OnInit {
 		});
 	}
 }
-
-
-// export class AssetSupplierListComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
