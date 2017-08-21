@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
 import { Subject } from 'rxjs/Subject';
 
 import { FormElement } from '../../../shared/form-elements/form-element';
@@ -12,11 +11,14 @@ import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-subm
 
 import { AssetMasterService } from '../asset-master.service';
 import { LoginVariable } from '../../../global';
+import { fadeInAnimation } from '../../../shared/animations/fade-in.animation';
 
 @Component({
 	selector: 'app-asset-master-edit',
 	templateUrl: './asset-master-edit.component.html',
-	styleUrls: ['./asset-master-edit.component.css']
+	styleUrls: ['./asset-master-edit.component.css'],
+	animations: [ fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class AssetMasterEditComponent implements OnInit {
 

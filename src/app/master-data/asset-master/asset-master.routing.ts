@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from '../../sidenav/sidenav.component';
 import { AssetMasterListComponent } from './asset-master-list/asset-master-list.component';
 import { AssetMasterEditComponent } from './asset-master-edit/asset-master-edit.component';
+import { AssetMasterAddComponent } from './asset-master-add/asset-master-add.component';
 import { AssetMasterDetailsComponent } from './asset-master-details/asset-master-details.component';
 
 const assetMasterRoutes: Routes = [
@@ -24,6 +25,10 @@ const assetMasterRoutes: Routes = [
 			{
 				path: 'master-data/assets',
 				component: AssetMasterListComponent
+			},
+			{
+				path: 'master-data/assets/add',
+				component: AssetMasterAddComponent
 			},
 			{
 				path: 'master-data/assets/:id',

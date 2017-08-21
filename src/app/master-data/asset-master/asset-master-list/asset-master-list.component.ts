@@ -8,9 +8,9 @@ import { AssetMasterService } from '../asset-master.service';
 import { LoginVariable } from '../../../global';
 
 @Component({
-  selector: 'app-asset-master-list',
-  templateUrl: './asset-master-list.component.html',
-  styleUrls: ['./asset-master-list.component.css']
+	selector: 'app-asset-master-list',
+	templateUrl: './asset-master-list.component.html',
+	styleUrls: ['./asset-master-list.component.css']
 })
 export class AssetMasterListComponent implements OnInit {
 

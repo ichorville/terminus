@@ -11,13 +11,16 @@ import { FormDropdown } from '../../../shared/form-elements/form-dropdown';
 import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
 import { FormSubmitCompleteEvent } from '../../../shared/custom-events/form-submit-complete-event';
 
-import {  AssetMasterService } from '../asset-master.service';
+import { AssetMasterService } from '../asset-master.service';
 import { LoginVariable } from '../../../global';
+import { fadeInAnimation } from '../../../shared/animations/fade-in.animation';
 
 @Component({
 	selector: 'app-asset-master-add',
 	templateUrl: './asset-master-add.component.html',
-	styleUrls: ['./asset-master-add.component.css']
+	styleUrls: ['./asset-master-add.component.css'],
+	animations: [ fadeInAnimation],
+	host: { '[@fadeInAnimation]': '' }
 })
 export class AssetMasterAddComponent implements OnInit {
 
