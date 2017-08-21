@@ -13,22 +13,26 @@ import { AssetTypeEditComponent } from './asset-type-edit/asset-type-edit.compon
 import { AssetTypeDetailComponent } from './asset-type-detail/asset-type-detail.component';
 import { AssetTypeListComponent } from './asset-type-list/asset-type-list.component';
 
+import { AssetTypeMasterService } from './asset-type-master.service';
 import { routing } from './asset-type-master.routing';
 
 @NgModule({
-  imports: [
-   CommonModule,
-    routing,
-    DataTableModule,
-    DynamicFormModule,
-    AlertModule
-  ],
-  declarations: [
-                  AssetTypeMasterComponent,
-                  AssetTypeAddComponent,
-                  AssetTypeEditComponent,
-                  AssetTypeDetailComponent,
-                  AssetTypeListComponent                  
-                ]
+	imports: [
+		CommonModule,
+		routing,
+		DataTableModule,
+		DynamicFormModule,
+		AlertModule
+	],
+	declarations: [
+		AssetTypeMasterComponent,
+		AssetTypeAddComponent,
+		AssetTypeEditComponent,
+		AssetTypeDetailComponent,
+		AssetTypeListComponent
+	],
+	providers: [
+		AssetTypeMasterService
+	]
 })
 export class AssetTypeMasterModule { }
