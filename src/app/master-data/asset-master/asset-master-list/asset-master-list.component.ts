@@ -39,13 +39,18 @@ export class AssetMasterListComponent implements OnInit {
 			return this.router.navigateByUrl(`/login`);
 		}	
 		this._ams.all().then((assets) => {
-			this.assets = assets;
+			this.assets = assets['t'];
 			this.updateRows();
 		});
 		this.title = 'Facilities';
 		this.url = '/master-data/assets/';
 		this.columns = [
-			{ name: 'Facility Name', attr: 'name', type: 'string' }
+			{ name: 'ID', attr: 'id', type: 'string' },
+			{ name: 'Description', attr: 'description', type: 'string' },
+			{ name: 'Outlet', attr: 'outlet', type: 'string' },
+			{ name: 'Asset Type', attr: 'type', type: 'string' },
+			{ name: 'Asset Class', attr: 'class', type: 'string' },
+			{ name: 'Asset Group', attr: 'group', type: 'string' }
 		];
 	}
 
@@ -66,8 +71,12 @@ export class AssetMasterListComponent implements OnInit {
 		this.rows = [];
 		this.assets.forEach(element => {
 			this.rows.push({
-				id: element.Uid,
-				name: element.Name
+				id: element.UID,
+				description: element.Description,
+				outlet: element.Outlet,
+				type: element.AssetType,
+				class: element.AssetClass,
+				group: element.AssetGroup
 			});
 		});
 	}
