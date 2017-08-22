@@ -39,13 +39,14 @@ export class AssetTypeListComponent implements OnInit {
 			return this.router.navigateByUrl(`/login`);
 		}
 		this._atms.all().then((types) => {
-			this.types = types;
+			this.types = types['t'];
 			this.updateRows();
 		});
 		this.title = 'Facility Types';
-		this.url = '/master-data/asset-types';
+		this.url = '/master-data/asset-types/';
 		this.columns = [
-			{ name: 'Type', attr: 'name', type: 'string' }
+			{ name: 'Id', attr: 'typeId', type: 'string' },
+			{ name: 'Type', attr: 'type', type: 'string' }
 		];
 	}
 
@@ -66,8 +67,9 @@ export class AssetTypeListComponent implements OnInit {
 		this.rows = [];
 		this.types.forEach(element => {
 			this.rows.push({
-				id: element.Uid,
-				name: element.Name
+				id: element.UID,
+				typeId: element.ID,
+				type: element.AssetType
 			});
 		});
 	}

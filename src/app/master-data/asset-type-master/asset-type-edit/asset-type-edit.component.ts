@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import { Validators } from '@angular/forms';
 
 import { FormElement } from '../../../shared/form-elements/form-element';
 import { FormTextbox } from '../../../shared/form-elements/form-textbox';
@@ -65,7 +66,30 @@ export class AssetTypeEditComponent implements OnInit {
 
 	private createForm() {
 		this.formElements = [
-			// add form elements
+			new FormTextbox({
+				key: 'ID',
+				label: 'ID',
+				value: this.type['ID'],
+				controlType: 'textbox',
+				required: true,
+				order: 1,
+				placeholder: 'ID',
+				validators: [
+					Validators.required,
+				]
+			}),
+			new FormTextbox({
+				key: 'AssetType',
+				label: 'Type',
+				value: this.type['AssetType'],
+				controlType: 'textbox',
+				required: true,
+				order: 2,
+				placeholder: 'Type',
+				validators: [
+					Validators.required,
+				]
+			})
 		];
 	}
 }

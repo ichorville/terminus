@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import { Validators } from '@angular/forms';
 
 import { FormElement } from '../../../shared/form-elements/form-element';
 import { FormTextbox } from '../../../shared/form-elements/form-textbox';
@@ -47,8 +48,10 @@ export class AssetTypeAddComponent implements OnInit {
 
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;
+		console.log(formValues);
 		let type: any = {
-			// fill asset type attributes
+			'ID': formValues.ID,
+			'AssetType': formValues.AssetType
 		};
 		this._atms.create(type).then((status) => {
 			if(status == 200) {
@@ -62,22 +65,28 @@ export class AssetTypeAddComponent implements OnInit {
 	private createForm() {
 		this.formElements = [
 			new FormTextbox({
-				key: 'supplierId',
+				key: 'ID',
 				label: 'ID',
 				value: '',
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'ID'
+				placeholder: 'ID',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
-				key: 'Name',
-				label: 'Name',
+				key: 'AssetType',
+				label: 'Type',
 				value: '',
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Name'
+				placeholder: 'Type',
+				validators: [
+					Validators.required,
+				]
 			})
 		];
 	}
