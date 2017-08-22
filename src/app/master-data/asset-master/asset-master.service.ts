@@ -13,7 +13,7 @@ export class AssetMasterService {
 	private options: RequestOptions;
 
 	constructor(private http: Http) {
-		this.url = `${GlobalVariable.BASE_API_URL}/assets`;
+		this.url = `${GlobalVariable.BASE_API_URL}/VendingMachineList`;
 		this.headers = new Headers({
 			'Content-Type': 'application/json'	
 		});
