@@ -39,13 +39,19 @@ export class AssetSupplierListComponent implements OnInit {
 			return this.router.navigateByUrl(`/login`);
 		}
 		this._asms.all().then((suppliers) => {
-			this.suppliers = suppliers;
+			this.suppliers = suppliers['t'];
 			this.updateRows();
 		});
 		this.title = 'Suppliers';
 		this.url = '/master-data/suppliers/';
 		this.columns = [
-			{ name: 'Supplier Name', attr: 'name', type: 'string' }
+			{ name: 'ID', attr: 'supplierId', type: 'string' },
+			{ name: 'Supplier Name', attr: 'name', type: 'string' },
+			{ name: 'Last Modified', attr: 'modified', type: 'string' },
+			{ name: 'Expiry Date', attr: 'expiry', type: 'string' },
+			{ name: 'Region', attr: 'region', type: 'string' },
+			{ name: 'Address', attr: 'address', type: 'string' },
+
 		];
 	}
 
@@ -66,8 +72,13 @@ export class AssetSupplierListComponent implements OnInit {
 		this.rows = [];
 		this.suppliers.forEach(element => {
 			this.rows.push({
-				id: element.Uid,
-				name: element.Name
+				id: element.AreaUID,
+				supplierId: element.ID,
+				name: element.Name,
+				modified: element.LastModifiedDate,
+				expiry: element.ExpiryDate,
+				region: element.Region,
+				address: element.StreetAddress
 			});
 		});
 	}
