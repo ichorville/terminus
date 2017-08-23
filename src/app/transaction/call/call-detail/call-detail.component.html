@@ -8,11 +8,11 @@
 				</div>
 				<div style="padding:15px;">
 					<agm-map 
-						[latitude]="call.lat" 
-						[longitude]="call.lng">
+						[latitude]="call.Latitude" 
+						[longitude]="call.Longitude">
 						<agm-marker 
-							[latitude]="call.lat" 
-							[longitude]="call.lng">
+							[latitude]="call.Latitude" 
+							[longitude]="call.Longitude">
 						</agm-marker>
 					</agm-map>
 				</div>
@@ -82,16 +82,22 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th style="font-weight:100;">Creation Date</th>
-								<th style="font-weight:100;">Serial Number</th> 
+								<th style="font-weight:100;">Key</th>
+								<th style="font-weight:100;">Tracking ID</th> 
+								<th style="font-weight:100;">Asset Class</th> 
 								<th style="font-weight:100;">Asset Type</th> 
+								<th style="font-weight:100;">Asset Condition</th>
+								<th style="font-weight:100;">Asset Group</th> 
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>{{ asset.CreationDate }}</td>
-								<td>{{ asset.SerialNumber }}</td>
+								<td>{{ asset.key }}</td>
+								<td>{{ asset.TrackingID }}</td>
+								<td>{{ asset.AssetClass }}</td>
 								<td>{{ asset.AssetType }}</td>
+								<td>{{ asset.AssetCondition }}</td>
+								<td>{{ asset.AssetGroup }}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -99,7 +105,7 @@
 				<div class="card-content" style="text-align:center;">
 					<ngx-gallery 
 						[options]="galleryOptions" 
-						[images]="asset.images">
+						[images]="asset.image">
 					</ngx-gallery>
 				</div>
 			</div>

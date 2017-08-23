@@ -108,7 +108,7 @@ export class CallListComponent implements OnInit {
 		};
 		
 		this._cs.all(date).then((calls) => {
-			this.calls = calls['t'];
+			this.calls = calls;
 			if (this.calls.length > 0) {
 				this.updateRows();
 			} 
@@ -121,9 +121,7 @@ export class CallListComponent implements OnInit {
 			{ name: 'Start', attr: 'scheduledStart', type: 'string' },
 			{ name: 'End', attr: 'scheduledEnd', type: 'string' },
 			{ name: 'Outlet', attr: 'outlet', type: 'string' },
-			{ name: 'Agent Name', attr: 'agent', type: 'string' },
-			{ name: 'Status', attr: 'status', type: 'string' },
-			{ name: 'Creation Date', attr: 'creationDate', type: 'string' }
+			{ name: 'Agent Name', attr: 'agent', type: 'string' }
 		];
 	}
 
@@ -183,7 +181,7 @@ export class CallListComponent implements OnInit {
 				'status': this.call.callStatus
 			};
 			this._cs.all(date).then((calls) => {
-				this.calls = calls['t'];
+				this.calls = calls;
 				console.log(this.calls);
 				if (this.calls.length > 0) {
 					this.updateRows();
@@ -216,9 +214,7 @@ export class CallListComponent implements OnInit {
 				scheduledStart: element.ScheduledStart,
 				scheduledEnd: element.ScheduledEnd,
 				outlet: element.Outlet,
-				agent: element.Agent,
-				status: element.Status,
-				creationDate: element.CreationDate
+				agent: element.Agent
 			});
 		});
 	}

@@ -5,6 +5,8 @@ import { fadeInAnimation } from '../shared/animations/fade-in.animation';
 
 import { AuthService } from './../auth/auth.service';
 
+import { LoginVariable } from '../global';
+
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-
+		LoginVariable.IS_LOGGED_IN == false;
 		this.form = this.fb.group({
 			userName: [
 				'', Validators.required

@@ -35,8 +35,7 @@ export class CallDetailComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let id = params['id'];
             this._cs.get(id).then((call) => {
-                console.log(call);
-                this.call = call;
+                this.call = call[0];
             });
         });
 

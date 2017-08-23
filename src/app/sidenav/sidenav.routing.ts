@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav.component';
 import { HomeComponent } from '../home/home.component';
 
+import { AuthGuard } from '../auth/auth.guard';
+
 const sidenavRoutes: Routes = [
     {
         path: '',
@@ -16,7 +18,8 @@ const sidenavRoutes: Routes = [
         children: [
             {
                 path: 'home',
-                component: HomeComponent
+                component: HomeComponent,
+                canActivate: [AuthGuard]
             }
         ]
     }
