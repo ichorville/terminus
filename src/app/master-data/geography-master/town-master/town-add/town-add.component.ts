@@ -82,12 +82,14 @@ export class TownAddComponent implements OnInit {
 	}
 
 	submit(formSubmitEvent: FormSubmitEvent) {
+		console.log(formSubmitEvent);
 		let formValues = formSubmitEvent.formObject;
 		let town: any = {
 			'id': formValues.id,
 			'description': formValues.name,
 			'parentUid': formValues.district
 		};
+		console.log(town);
 		this._tms.create(town).then((status) => {
 			if(status == 200) {
 				this.router.navigateByUrl('/master-data/geographies/towns');

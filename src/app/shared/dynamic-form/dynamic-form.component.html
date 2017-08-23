@@ -9,7 +9,7 @@
 						<p class="category">Please complete and save the form</p>
 					</div>
 					<div class="card-content" *ngIf="mockModel">
-						<form (ngSubmit)="onSubmit()" [formGroup]="form">
+						<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
 							<div *ngFor="let formElement of formElements">
 								<div [ngSwitch]="formElement.controlType">
 									<!-- form textbox  -->

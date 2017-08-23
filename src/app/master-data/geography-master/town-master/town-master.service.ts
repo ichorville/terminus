@@ -36,7 +36,7 @@ export class TownMasterService {
 	}
 
 	update(town: any): Promise<number> {
-		return this.http.put(`${this.url}/${town.Uid}`, town).toPromise().then((response) => {
+		return this.http.put(`${this.url}/${town.uid}`, town).toPromise().then((response) => {
 			return response.status;
 		})
 	}

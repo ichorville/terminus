@@ -32,6 +32,7 @@ export class DynamicFormComponent implements OnInit {
 	formSubmitEvent: FormSubmitEvent;
 
 	mockModel = {};
+	model = {};
 
 	tempFormElements: any[];
 
@@ -57,6 +58,7 @@ export class DynamicFormComponent implements OnInit {
 		this.onValueChanged();
 	}
 
+	// content is checked for before DOm is loaded
 	ngAfterContentChecked() {
 		this.formElements.forEach(formElement => { 
 			this.mockModel[formElement['key']] = formElement['value'];
@@ -64,11 +66,14 @@ export class DynamicFormComponent implements OnInit {
 		this.cd.detectChanges();
 	}
 
+	// detect DOM changes after view is loaded
 	ngAfterViewChecked() {
+		this.cd.detectChanges();
 		this.tempFormElements = this.formElements;
 	}
 
-	onSubmit() {
+	onSubmit(event) {
+		this.mockModel = event;
 		if (this.form.valid) {
 			this.formSubmitEvent.formObject = this.mockModel;
 			this.formSubmitEvent.event = 'submitEvent';
