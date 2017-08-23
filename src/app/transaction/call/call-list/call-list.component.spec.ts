@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed,
 	async, inject, fakeAsync, tick } from '@angular/core/testing';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { FormSubmitEvent } from '../../../shared/custom-events/form-submit-event';
-import { RouterStub } from '../../../../testing/router-stubs';
+//import { RouterStub } from '../../../testing/router-stubs';
 import { Router } from '@angular/router';
 
 import { CallService } from '../call.service';
@@ -16,7 +16,7 @@ describe('CallListComponent', () => {
 
 	beforeEach(() => {
 		_cs = new StubService as any as CallService;
-		comp = new CallListComponent(_cs);
+		//comp = new CallListComponent(_cs);
 		
 		comp.ngOnInit();
 	});
