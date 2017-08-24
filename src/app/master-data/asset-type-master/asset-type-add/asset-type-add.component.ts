@@ -48,13 +48,12 @@ export class AssetTypeAddComponent implements OnInit {
 
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;
-		console.log(formValues);
 		let type: any = {
 			'ID': formValues.ID,
-			'AssetType': formValues.AssetType
+			'Description': formValues.AssetType
 		};
 		this._atms.create(type).then((status) => {
-			if(status == 200) {
+			if (status == 200) {
 				this.router.navigateByUrl('/master-data/asset-types');
 			} else {
 				alert('Cannot Add Due to Error');

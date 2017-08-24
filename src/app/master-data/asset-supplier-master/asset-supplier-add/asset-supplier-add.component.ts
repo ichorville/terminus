@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import { Validators } from '@angular/forms';
 
 import { FormElement } from '../../../shared/form-elements/form-element';
 import { FormTextbox } from '../../../shared/form-elements/form-textbox';
@@ -49,10 +50,22 @@ export class AssetSupplierAddComponent implements OnInit {
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;
 		let supplier: any = {
-			// add necessary attributes
+			'ID': formValues.id,
+			'Name': formValues.name,
+			'StreetAddress': formValues.address,
+			'city': formValues.city,
+			'region': formValues.region,
+			'postalCode': formValues.postalCode,
+			'Telephone1': formValues.telephone1,
+			'Telephone2': formValues.telephone2,
+			'email': formValues.email,
+			'Fax': formValues.fax,
+			'notes': formValues.notes,
+			'AreaUID': formValues.areaUID,
+			'AreaUID1': formValues.areaUID1
 		};
 		this._asms.create(supplier).then((status) => {
-			if(status == 200) {
+			if (status == 200) {
 				this.router.navigateByUrl('/master-data/suppliers');
 			} else {
 				alert('Cannot Add Due to Error');
@@ -63,25 +76,31 @@ export class AssetSupplierAddComponent implements OnInit {
 	private createForm() {
 		this.formElements = [
 			new FormTextbox({
-				key: 'supplierId',
+				key: 'id',
 				label: 'Supplier ID',
 				value: '',
 				controlType: 'textbox',
 				required: true,
 				order: 1,
-				placeholder: 'Supplier ID'
+				placeholder: 'Supplier ID',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
-				key: 'Name',
+				key: 'name',
 				label: 'Name',
 				value: '',
 				controlType: 'textbox',
 				required: true,
 				order: 2,
-				placeholder: 'Name'
+				placeholder: 'Name',
+				validators: [
+					Validators.required,
+				]
 			}),
 			new FormTextbox({
-				key: 'Address',
+				key: 'address',
 				label: 'Address',
 				value: '',
 				controlType: 'textbox',
@@ -90,13 +109,94 @@ export class AssetSupplierAddComponent implements OnInit {
 				placeholder: 'Address'
 			}),
 			new FormTextbox({
-				key: 'RefferenceId',
-				label: 'Refference ID',
+				key: 'city',
+				label: 'City',
 				value: '',
 				controlType: 'textbox',
 				required: true,
 				order: 4,
-				placeholder: 'Refference ID'
+				placeholder: 'City'
+			}),
+			new FormTextbox({
+				key: 'region',
+				label: 'Region',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 5,
+				placeholder: 'Region'
+			}),
+			new FormTextbox({
+				key: 'postalCode',
+				label: 'Postal Code',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 6,
+				placeholder: 'Postal Code'
+			}),
+			new FormTextbox({
+				key: 'telephone1',
+				label: 'Telephone Number',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 7,
+				placeholder: 'Telephone Numner'
+			}),
+			new FormTextbox({
+				key: 'telephone2',
+				label: 'Mobile Number',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 8,
+				placeholder: 'Mobile Numner'
+			}),
+			new FormTextbox({
+				key: 'email',
+				label: 'Email',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 9,
+				placeholder: 'Email'
+			}),
+			new FormTextbox({
+				key: 'fax',
+				label: 'Fax',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 10,
+				placeholder: 'Fax'
+			}),
+			new FormTextbox({
+				key: 'notes',
+				label: 'Notes',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 11,
+				placeholder: 'Notes'
+			}),
+			new FormTextbox({
+				key: 'areaUID',
+				label: 'Area 1',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 12,
+				placeholder: 'Area 1'
+			}),
+			new FormTextbox({
+				key: 'areaUID1',
+				label: 'Area 2',
+				value: '',
+				controlType: 'textbox',
+				required: true,
+				order: 13,
+				placeholder: 'Area 2'
 			})
 		];
 	}

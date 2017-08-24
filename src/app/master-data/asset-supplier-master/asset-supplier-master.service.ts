@@ -34,7 +34,7 @@ export class AssetSupplierMasterService {
 
 	create(supplier: any): Promise<any> {
 		return this.http.post(this.url, supplier, this.options).toPromise().then((response) => {
-			return response;
+			return response.status;
 		});
 	}
 

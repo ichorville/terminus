@@ -33,13 +33,13 @@ export class AssetTypeMasterService {
 	}
 
 	create(type: any): Promise<any> {
-		return this.http.post(this.url, type, this.options).toPromise().then((response) => {
-			return response;
+		return this.http.post(`${this.url}/Type`, type, this.options).toPromise().then((response) => {
+			return response.status;
 		});
 	}
 
 	update(type: any): Promise<number> {
-		return this.http.put(`${this.url}/${type.uid}`, type).toPromise().then((response) => {
+		return this.http.put(`${this.url}/Type/${type.UID}`, type).toPromise().then((response) => {
 			return response.status;
 		});
 	}

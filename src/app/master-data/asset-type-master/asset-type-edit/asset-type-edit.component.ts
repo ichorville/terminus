@@ -38,6 +38,7 @@ export class AssetTypeEditComponent implements OnInit {
 		this.title = 'Edit Facility Type';
 		this.buttonValue = 'Update';
 		this.onFormSubmitComplete = new Subject<FormSubmitCompleteEvent>();
+		this.type = {};
 		this.createForm();
 	}
 
@@ -48,7 +49,7 @@ export class AssetTypeEditComponent implements OnInit {
 		this.route.params.forEach((params: Params) => {
 			let id = params['id'];
 			this._atms.get(id).then((type) => {
-				this.type = type;
+				this.type = type['t'][0];
 				this.createForm();
 			});
 		});
@@ -57,10 +58,16 @@ export class AssetTypeEditComponent implements OnInit {
 	submit(formSubmitEvent: FormSubmitEvent) {
 		let formValues = formSubmitEvent.formObject;
 		let type: any = {
-			// add asset entity
+			'UID': this.type['UID'],              
+			'ID': formValues.ID == '' ? this.type['ID'] : formValues.ID,
+			'Description': formValues.AssetType == '' ? this.type['AssetType'] : formValues.AssetType
 		};
-		this._atms.update(type).then(() => {
-			this.router.navigateByUrl('/master-data/asset-types');
+		this._atms.update(type).then((status) => {
+			if (status == 200) {
+				this.router.navigateByUrl('/master-data/asset-types');
+			} else {
+				alert('Cannot Update Due to Error');
+			}
 		});
 	}
 
