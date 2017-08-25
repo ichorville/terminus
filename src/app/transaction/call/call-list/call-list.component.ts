@@ -108,7 +108,7 @@ export class CallListComponent implements OnInit {
 		};
 		
 		this._cs.all(date).then((calls) => {
-			this.calls = calls;
+			this.calls = calls['t'];
 			if (this.calls.length > 0) {
 				this.updateRows();
 			} 
@@ -181,8 +181,7 @@ export class CallListComponent implements OnInit {
 				'status': this.call.callStatus
 			};
 			this._cs.all(date).then((calls) => {
-				this.calls = calls;
-				console.log(this.calls);
+				this.calls = calls['t'];
 				if (this.calls.length > 0) {
 					this.updateRows();
 				}
