@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Manage {{ title }}</h1>
+	</div>
+	<form class="form-inline" [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="row justify-content-between">
+			<div class="col-md-4">
+				<md-input-container style="width:100%;">
+					<input mdInput [mdDatepicker]="pickerFrom" placeholder="From:" 
+						autocomplete="off" id="from" formControlName="from" [(ngModel)]="call.callStart">
+					<button mdSuffix [mdDatepickerToggle]="pickerFrom"></button>
+					<md-error *ngIf="formErrors.from">
+						{{ formErrors.from }}
+					</md-error> 
+				</md-input-container>
+				<md-datepicker #pickerFrom></md-datepicker>
+			</div>
+			<div class="col-md-4">
+				<md-input-container style="width:100%;">
+					<input mdInput [mdDatepicker]="pickerTo" placeholder="To:" 
+						autocomplete="off" id="to" formControlName="to" [(ngModel)]="call.callEnd">
+					<button mdSuffix [mdDatepickerToggle]="pickerTo"></button>
+					<md-error *ngIf="formErrors.to">
+						{{ formErrors.to }}
+					</md-error> 
+				</md-input-container>
+				<md-datepicker #pickerTo></md-datepicker>
+			</div>
+			<div class="col-md-3">
+				<md-select style="width:100%;padding-top:10px;padding-bottom:20px;"
+					[(ngModel)]="call.callStatus" formControlName="status" placeholder="Status:">
+					<md-option *ngFor="let status of callStatus" [value]="status.key">
+						{{ status.value }}
+					</md-option>
+				</md-select>
+				<md-error *ngIf="formErrors.status">
+					{{ formErrors.status }}
+				</md-error> 
+			</div>
+			<div class="col-md-1">
+				<button class="submit" md-raised-button [disabled]="!form.valid">Submit</button>
+			</div>
+		</div>
+	</form>
+	<div class="col-md-12">
+		<!--<div class="card" *ngIf="calls.length == 0">-->
+			<div class="card">
+			<div class="card-content table-responsive">
+				<h3>No Matching Records Found</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<!--<app-data-table *ngIf="calls.length > 0">-->
+	<app-data-table>
+	[taskDetail]="taskDetail"
+	[url]="url" 
+	[columns]="columns" 
+	[rows]="rows" 
+	(onDelete)="delete($event)">
+</app-data-table>
