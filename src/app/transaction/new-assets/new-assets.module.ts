@@ -12,6 +12,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CallComponent } from './new-assets.component'; 
 import { CallListComponent} from './new-assets-list/call-list.component';
 import { CallDetailComponent } from './new-assets-detail/call-detail.component';
+import { AssetRequestFormComponent } from './new-assets-request-form/asset-request-form.component';
 
 import { CallService } from './new-assets.service';
 
@@ -36,7 +37,8 @@ import { routing } from './new-assets.routing';
 	declarations: [
 		CallComponent,
 		CallListComponent,
-		CallDetailComponent
+		CallDetailComponent,
+		AssetRequestFormComponent
 	],
 	providers: [
 		CallService

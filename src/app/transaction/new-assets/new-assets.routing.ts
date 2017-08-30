@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from '../../sidenav/sidenav.component';
 import { CallListComponent } from './new-assets-list/call-list.component';
 import { CallDetailComponent } from './new-assets-detail/call-detail.component';
+import { AssetRequestFormComponent } from './new-assets-request-form/asset-request-form.component';
 
 const callRoutes: Routes = [
 	{
@@ -25,8 +26,12 @@ const callRoutes: Routes = [
 				component: CallListComponent
 			},
 			{
-				path: 'transactions/new-assets:id/detail',
+				path: 'transactions/new-assets/:id/detail',
 				component: CallDetailComponent
+			},
+			{
+				path: 'transactions/new-assets/:id/form',
+				component: AssetRequestFormComponent
 			}
         ]
     }

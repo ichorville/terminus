@@ -50,6 +50,10 @@
 										routerLink="{{url}}{{row.id}}/detail">
 										<i class="material-icons">visibility</i>
 									</button>
+									<button *ngIf="taskForm" type="button" class="btn btn-primary btn-simple btn-xs"
+										routerLink="{{url}}{{row.id}}/form">
+										<i class="material-icons">text_format</i>
+									</button>
 									<button *ngIf="taskDelete" type="button" class="btn btn-danger btn-simple btn-xs">
 										<i class="material-icons">close</i>
 									</button>
