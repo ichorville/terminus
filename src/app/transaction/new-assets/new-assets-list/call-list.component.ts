@@ -60,6 +60,8 @@ export class CallListComponent implements OnInit {
 	
 	selectedValue: string;
 	taskDetail: boolean;
+	addButton: boolean;
+	taskForm: boolean;
 	title: string;
 	calls: any[];
 	columns: any[];
@@ -78,6 +80,8 @@ export class CallListComponent implements OnInit {
 	) {
 		this.calls = [];
 		this.taskDetail = true;
+		this.taskForm = true;
+		this.addButton = true;
 		this.rows = [];
 		this.status = 0;
 		this.call = new Call();
@@ -114,12 +118,12 @@ export class CallListComponent implements OnInit {
 			} 
 		});
 
-		this.title = 'Calls';
-		this.url = '/transactions/calls/';
+		this.title = 'New Facility Requests';
+		this.url = '/transactions/new-assets/';
 		this.columns = [
 			{ name: 'ID', attr: 'id', type: 'string' },
-			{ name: 'Start', attr: 'scheduledStart', type: 'string' },
-			{ name: 'End', attr: 'scheduledEnd', type: 'string' },
+			{ name: 'Requested Date', attr: 'scheduledStart', type: 'string' },
+			//{ name: 'End', attr: 'scheduledEnd', type: 'string' },
 			{ name: 'Outlet', attr: 'outlet', type: 'string' },
 			{ name: 'Agent Name', attr: 'agent', type: 'string' }
 		];
