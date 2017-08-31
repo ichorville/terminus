@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { CallService } from '../new-assets.service';
+import { CallService } from '../call.service';
 
 import { NgxGalleryOptions, NgxGalleryImage, 
     NgxGalleryAnimation } from 'ngx-gallery';
@@ -9,11 +9,11 @@ import { NgxGalleryOptions, NgxGalleryImage,
 import { LoginVariable } from '../../../global';
 
 @Component({
-    selector: 'app-call-detail',
-    templateUrl: './call-detail.component.html',
-    styleUrls: ['./call-detail.component.css']
+    selector: 'app-new-asset-detail',
+    templateUrl: './new-asset-detail.component.html',
+    styleUrls: ['./new-asset-detail.component.css']
 })
-export class CallDetailComponent implements OnInit {
+export class NewAssetDetailComponent implements OnInit {
 
     call: any;
 

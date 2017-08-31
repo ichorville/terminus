@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivityModule } from './activity/activity.module';
 import { SurveyModule } from './survey/survey.module';
 import { CallModule } from './call/call.module';
-import {NewAssetsModule} from './new-assets/new-assets.module';
+import {NewAssetsModule} from './new-asset/new-asset.module';
 
 import { routing } from './transaction.routing';
 

@@ -7,7 +7,7 @@
 			<div class="col-md-4">
 				<md-input-container style="width:100%;">
 					<input mdInput [mdDatepicker]="pickerFrom" placeholder="From:" 
-						autocomplete="off" id="from" formControlName="from" [(ngModel)]="call.callStart">
+						autocomplete="off" id="from" formControlName="from" [(ngModel)]="asset.callStart">
 					<button mdSuffix [mdDatepickerToggle]="pickerFrom"></button>
 					<md-error *ngIf="formErrors.from">
 						{{ formErrors.from }}
@@ -18,7 +18,7 @@
 			<div class="col-md-4">
 				<md-input-container style="width:100%;">
 					<input mdInput [mdDatepicker]="pickerTo" placeholder="To:" 
-						autocomplete="off" id="to" formControlName="to" [(ngModel)]="call.callEnd">
+						autocomplete="off" id="to" formControlName="to" [(ngModel)]="asset.callEnd">
 					<button mdSuffix [mdDatepickerToggle]="pickerTo"></button>
 					<md-error *ngIf="formErrors.to">
 						{{ formErrors.to }}
@@ -28,8 +28,8 @@
 			</div>
 			<div class="col-md-3">
 				<md-select style="width:100%;padding-top:10px;padding-bottom:20px;"
-					[(ngModel)]="call.callStatus" formControlName="status" placeholder="Status:">
-					<md-option *ngFor="let status of callStatus" [value]="status.key">
+					[(ngModel)]="asset.assetStatus" formControlName="status" placeholder="Status:">
+					<md-option *ngFor="let status of assetStatus" [value]="status.key">
 						{{ status.value }}
 					</md-option>
 				</md-select>
@@ -43,17 +43,16 @@
 		</div>
 	</form>
 	<div class="col-md-12">
-		<div class="card" *ngIf="calls.length == 0">
+		<div class="card" *ngIf="assets.length == 0">
 			<div class="card-content table-responsive">
 				<h3>No Matching Records Found</h3>
 			</div>
 		</div>
 	</div>
 </div>
-<app-data-table *ngIf="calls.length > 0"
+<app-data-table *ngIf="assets.length > 0"
 	[taskDetail]="taskDetail"
 	[taskForm]="taskForm"
-	[addButton]="addButton" 
 	[url]="url" 
 	[columns]="columns" 
 	[rows]="rows" 

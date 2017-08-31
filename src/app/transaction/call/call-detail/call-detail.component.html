@@ -71,7 +71,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<md-input-container class="full-width">
-									<input mdInput placeholder="Outlet" value="{{ call.Outlet }}" disabled>
+									<input mdInput placeholder="Outlet" value="{{ call.OutletAddress }}" disabled>
 								</md-input-container>
 							</div>
 						</div>
@@ -89,9 +89,9 @@
 						<thead>
 							<tr>
 								<th style="font-weight:100;">Key</th>
+								<th style="font-weight:100;">Asset UID</th> 
 								<th style="font-weight:100;">Tracking ID</th> 
 								<th style="font-weight:100;">Asset Class</th> 
-								<th style="font-weight:100;">Asset Type</th> 
 								<th style="font-weight:100;">Asset Condition</th>
 								<th style="font-weight:100;">Asset Group</th> 
 							</tr>
@@ -99,9 +99,9 @@
 						<tbody>
 							<tr>
 								<td>{{ asset.key }}</td>
+								<td>{{ asset.AssetUID }}</td>
 								<td>{{ asset.TrackingID }}</td>
 								<td>{{ asset.AssetClass }}</td>
-								<td>{{ asset.AssetType }}</td>
 								<td>{{ asset.AssetCondition }}</td>
 								<td>{{ asset.AssetGroup }}</td>
 							</tr>

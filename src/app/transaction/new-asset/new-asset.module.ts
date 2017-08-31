@@ -9,14 +9,15 @@ import { AlertModule } from '../../shared/alert/alert.module';
 import { DataTableModule } from '../../shared/data-table/data-table.module';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { AgmCoreModule } from '@agm/core';
-import { CallComponent } from './new-assets.component'; 
-import { CallListComponent} from './new-assets-list/call-list.component';
-import { CallDetailComponent } from './new-assets-detail/call-detail.component';
-import { AssetRequestFormComponent } from './new-assets-request-form/asset-request-form.component';
 
-import { CallService } from './new-assets.service';
+import { NewAssetListComponent } from './new-asset-list/new-asset-list.component';
+import { NewAssetDetailComponent } from './new-asset-detail/new-asset-detail.component';
+import { AssetRequestFormComponent } from './new-asset-request-form/asset-request-form.component';
 
-import { routing } from './new-assets.routing';
+import { NewAssetService } from './new-asset.service';
+import { CallService } from './call.service';
+
+import { routing } from './new-asset.routing';
 
 @NgModule({
 	imports: [
@@ -35,13 +36,13 @@ import { routing } from './new-assets.routing';
 		})
 	],
 	declarations: [
-		CallComponent,
-		CallListComponent,
-		CallDetailComponent,
+		NewAssetListComponent,
+		NewAssetDetailComponent,
 		AssetRequestFormComponent
 	],
 	providers: [
-		CallService
+		CallService,
+		NewAssetService
 	]
 })
 
