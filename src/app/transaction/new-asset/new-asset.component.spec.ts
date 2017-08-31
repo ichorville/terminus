@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { CallComponent } from './new-assets.component';
+import { CallComponent } from './new-asset.component';
 
 describe('Component: Call', () => {
   it('should create an instance', () => {

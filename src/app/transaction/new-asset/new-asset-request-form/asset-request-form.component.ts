@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { CallService } from '../new-assets.service';
+import { CallService } from '../call.service';
 
 import { NgxGalleryOptions, NgxGalleryImage, 
     NgxGalleryAnimation } from 'ngx-gallery';

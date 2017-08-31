@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
-import { CallService } from './new-assets.service';
+import { CallService } from './new-asset.service';
 
 export class Call {
 	id: number;

@@ -2,9 +2,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SidenavComponent } from '../../sidenav/sidenav.component';
-import { CallListComponent } from './new-assets-list/call-list.component';
-import { CallDetailComponent } from './new-assets-detail/call-detail.component';
-import { AssetRequestFormComponent } from './new-assets-request-form/asset-request-form.component';
+import { NewAssetListComponent } from './new-asset-list/new-asset-list.component';
+import { NewAssetDetailComponent } from './new-asset-detail/new-asset-detail.component';
+import { AssetRequestFormComponent } from './new-asset-request-form/asset-request-form.component';
 
 const callRoutes: Routes = [
 	{
@@ -23,11 +23,11 @@ const callRoutes: Routes = [
 			},
 			{
 				path: 'transactions/new-assets',
-				component: CallListComponent
+				component: NewAssetListComponent
 			},
 			{
 				path: 'transactions/new-assets/:id/detail',
-				component: CallDetailComponent
+				component: NewAssetDetailComponent
 			},
 			{
 				path: 'transactions/new-assets/:id/form',
