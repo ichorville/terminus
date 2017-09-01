@@ -1,1 +1,66 @@
-<h1>Home Component works</h1>
+<div class="pusher">
+		<div class="row">
+				<app-primary-sales-summary></app-primary-sales-summary>
+				<app-secondary-sales-summary></app-secondary-sales-summary>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<app-credit-term-spread-summary
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-credit-term-spread-summary>
+			</div>
+			<div class="col-md-4">
+				<app-discount-spread-summary
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-discount-spread-summary>
+			</div>
+			<div class="col-md-4">
+				<app-sales-sku-spread-summary
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-sales-sku-spread-summary>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<app-sales-value-spread
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-sales-value-spread>
+			</div>
+			<div class="col-md-4">
+				<app-work-force-today
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-work-force-today>
+			</div>
+			<div class="col-md-4">
+				<app-discounts-vs-sales
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-discounts-vs-sales>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<app-first-call-time
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-first-call-time>
+			</div>
+			<div class="col-md-4">
+				<app-returns-by-reason
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-returns-by-reason>
+			</div>
+			<div class="col-md-4">
+				<app-cash-vs-credit
+					[startDate]="startDate"
+					[endDate]="endDate">
+				</app-cash-vs-credit>
+			</div>
+		</div>
+	</div>
