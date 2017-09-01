@@ -6,7 +6,8 @@
 			</div>
 		</div>
 		<div class="col-md-6 col-xs-6 addNewAsset">
-			<button class="btn-add" md-raised-button>Add New Asset</button>
+			<button class="btn-add" md-raised-button
+			routerLinkActive="active" routerLink="{{url}}/add">Add New Asset</button>
 		</div>
 	</div>
 	<form class="form-inline" [formGroup]="form" (ngSubmit)="onSubmit()">

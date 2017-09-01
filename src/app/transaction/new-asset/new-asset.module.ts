@@ -9,6 +9,7 @@ import { AlertModule } from '../../shared/alert/alert.module';
 import { DataTableModule } from '../../shared/data-table/data-table.module';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { AgmCoreModule } from '@agm/core';
+import { NgUploaderModule } from 'ngx-uploader';
 
 import { NewAssetListComponent } from './new-asset-list/new-asset-list.component';
 import { NewAssetDetailComponent } from './new-asset-detail/new-asset-detail.component';
@@ -19,7 +20,6 @@ import { NewAssetService } from './new-asset.service';
 import { CallService } from './call.service';
 
 import { routing } from './new-asset.routing';
-
 
 @NgModule({
 	imports: [
@@ -33,6 +33,7 @@ import { routing } from './new-asset.routing';
 		DataTableModule,
 		NgxGalleryModule,
 		MaterialModule,
+		NgUploaderModule,
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyB7xCCaCLiNRXf5b-zAb_wcs8cxtmYAFdQ'
 		})
