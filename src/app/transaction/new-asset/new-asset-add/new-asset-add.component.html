@@ -1,3 +1,144 @@
-<p>
-  new-asset-add works!
-</p>
+<div class="container">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header" data-background-color="purple">
+						<h4 class="title">Add New Asset</h4>
+						<p class="category">Please complete and save the form</p>
+					</div>
+					<div class="card-content">
+						<form (ngSubmit)="onSubmit($event)">
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Asset Type" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Asset Class" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Asset Group" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Distributor" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Sales Rep" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Location" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-input-container style="width: 100%;padding-bottom: 5px;">
+										<input mdInput placeholder="Serial Number">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-input-container style="width: 100%;">
+										<input mdInput placeholder="Description">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-select placeholder="Supplier" style="width: 100%;font-size: 16px;padding-bottom: 10px;">
+										<md-option *ngFor="let type of types" [value]="type.key">
+											{{ type.value }}
+										</md-option>
+									</md-select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<md-input-container style="width: 100%;">
+										<input mdInput placeholder="Notes">
+									</md-input-container>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 style="opacity:0.5;">Asset Images</h4>
+									<div class="uploads" *ngIf="files?.length">
+										<div class="upload-item" *ngFor="let f of files; let i = index;">
+											<div class="upload-item-top">
+												<span class="filename">{{ f.name }}</span>
+												<!-- <span class="progress-data">
+													{{ f.progress.data.percentage }}% at {{ f.progress.data.speedHuman }} eta {{ f.progress.data.eta }}s
+												</span> -->
+												 <span class="progress-data">
+													{{ f.size }} Bytes 
+												</span> 
+												<span class="x" (click)="removeFile(f.id)">x</span>
+											</div>
+											<!-- <div class="progress-bar-container">
+												<div class="bar" [style.width]="f.progress.data.percentage + '%'" [class.green]="f.progress.data.percentage === 100"></div>
+											</div> -->
+										</div>
+									</div>
+		
+									<div class="drop-container" ngFileDrop (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+										<h1>Drag & Drop</h1>
+										<p>
+										<span>your files here or</span>
+										<label class="upload-button">
+											<input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+											browse
+										</label>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12" style="text-align: center;">
+									<button md-raised-button >
+										Submit
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</div>
