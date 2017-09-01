@@ -13,11 +13,13 @@ import { AgmCoreModule } from '@agm/core';
 import { NewAssetListComponent } from './new-asset-list/new-asset-list.component';
 import { NewAssetDetailComponent } from './new-asset-detail/new-asset-detail.component';
 import { AssetRequestFormComponent } from './new-asset-request-form/asset-request-form.component';
+import { NewAssetAddComponent } from './new-asset-add/new-asset-add.component';
 
 import { NewAssetService } from './new-asset.service';
 import { CallService } from './call.service';
 
 import { routing } from './new-asset.routing';
+
 
 @NgModule({
 	imports: [
@@ -38,7 +40,8 @@ import { routing } from './new-asset.routing';
 	declarations: [
 		NewAssetListComponent,
 		NewAssetDetailComponent,
-		AssetRequestFormComponent
+		AssetRequestFormComponent,
+		NewAssetAddComponent
 	],
 	providers: [
 		CallService,

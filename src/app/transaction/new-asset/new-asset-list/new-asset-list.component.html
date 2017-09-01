@@ -1,6 +1,13 @@
 <div class="container">
-	<div class="page-header">
-		<h1>Manage {{ title }}</h1>
+	<div class="row">
+		<div class="col-md-6 col-xs-6">
+			<div class="page-header">
+				<h1>Manage {{ title }}</h1>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-6 addNewAsset">
+			<button class="btn-add" md-raised-button>Add New Asset</button>
+		</div>
 	</div>
 	<form class="form-inline" [formGroup]="form" (ngSubmit)="onSubmit()">
 		<div class="row justify-content-between">
