@@ -74,7 +74,7 @@
 
 .card .card-header.card-chart {
   padding: 0;
-  min-height: 160px;
+  min-height: 200px;
 }
 
 .card .card-header.card-chart+.content h4 {
@@ -276,4 +276,12 @@
 }
 :host/deep/.ngx-charts text {
     fill: #FFFFFF !important;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400!important;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
