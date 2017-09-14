@@ -1,6 +1,10 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes } from 'ngx-uploader';
+
+import { NewAssetService } from '../new-asset.service';
 
 @Component({
 	selector: 'app-new-asset-add',
@@ -8,6 +12,9 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes } from 'ngx-upload
 	styleUrls: ['./new-asset-add.component.css']
 })
 export class NewAssetAddComponent implements OnInit {
+
+	form: FormGroup;
+	asset: NewAsset;
 
 	formData: FormData;
 	files: UploadFile[];
@@ -20,14 +27,20 @@ export class NewAssetAddComponent implements OnInit {
 		{ key: 'valueB', value: 'Value B' }
 	];
 
-	constructor() { 
+	constructor(
+		private router: Router,
+		private _nas: NewAssetService,
+		private fb: FormBuilder
+	) { 
 		this.files = []; // local uploading files array
 		this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
 		this.humanizeBytes = humanizeBytes;
+
+		this.asset = new NewAsset();
 	}
 
 	ngOnInit() {
-
+		this.buildForm();
 	}
 
 	onUploadOutput(output: UploadOutput): void {
@@ -59,18 +72,6 @@ export class NewAssetAddComponent implements OnInit {
 		}
 	}
 
-	startUpload(): void {
-		const event: UploadInput = {
-			type: 'uploadAll',
-			url: 'http://ngx-uploader.com/upload',
-			method: 'POST',
-			data: { foo: 'bar' },
-			concurrency: 0
-		};
-
-		this.uploadInput.emit(event);
-	}
-
 	cancelUpload(id: string): void {
 		this.uploadInput.emit({ type: 'cancel', id: id });
 	}
@@ -83,15 +84,72 @@ export class NewAssetAddComponent implements OnInit {
 		this.uploadInput.emit({ type: 'removeAll' });
 	}
 
+	buildForm(): void {
+		this.form = this.fb.group({
+			'type': [this.asset.type, [Validators.required]],
+			'class': [this.asset.class, [Validators.required]]
+			// group: string;
+			// distributor: string;
+			// salesRep: string;
+			// location: string;
+			// serialNumber: string;
+			// description: string;
+			// supplier: string;
+			// notes: string;
+			// images: [{
+				
+			// }];
+		});
+		this.form.valueChanges.subscribe(data => this.onValueChanged(data));
+		this.onValueChanged();
+	}
+
+	onValueChanged(data?: any) {
+		if(!this.form) {
+			return;
+		}
+		const thisForm = this.form;
+
+		for(const field in this.formErrors) {
+			// clear previous messages if any
+			this.formErrors[field] = '';
+			const control = thisForm.get(field);
+
+			if(control && control.dirty && !control.valid) {
+				const messages = this.validationMessages[field];
+				for(const key in control.errors) {
+					this.formErrors[field] += messages[key] + ' ';
+				}
+			}
+		}
+	}
+
+	formErrors = {
+	
+	};
+
+	validationMessages = {
+		
+	};
+
 	onSubmit(event) {
 		console.log(event);
 		console.log(this.files);
 	}
 }
 
-export class Album {
-	name: string;
+export class NewAsset {
 	type: string;
+	class: string;
+	group: string;
+	distributor: string;
+	salesRep: string;
+	location: string;
+	serialNumber: string;
 	description: string;
-	images: [{}]
+	supplier: string;
+	notes: string;
+	images: [{
+
+	}];
 }
