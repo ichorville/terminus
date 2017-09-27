@@ -1,5 +1,5 @@
 <div class="app-body">
-	<app-data-table 
+	<app-data-table *ngIf="test"
 		[taskEdit]="taskEdit"
 		[taskDelete]="taskDelete"
 		[addButton]="addButton"
@@ -10,3 +10,11 @@
 		(onDelete)="delete($event)">
 	</app-data-table>
 </div>
+
+<div *ngIf="!test" class="showbox">
+	<div class="loader">
+	  <svg class="circular" viewBox="25 25 50 50">
+		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+	  </svg>
+	</div>
+  </div>

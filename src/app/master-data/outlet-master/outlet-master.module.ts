@@ -27,6 +27,7 @@ import { routing } from './outlet-master.routing';
 		DataTableModule,
 		DynamicFormModule,
 		AlertModule,
+		MaterialModule
 	],
 	declarations: [
 		OutletMasterComponent,

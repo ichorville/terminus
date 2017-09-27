@@ -70,31 +70,29 @@ export class DataTableComponent implements OnInit, OnChanges {
 	}
 
 	ngOnInit() {
-		setTimeout(() => {
-			try {
-				this.isInit = true;
-				// this.isValid = true;
-				// string base for the search module to search with
-				this.resultArray = this.rows;
+		try {
+			// string base for the search module to search with
+			this.resultArray = this.rows;
+			console.log(this.rows);
 
-				// calculate the no of pagination pages
-				this._ps.getPageCount(this.rows.length).then((pages) => {
-					this.pages = pages;
-				});
-				// paginate the whole dataset according to the pagination pages
-				this._ps.paginate(5, this.rows).then((filteredRows) => {
-					if (filteredRows[0].items) {
-						this.tempArray = filteredRows;
-						this.filteredRows = this.tempArray[0].items;
-					}
-				});
+			// calculate the no of pagination pages
+			this._ps.getPageCount(this.rows.length).then((pages) => {
+				this.pages = pages;
+			});
+			// paginate the whole dataset according to the pagination pages
+			this._ps.paginate(5, this.rows).then((filteredRows) => {
+				if (filteredRows[0].items) {
+					this.tempArray = filteredRows;
+					this.filteredRows = this.tempArray[0].items;
+					this.isInit = true;
+				}
+			});
 
-				// load the first data set hence first selected page
-				this.selectedPage = 1;
-			} catch(e) {
-				
-			}
-		}, 2000);
+			// load the first data set hence first selected page
+			this.selectedPage = 1;
+		} catch(e) {
+			console.log(e);
+		}
 	}
 
 	ngOnChanges() {

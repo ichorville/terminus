@@ -16,6 +16,8 @@ import { LoginVariable } from '../../../global';
 })
 export class OutletListComponent implements OnInit {
 
+	test = false;
+
 	addButton: boolean;
 	taskEdit: boolean;
 	taskDelete: boolean;
@@ -50,7 +52,6 @@ export class OutletListComponent implements OnInit {
 		}
 		this._oms.all().then(outlets => {
 			this.outlets = outlets['t'];
-			// this.outlets = outlets;
 			this.updateRows();
 		});
 
@@ -94,5 +95,6 @@ export class OutletListComponent implements OnInit {
 				class: element.Class
 			});
 		});
+		this.test = true;
 	}
 }
